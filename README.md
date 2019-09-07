@@ -65,7 +65,7 @@ There are some differences between my wireframes and my final website. This was 
 
 Before building my project, I created an Entity Relationship (ER) diagram to outline the database schema for the various tables that I would use. The links to the file below:
 
-- [UnicornAttractor Database Schema]()
+- [UnicornAttractor Database Schema](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/schema/unicorn-attractor-db-schema.pdf)
 
 ## Features
 
