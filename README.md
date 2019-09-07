@@ -57,7 +57,34 @@ I received inspiration for the style of my app ...
 
 I drew my wireframes using Balsamiq. I have done separate wireframes to show my consideration of how to make my website/app responsive. The links to the files are below:
 
-
+- [Home - no user logged in (xs, sm and md)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/home-xs-sm-md-no-user-login.png)
+- [Home - no user logged in (lg and xl)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/home-xl-lg-no-user-login.png)
+- [Home - user logged in (xs, sm and md)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/home-xs-xm-md-user-logged-in.png)
+- [Home - user logged in (lg and xl)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/home-xl-lg-user-logged-in.png)
+- [Log In (xs, sm and md)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/log-in-xs-sm-md.png)
+- [Log In (lg and xl)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/log-in-lg-xl.png)
+- [Register (xs, sm and md)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/register-xs-sm-md.png)
+- [Register (lg and xl)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/register-lg-xl.png)
+- [Profile (xs, sm and md)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/profile-xs-sm-md.png)
+- [Profile (lg and xl)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/profile-lg-xl.png)
+- [Statistics (xs, sm and md)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/statistics-xs-sm-md.png)
+- [Statistics (lg and xl)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/statistics-lg-xl.png)
+- [Tickets - no user logged in (xs, sm and md)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/tickets-xs-sm-md-no-user-login.png)
+- [Tickets - no user logged in (lg and xl)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/tickets-lg-xl-no-user-login.png)
+- [Tickets - user logged in (xs, sm and md)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/tickets-xs-sm-md-user-logged-in.png)
+- [Tickets - user logged in (lg and xl)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/tickets-lg-xl-user-logged-in.png)
+- [Log A Bug (xs, sm and md)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/log-a-bug-xs-sm-md.png)
+- [Log A Bug (lg and xl)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/log-a-bug-lg-xl.png)
+- [Log A Feature (xs, sm and md)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/log-a-feature-xs-sm-md.png)
+- [Log A Feature (lg and xl)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/log-a-feature-lg-xl.png)
+- [Bug - no user logged in (xs, sm and md)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/bug-xs-sm-md-no-user-login.png)
+- [Bug - no user logged in (lg and xl)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/bug-lg-xl-no-user-login.png)
+- [Bug - user logged in (xs, sm and md)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/bug-xs-sm-md-user-logged-in.png)
+- [Bug - user logged in (lg and xl)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/bug-lg-xl-user-logged-in.png)
+- [Feature - no user logged in (xs, sm and md)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/feature-xs-sm-md-no-user-login.png)
+- [Feature - no user logged in (lg and xl)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/feature-lg-xl-no-user-login.png)
+- [Feature - user logged in (xs, sm and md)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/feature-xs-sm-md-user-logged-in.png)
+- [Feature - user logged in (lg and xl)](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/design/wireframes/feature-lg-xl-user-logged-in.png)
 
 There are some differences between my wireframes and my final website. This was due to visual preferences and feedback received from my mentor, and also other users who tested my website.
 
