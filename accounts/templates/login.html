@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
-{% load bootstrap_tags %}
+{% load materializecss %}
+{% load staticfiles %}
 
 {% block page_title %}Login Page{% endblock %}
 
@@ -13,7 +14,7 @@
         <fieldset class="form-group">
             <legend>Login</legend>
             {% csrf_token %}
-            {{ login_form | as_bootstrap }}
+            {{ login_form | materializecss }}
             
              <p><a href="{% url 'password_reset' %}">Forgot my password</a></p>
              
