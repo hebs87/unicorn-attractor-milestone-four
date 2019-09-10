@@ -10,46 +10,79 @@ class UserLoginForm(forms.Form):
     Form to be used to log users in
     '''
     username = forms.CharField()
-    # widget of password input ensures field has input type of password
     password = forms.CharField(widget=forms.PasswordInput)
 
 
 class UserRegistrationForm(UserCreationForm):
     '''
-    Form used to create a new user
+    Form used to create and register a new user
     '''
+    # Username
+    username = forms.CharField(label='Username',
+                               min_length=6,
+                               max_length=15,
+                               widget=forms.TextInput(),
+                               required=True)
+    # Email Address
+    email = forms.CharField(label='Email Address',
+                            min_length=6,
+                            max_length=40,
+                            widget=forms.EmailInput(),
+                            required=True)
+    # First Name
+    first_name = forms.CharField(label='First Name',
+                                 min_length=2,
+                                 max_length=40,
+                                 widget=forms.TextInput(),
+                                 required=True)
+    # First Name
+    last_name = forms.CharField(label='First Name',
+                                min_length=2,
+                                max_length=40,
+                                widget=forms.TextInput(),
+                                required=True)
     # First password entry
     password1 = forms.CharField(label="Password",
-                                widget=forms.PasswordInput)
+                                min_length=6,
+                                max_length=25,
+                                widget=forms.PasswordInput,
+                                required=True)
     # Confirm password with a label
-    password2 = forms.CharField(label="Confirm Password",
-                                widget=forms.PasswordInput)
-    # Create inner class to give more info about fomr - model and fields
+    password2 = forms.CharField(label="Repeat Password",
+                                min_length=6,
+                                max_length=25,
+                                widget=forms.PasswordInput,
+                                required=True)
+
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['username', 'email', 'first_name',
+                  'last_name', 'password1', 'password2']
 
 
-    # clean_ validates field and returns clean data which we can verify
-    # Expects to return specified value when done
     def clean_email(self):
+        '''
+        Validates email field and returns clean data which we can verify        
+        '''
         email = self.cleaned_data.get('email')
         username = self.cleaned_data.get('username')
-        # Check the email doesn't already exist in the DB using filter
+
         if User.objects.filter(email=email).exclude(username=username):
-            raise forms.ValidationError(u'Email address must be unique')
+            raise forms.ValidationError(
+                u'That email address has already been registered.')
+
         return email
     
     def clean_password2(self):
+        '''
+        Validates password field and returns clean data which we can verify        
+        '''
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
 
-
-        # Check to see if either is None - they aren't entered
         if not password1 or not password2:
-            raise forms.ValidationError(u'Please confirm your password')
+            raise forms.ValidationError(u'Please confirm your password.')
 
-        # Check that both passwords match
         if password1 != password2:
             raise forms.ValidationError(u'Passwords must match')
 
