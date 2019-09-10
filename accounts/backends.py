@@ -10,9 +10,7 @@ class EmailAuth:
         Get instance of User based on email and verify password
         '''
         try:
-            # username is the name of the form element
             user = User.objects.get(email=username)
-            
             # Check password and return user if validation passes
             if user.check_password(password):
                 return user
@@ -24,14 +22,12 @@ class EmailAuth:
     
     def get_user(self, user_id):
         '''
-        Used by Django auth system to retrieve user instance
+        Used by Django authentication system to retrieve user instance
         '''
         try:
-            # Django needs primary key for the user
             user = User.objects.get(pk=user_id)
-            # If this is an active user
             if user.is_active:
                 return user
             return None
-        except User.DoesNotExist:
+        except User.pk.DoesNotExist:
             return None
