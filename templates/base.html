@@ -1,5 +1,5 @@
-{% load staticfiles %}
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
 <head>
 
@@ -7,41 +7,148 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block page_title %}{% endblock %}</title>
+
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
+    <!-- FontAwesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     {% block css %}
     {% endblock %}
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <!--Link for Favicon-->
+    <link rel="icon" sizes="192x192" href="{% static 'img/favicon-logo.png' %}" type="image/x-icon">
 
 </head>
 <body>
 
-    <!-- Fixed masthead -->
-    <nav class="navbar navbar-masthead navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">AuthenticateMe</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
+    <header class="container-fluid">
+
+        <!--NAVBAR-->
+        <!--Main Nav-->
+        <nav class="nav-extended">
+            <div class="nav-wrapper">
+                <a href="{% url 'index' %}" class="brand-logo collection-item avatar"  aria-label="Brand logo and link to home page">
+                    <img class="circle" src="{% static 'img/favicon-logo.png' %}" alt="UnicornAttractor Logo">
+                    UnicornAttractor
+                </a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"  aria-label="Sidenav trigger">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li>
+                        <a href="{% url 'index' %}" aria-label="Home page">
+                            <i class="btn-icon fas fa-home" aria-hidden="true"></i>
+                            <span class="btn-text uppercase">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/" aria-label="Tickets page">
+                            <i class="btn-icon fas fa-ticket-alt" aria-hidden="true"></i>
+                            <span class="btn-text uppercase">Tickets</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/" aria-label="Statistics page">
+                            <i class="btn-icon fas fa-chart-bar" aria-hidden="true"></i>
+                            <span class="btn-text uppercase">Statistics</span>
+                        </a>
+                    </li>
+                    <!--Additional options if user is logged in-->
                     {% if user.is_authenticated %}
-                        <li><a href="{% url 'profile' %}">Profile</a></li>
-                        <li><a href="{% url 'logout' %}">Log Out</a></li>
-                    {%  else %}
-                        <li><a href="{% url 'registration' %}">Register</a></li>
-                        <li><a href="{% url 'login' %}">Log In</a></li>
+                        <li>
+                            <a href="{% url 'profile' %}" aria-label="Profile page">
+                                <i class="btn-icon fas fa-user" aria-hidden="true"></i>
+                                <span class="btn-text uppercase">Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'logout' %}" aria-label="Logout">
+                                <i class="btn-icon fas fa-sign-out-alt" aria-hidden="true"></i>
+                                <span class="btn-text uppercase">Logout</span>
+                            </a>
+                        </li>
+                    <!--If there is no user in session-->
+                    {% else %}
+                        <li>
+                            <a href="{% url 'login' %}" aria-label="Login page">
+                                <i class="btn-icon fas fa-sign-in-alt" aria-hidden="true"></i>
+                                <span class="btn-text uppercase">Login</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'registration' %}" aria-label="Registration page">
+                                <i class="btn-icon fas fa-user-plus" aria-hidden="true"></i>
+                                <span class="btn-text uppercase">Register</span>
+                            </a>
+                        </li>
                     {% endif %}
                 </ul>
             </div>
-        </div>
-    </nav>
+        </nav>
+        <!--End Main Nav-->
+        <!--Mobile Side Nav-->
+        <ul class="sidenav" id="mobile-demo">
+            <li>
+                <a href="{% url 'index' %}" class="brand-logo collection-item avatar"  aria-label="Brand logo and link to home page">
+                    <img class="circle" src="{% static 'img/favicon-logo.png' %}" alt="UnicornAttractor Logo">
+                    UnicornAttractor
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'index' %}" aria-label="Home page">
+                    <i class="btn-icon fas fa-home" aria-hidden="true"></i>
+                    <span class="btn-text uppercase">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="/" aria-label="Tickets page">
+                    <i class="btn-icon fas fa-ticket-alt" aria-hidden="true"></i>
+                    <span class="btn-text uppercase">Tickets</span>
+                </a>
+            </li>
+            <li>
+                <a href="/" aria-label="Statistics page">
+                    <i class="btn-icon fas fa-chart-bar" aria-hidden="true"></i>
+                    <span class="btn-text uppercase">Statistics</span>
+                </a>
+            </li>
+            <!--Additional options if user is logged in-->
+            {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'profile' %}" aria-label="Profile page">
+                        <i class="btn-icon fas fa-user" aria-hidden="true"></i>
+                        <span class="btn-text uppercase">Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}" aria-label="Logout">
+                        <i class="btn-icon fas fa-sign-out-alt" aria-hidden="true"></i>
+                        <span class="btn-text uppercase">Logout</span>
+                    </a>
+                </li>
+            <!--If there is no user in session-->
+            {% else %}
+                <li>
+                    <a href="{% url 'login' %}" aria-label="Login page">
+                        <i class="btn-icon fas fa-sign-in-alt" aria-hidden="true"></i>
+                        <span class="btn-text uppercase">Login</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'registration' %}" aria-label="Registration page">
+                        <i class="btn-icon fas fa-user" aria-hidden="true"></i>
+                        <span class="btn-text uppercase">Register</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+        <!--End Mobile Side Nav-->
+        
+        </nav>
+        <!--END NAVBAR-->
+    </header>
+
     {% if messages %}
         <div class="alert alert-success">
             <div class="messages">
@@ -51,13 +158,21 @@
             </div>
         </div>
     {% endif %}
-    <div class="container">
-        <!--Page Heading-->
-        <h1>{% block page_heading %}{% endblock %}</h1>
-        <hr>
-        {% block content %} {% endblock %}
-    </div>
-    <footer>
+
+    <!--MAIN CONTENT-->
+    <main class="container">
+        
+        <div class="container">
+            <!--Page Heading-->
+            <h1>{% block page_heading %}{% endblock %}</h1>
+            <hr>
+            {% block content %} {% endblock %}
+        </div>
+        
+    </main>
+    
+    <!--FOOTER-->
+    <footer class="page-footer container-fluid">
         <div class="container">
             <p>Made by Code Institute bootcampers</p>
         </div>

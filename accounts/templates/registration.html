@@ -2,8 +2,6 @@
 {% load materializecss %}
 {% load staticfiles %}
 
-{% load bootstrap_tags %}
-
 {% block page_title %}Registration Page{% endblock %}
 
 {% block page_heading %}Register{% endblock %}
@@ -15,7 +13,7 @@
             <legend>Create a new account</legend>
             <p>Already got an account? <a href="{% url 'login' %}">Sign In</a></p>
             {% csrf_token %}
-            {{  registration_form | materializecss }}
+            {{  registration_form|materializecss }}
             <button type="submit" class="btn btn-primary">Create account</button>
         </fieldset>
     </form>
