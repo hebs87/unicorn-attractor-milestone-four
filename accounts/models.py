@@ -12,7 +12,9 @@ class Profile(models.Model):
     '''
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='profile_pics/default.png',
-                              upload_to='profile_pics')
+                              upload_to='profile_pics',
+                              blank=True,
+                              null=True)
     total_donated = models.IntegerField(default=0)
 
 
