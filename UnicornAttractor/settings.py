@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'materializecssform',
     'accounts',
+    'django_cleanup.apps.CleanupConfig'
 ]
 
 MIDDLEWARE = [
