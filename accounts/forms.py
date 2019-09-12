@@ -87,3 +87,30 @@ class UserRegistrationForm(UserCreationForm):
             raise forms.ValidationError(u'Passwords must match')
 
         return password2
+
+class UserUpdateForm(forms.ModelForm):
+    '''
+    Form used to update the User model
+    '''
+    # Email Address
+    email = forms.CharField(label='Email Address',
+                            min_length=6,
+                            max_length=40,
+                            widget=forms.EmailInput(),
+                            required=False)
+    # First Name
+    first_name = forms.CharField(label='First Name',
+                                 min_length=2,
+                                 max_length=40,
+                                 widget=forms.TextInput(),
+                                 required=False)
+    # First Name
+    last_name = forms.CharField(label='First Name',
+                                min_length=2,
+                                max_length=40,
+                                widget=forms.TextInput(),
+                                required=False)
+
+    class Meta:
+        model = User
+        fields = ['email', 'first_name', 'last_name']
