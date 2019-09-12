@@ -30,15 +30,15 @@ def login(request):
             
             if user:
                 # If details are valid, log user in and display message
-                auth.login(request, user)
+                auth.login(request=request, user=user)
                 messages.success(request,
-                    "Welcome back, {user.username}, you're now logged in!")
+                    "Welcome back, you're now logged in!")
                 # Redirect user to home page once logged in
                 if request.GET and request.GET['next'] !='':
                     next = request.GET['next']
                     return HttpResponseRedirect(next)
                 else:
-                    return redirect(reverse('index'))
+                    return redirect(reverse('profile'))
             else:
                 # If details don't match, display error message
                 messages.error(request, "It appears those details don't \
@@ -84,9 +84,9 @@ def registration(request):
             
             # Log user in and redirect to profile if all checks pass
             if user:
-                auth.login(request, user)
-                messages.success(request, "Thanks for signing up \
-                    {user.username}, you're now logged in!")
+                auth.login(request=request, user=user)
+                messages.success(request, "Thanks for signing up, \
+                    you're now logged in!")
                 return redirect(reverse('profile'))
             else:
                 messages.error(request, "Registration error, please try \
