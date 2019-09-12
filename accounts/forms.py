@@ -36,7 +36,7 @@ class UserRegistrationForm(UserCreationForm):
                                  widget=forms.TextInput(),
                                  required=True)
     # First Name
-    last_name = forms.CharField(label='First Name',
+    last_name = forms.CharField(label='Last Name',
                                 min_length=2,
                                 max_length=40,
                                 widget=forms.TextInput(),
@@ -106,7 +106,7 @@ class UserUpdateForm(forms.ModelForm):
                                  widget=forms.TextInput(),
                                  required=False)
     # First Name
-    last_name = forms.CharField(label='First Name',
+    last_name = forms.CharField(label='Last Name',
                                 min_length=2,
                                 max_length=40,
                                 widget=forms.TextInput(),
