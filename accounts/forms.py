@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
-
+from .models import Profile
 
 # Create a new form object
 class UserLoginForm(forms.Form):
@@ -91,6 +91,7 @@ class UserRegistrationForm(UserCreationForm):
 class UserUpdateForm(forms.ModelForm):
     '''
     Form used to update the User model
+    Fields aren't required
     '''
     # Email Address
     email = forms.CharField(label='Email Address',
@@ -114,3 +115,12 @@ class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['email', 'first_name', 'last_name']
+
+
+class ProfileUpdateForm(forms.ModelForm):
+    '''
+    Form used to update the Profile model - for the profile image
+    '''
+    class Meta:
+        model = Profile
+        field = ['image']
