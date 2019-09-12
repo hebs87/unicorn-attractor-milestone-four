@@ -2,9 +2,8 @@ from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib import auth, messages
 from django.core.urlresolvers import reverse
 from django.template.context_processors import csrf
-# To prevent users from getting to unwanted pages when logged out
 from django.contrib.auth.decorators import login_required
-from .forms import UserLoginForm, UserRegistrationForm
+from .forms import UserLoginForm, UserRegistrationForm, UserUpdateForm, ProfileUpdateForm
 
 # Create your views here.
 def index(request):
@@ -14,32 +13,14 @@ def index(request):
     return render(request, "index.html")
 
 
-# Used to ensure user redirected to login page if attempting
-# to access when logged out
-@login_required
-def logout(request):
-    '''
-    Log the user out
-    '''
-    auth.logout(request)
-    # Display a flash message when user is logged out
-    messages.success(request, "You have successfully been logged out")
-    # Reverse allows to redirect to url name rather than html file or function
-    return redirect(reverse('index'))
-
-
 def login(request):
     '''
-    Return a login page
+    Return a login page and logs the user in
     '''
-    # Ensures that user redirected to index if accessing login,
-    # when already logged in
     if request.user.is_authenticated():
         return redirect(reverse('index'))
     
-    # If request method is POST, we want to validate login details
     if request.method == "POST":
-        # Create an instance of login form and pass POST request as constructor
         login_form = UserLoginForm(request.POST)
         
         if login_form.is_valid():
@@ -50,7 +31,8 @@ def login(request):
             if user:
                 # If details are valid, log user in and display message
                 auth.login(request, user)
-                messages.success(request, 'You have successfully logged in!')
+                messages.success(request,
+                    "Welcome back, {user.username}, you're now logged in!")
                 # Redirect user to home page once logged in
                 if request.GET and request.GET['next'] !='':
                     next = request.GET['next']
@@ -59,8 +41,8 @@ def login(request):
                     return redirect(reverse('index'))
             else:
                 # If details don't match, display error message
-                login_form.add_error(None, 'Your username or password is \
-                                     incorrect!')
+                messages.error(request, "It appears those details don't \
+                    match what we have, please try again.")
 
     else:
         # Else, we want to return a blank form
@@ -72,19 +54,20 @@ def login(request):
 
 
 @login_required
-def user_profile(request):
+def logout(request):
     '''
-    The user's profile page
+    Log the user out
     '''
-    return render(request, 'profile.html')
+    auth.logout(request)
+    messages.success(request, "You were successfully logged out. \
+                     Come back soon!")
+    return redirect(reverse('index'))
 
 
 def registration(request):
     '''
     Render the registration page
     '''
-    # Ensures that user redirected to index if accessing login,
-    # when already logged in
     if request.user.is_authenticated():
         return redirect(reverse('index'))
 
@@ -99,14 +82,15 @@ def registration(request):
             user = auth.authenticate(username=request.POST['username'],
                                      password=request.POST['password1'])
             
-            # Log user in if all checks out
+            # Log user in and redirect to profile if all checks pass
             if user:
                 auth.login(request, user)
-                messages.success(request, 'You have successfully registered!')
-                return redirect(reverse('index'))
+                messages.success(request, "Thanks for signing up \
+                    {user.username}, you're now logged in!")
+                return redirect(reverse('profile'))
             else:
-                messages.error(request, 'Unable to register your account at \
-                               this time!')
+                messages.error(request, "Registration error, please try \
+                               again.")
 
     else:
         registration_form = UserRegistrationForm()
@@ -114,3 +98,11 @@ def registration(request):
     args = {'registration_form': registration_form}
 
     return render(request, "registration.html", args)
+
+
+@login_required
+def user_profile(request):
+    '''
+    The user's profile page
+    '''
+    return render(request, 'profile.html')
