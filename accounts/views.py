@@ -104,5 +104,11 @@ def registration(request):
 def user_profile(request):
     '''
     The user's profile page
+    Allows the user to update their User details and Profile image
     '''
-    return render(request, 'profile.html')
+    user_form = UserUpdateForm()
+    profile_form = ProfileUpdateForm()
+    
+    args = {'user_form': user_form, 'profile_form':profile_form}
+    
+    return render(request, 'profile.html', args)
