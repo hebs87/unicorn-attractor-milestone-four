@@ -58,24 +58,17 @@
                         <h6 class="helper">Filter by one or multiple categories.</h6>
                     </div>
                     <div class="row filter-form-wrapper">
-                        <!--Tickets Type Category Drop Down-->
+                        <!--Ticket Type Category Drop Down-->
                         <div class="input-field col s12 m6">
                             <select id="ticket_type" name="ticket_type" class="form-control validate">
                                 <option value="" disabled selected>Type</option>
-                                <!--Loop through time_list and inject data into the drop down menu-->
-                                <!--{% for type in types %}-->
-                                <!--<option value="{{ type }}">{{ type|capitalize }}</option>-->
-                                <!--{% endfor %}-->
                             </select>
                             <label for="type">Ticket Type</label>
                         </div>
-                        <!--Occasion Category Drop Down-->
+                        <!--Ticket Status Drop Down-->
                         <div class="input-field col s12 m6">
                             <select id="occasion" name="occasion" class="form-control validate">
                                 <option value="" disabled selected>Status</option>
-                                <!--{% for occasion in occasions %}-->
-                                <!--<option value="{{ occasion }}">{{ occasion|capitalize }}</option>-->
-                                <!--{% endfor %}-->
                             </select>
                             <label for="occasion">Ticket Status</label>
                         </div>
