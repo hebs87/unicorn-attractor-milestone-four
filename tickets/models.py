@@ -70,4 +70,20 @@ class Comment(models.Model):
 
     def __str__(self):
         return "Comment by {0} on Ticket #{1}".format(
-            self.user, self.ticket.id)
+            self.user.username, self.ticket.id)
+
+class Upvote(models.Model):
+    '''
+    Allows users to upvote any ticket
+    '''
+    ticket = models.ForeignKey(
+        Ticket,
+        on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE)
+
+
+    def __str__(self):
+        return "Upvoted by {0} on Ticket #{1}".format(
+            self.user.username, self.ticket.id)
