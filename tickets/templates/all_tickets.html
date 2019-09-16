@@ -8,23 +8,39 @@
 
 {% block content %}
     
-    <div class="row recipe-card card z-depth-1">
-        <!-- Log New Bug-->
-        <div class="col s12 m6 ingredients">
-            <h3 class="card-title center-align">Bugs</h3>
-            <p>
-                Noticed an issue?
-                <br>
-                Submit a new Bug Report!
-            </p>
-            <p>
-                Bug Reports are FREE to open!
-            </p>
-            <a href="" class="btn">
-                New Bug
-            </a>
+    {% if user.is_authenticated %}
+        <div class="row recipe-card card z-depth-1">
+            <!-- Log New Bug-->
+            <div class="col s12 m6 ingredients">
+                <h3 class="card-title center-align">Bugs</h3>
+                <p>
+                    Noticed an issue?
+                    <br>
+                    Submit a new Bug Report!
+                </p>
+                <p>
+                    Bug Reports are FREE to open!
+                </p>
+                <a href="" class="btn waves-effect waves-light sm-md-btn">
+                    New Bug
+                </a>
+            </div>
+            <div class="col s12 m6 ingredients">
+                <h3 class="card-title center-align">Features</h3>
+                <p>
+                    Want something new?
+                    <br>
+                    Submit a new Feature Request!
+                </p>
+                <p>
+                    Feature Requests require a small donation!
+                </p>
+                <a href="" class="btn waves-effect waves-light sm-md-btn">
+                    New Feature
+                </a>
+            </div>
         </div>
-    </div>
+    {% endif %}
     
     <!-- Filter Form -->
     <form id="filter_form" method="POST" action="">
