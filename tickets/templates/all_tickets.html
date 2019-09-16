@@ -8,6 +8,9 @@
 
 {% block content %}
     
+    
+    
+    <!-- Filter Form -->
     <form id="filter_form" method="POST" action="">
         <ul class="collapsible filter-option">
             <li>
@@ -65,5 +68,52 @@
             </li>
         </ul>
     </form>
+    
+    <!-- Ticket Cards -->
+    <div class="row center-align">
+        <a href="" aria-label="Link to ticket details">
+            <div class="col s12 m6 recipe-preview-card">
+                <div class="card hoverable results-card z-depth-1">
+                    <!-- Ticket Title -->
+                    <div class="card-title center-align">
+                        
+                    </div>
+                    <!-- Ticket Details -->
+                    <div class="card-content center-align">
+                        <span>
+                            Type: 
+                        </span>
+                        <span>
+                            Status: 
+                        </span>
+                        <span>
+                            Created By: 
+                        </span>
+                        <span>
+                            Description: 
+                        </span>
+                    </div>
+                    <!-- Ticket Quick Stats -->
+                    <div class="card-action card-stats">
+                        <!-- Views -->
+                        <span>
+                            <i class="far fa-eye" aria-hidden="true"></i><br>
+                            
+                        </span>
+                        <span>
+                            <!-- Upvotes -->
+                            <i class="fas fa-thumbs-up" aria-hidden="true"></i><br>
+                            
+                        </span>
+                        <span>
+                            <!-- Donations -->
+                            <i class="fas fa-pound-sign" aria-hidden="true"></i><br>
+                            
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
     
 {% endblock %}
