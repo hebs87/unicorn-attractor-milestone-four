@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load materializecss %}
+{% load staticfiles %}
+
+{% block title %}Tickets{% endblock %}
+
+{% block page_heading %}Tickets{% endblock %}
+
+{% block content %}
+    
+    <form id="filter_form" method="POST" action="">
+        <ul class="collapsible filter-option">
+            <li>
+                <div class="collapsible-header filter-header">
+                    <h3 class="filter-form-title">
+                        <i class="fas fa-filter" aria-hidden="true"></i>
+                        Filter
+                    </h3>
+                </div>
+                <div class="collapsible-body collection collapsible-collection filter-body">
+                    <!--Helper Text/Instructions-->
+                    <div class="col s12">
+                        <h6 class="helper">Filter by one or multiple categories.</h6>
+                    </div>
+                    <div class="row filter-form-wrapper">
+                        <!--Tickets Type Category Drop Down-->
+                        <div class="input-field col s12 m6">
+                            <select id="ticket_type" name="ticket_type" class="form-control validate">
+                                <option value="" disabled selected>Type</option>
+                                <!--Loop through time_list and inject data into the drop down menu-->
+                                <!--{% for type in types %}-->
+                                <!--<option value="{{ type }}">{{ type|capitalize }}</option>-->
+                                <!--{% endfor %}-->
+                            </select>
+                            <label for="type">Ticket Type</label>
+                        </div>
+                        <!--Occasion Category Drop Down-->
+                        <div class="input-field col s12 m6">
+                            <select id="occasion" name="occasion" class="form-control validate">
+                                <option value="" disabled selected>Status</option>
+                                <!--{% for occasion in occasions %}-->
+                                <!--<option value="{{ occasion }}">{{ occasion|capitalize }}</option>-->
+                                <!--{% endfor %}-->
+                            </select>
+                            <label for="occasion">Ticket Status</label>
+                        </div>
+                        <!--Submit Button-->
+                        <div class="row submit-button-wrapper">
+                            <div class="col s6">
+                                <button class="btn waves-effect waves-light sm-md-btn" type="submit" aria-label="Filter button">
+                                    <span class="hide-on-small-and-down">Filter</span>
+                                    <i class="fas fa-filter icon-right" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <!--Reset Button-->
+                            <div class="col s6">
+                                <a class="btn waves-effect waves-light sm-md-btn" href="" aria-label="Reset page button">
+                                    <span class="hide-on-small-and-down">Reset</span>
+                                    <i class="fas fa-undo-alt icon-right" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </form>
+    
+{% endblock %}
