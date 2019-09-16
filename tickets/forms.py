@@ -34,4 +34,21 @@ class DonationForm(forms.Form):
 
     donation_amount = forms.ChoiceField(
         label="Donation Amount",
+        choices=DONATION_AMOUNT_CHOICES,
         required=False)
+
+
+class CommentForm(forms.ModelForm):
+    '''
+    Allows users to comment on any tickets
+    '''
+    comment = forms.CharField(
+        label="Comment",
+        min_length=5,
+        max_length=2000,
+        widget=forms.Textarea(),
+        required=True)
+
+    class Meta:
+        model = Comment
+        fields = ["comment"]

@@ -63,7 +63,7 @@ class Comment(models.Model):
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE)
-    description = models.TextField(
+    comment = models.TextField(
         max_length=2000,
         blank=False)
 
