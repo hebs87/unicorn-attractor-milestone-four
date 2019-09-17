@@ -44,8 +44,6 @@ class Ticket(models.Model):
     Allows users to log bug or feature tickets
     Auto-adds current date to created_date/edited_date
     '''
-    
-    
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE)
@@ -72,8 +70,8 @@ class Ticket(models.Model):
 
 
     def __str__(self):
-        return "#{0} [{1}] - {2}".format(
-            self.id, self.ticket_status, self.title)
+        return "#{0} [{1} - {2}] - {3}".format(
+            self.id, self.ticket_type, self.ticket_status, self.title)
 
 class Comment(models.Model):
     '''
