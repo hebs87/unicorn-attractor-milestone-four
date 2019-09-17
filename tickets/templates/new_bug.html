@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load materializecss %}
+{% load staticfiles %}
+
+{% block title %}New Bug{% endblock %}
+
+{% block content %}
+    
+    <form method="POST" action="">
+        
+        {% csrf_token %}
+        <!--Recipe Details Card-->
+        <div class="row recipe-card card z-depth-1 center-align">
+            <!--Card Title-->
+            <h3 class="card-title recipe-details-title">
+                New Bug
+            </h3>
+            <!--Bug Form-->
+            <div class="input-field col s12">
+                {{ bug_form }}
+            </div>
+    
+            <!--Add and Cancel buttons-->
+            <div class="col s12">
+                <button class="btn waves-effect waves-light add-btn standard-btn icon-right" type="submit" aria-label="Add bug button">
+                    Add
+                    <i class="fas fa-plus-circle" aria-hidden="true"></i>
+                </button>
+                <a class="btn waves-effect waves-light standard-btn icon-right" type="reset" aria-label="Cancel button" onclick="history.back()">
+                    Cancel
+                    <i class="fas fa-times-circle" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    
+    </form>
+    
+{% endblock %}
