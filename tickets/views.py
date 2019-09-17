@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from accounts.models import Profile
@@ -26,7 +27,19 @@ def new_bug_ticket(request):
     '''
     Allows user to create a new bug ticket
     '''
-    bug_form = TicketForm()
+    if request.method == "POST":
+        bug_form = TicketForm(request.POST)
+        # Save form and redirect user to the page for that ticket
+        if bug_form.is_valid():
+            bug_form.instance.user = request.user
+            bug_form.instance.ticket_type_id = 1
+            bug_form.instance.ticket_status_id = 1
+            new_bug = bug_form.save()
+            messages.success(request, f"Thanks for submitting a Bug Report!")
+            return redirect(view_all_tickets)
+
+    else:
+        bug_form = TicketForm()
     
     args = {
         "bug_form": bug_form
