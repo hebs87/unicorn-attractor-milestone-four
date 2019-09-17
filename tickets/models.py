@@ -3,16 +3,28 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 # Create your models here.
+class TicketType(models.Model):
+    '''
+    Provides the choices for the ticket type (bug or feature)
+    '''
+    # Choices for ticket type
+    TICKET_TYPE_CHOICES = (
+        ("Bug", "Bug"),
+        ("Feature", "Feature"),
+    )
+    ticket_type = models.CharField(
+        max_length=7,
+        choices=TICKET_TYPE_CHOICES)
+    
+    def __str__(self):
+        return self.ticket_type
+
+
 class Ticket(models.Model):
     '''
     Allows users to log bug or feature tickets
     Auto-adds current date to created_date/edited_date
     '''
-    # Choices for ticket type and status
-    TICKET_TYPE_CHOICES = (
-        ("Bug", "Bug"),
-        ("Feature", "Feature"),
-    )
     TICKET_STATUS_CHOICES = (
         ("Open","Open"),
         ("In Progress", "In Progress"),
