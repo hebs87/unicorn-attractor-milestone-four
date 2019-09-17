@@ -20,28 +20,41 @@ class TicketType(models.Model):
         return self.ticket_type
 
 
-class Ticket(models.Model):
+class TicketStatus(models.Model):
     '''
-    Allows users to log bug or feature tickets
-    Auto-adds current date to created_date/edited_date
+    Provides the choices for the ticket status (Open, In Progress or Closed)
     '''
+    # Choices for ticket status
     TICKET_STATUS_CHOICES = (
         ("Open","Open"),
         ("In Progress", "In Progress"),
         ("Closed", "Closed"),
     )
+    ticket_status = models.CharField(
+        max_length=11,
+        choices=TICKET_STATUS_CHOICES)
+
+    
+    def __str__(self):
+        return self.ticket_status
+
+
+class Ticket(models.Model):
+    '''
+    Allows users to log bug or feature tickets
+    Auto-adds current date to created_date/edited_date
+    '''
+    
     
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE)
     created_date = models.DateTimeField(
         auto_now_add=True)
-    ticket_type = models.CharField(
-        max_length=7,
-        choices=TICKET_TYPE_CHOICES)
-    ticket_status = models.CharField(
-        max_length=11,
-        choices=TICKET_STATUS_CHOICES)
+    ticket_type = models.ForeignKey(
+        TicketType)
+    ticket_status = models.ForeignKey(
+        TicketStatus)
     title = models.CharField(
         max_length=100,
         blank=False)
