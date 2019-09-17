@@ -68,6 +68,9 @@ class Ticket(models.Model):
     total_donations = models.IntegerField(
         default=0)
 
+    class Meta:
+        ordering = ("upvotes")
+
 
     def __str__(self):
         return "#{0} [{1} - {2}] - {3}".format(
