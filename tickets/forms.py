@@ -42,7 +42,7 @@ class CommentForm(forms.ModelForm):
     '''
     Allows users to comment on any tickets
     '''
-    comment = forms.CharField(
+    description = forms.CharField(
         label="Comment",
         min_length=5,
         max_length=2000,
@@ -51,4 +51,4 @@ class CommentForm(forms.ModelForm):
 
     class Meta:
         model = Comment
-        fields = ["comment"]
+        fields = ["description"]
