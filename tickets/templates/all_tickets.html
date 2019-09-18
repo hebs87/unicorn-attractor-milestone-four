@@ -72,6 +72,9 @@
                         <div class="input-field col s12 m6">
                             <select id="occasion" name="occasion" class="form-control validate">
                                 <option value="" disabled selected>Status</option>
+                                {% for status in ticket_status_dropdown %}
+                                    <option value="{{ status.id }}">{{ status }}</option>
+                                {% endfor%}
                             </select>
                             <label for="occasion">Ticket Status</label>
                         </div>
