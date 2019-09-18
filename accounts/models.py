@@ -22,11 +22,11 @@ class Profile(models.Model):
         return f"{self.user.username}'s Profile"
     
 
-    def save(self):
+    def save(self, *args, **kwargs):
         '''
         Reduce the image size before saving in the local storage
         '''
-        super().save()
+        super(Profile, self).save(*args, **kwargs)
 
         img = Image.open(self.image.path)
 
@@ -36,6 +36,7 @@ class Profile(models.Model):
             img.save(self.image.path)
 
 
+@receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
     '''
     Creates a user profile when a new user is registered
@@ -44,10 +45,9 @@ def create_profile(sender, instance, created, **kwargs):
         Profile.objects.create(user=instance)
 
 
+@receiver(post_save, sender=User)
 def save_profile(sender, instance, **kwargs):
     '''
     Saves the profile when User is updated/changed
     '''
     instance.profile.save()
-
-post_save.connect(create_profile, sender=User)
