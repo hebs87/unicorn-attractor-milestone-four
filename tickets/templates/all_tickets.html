@@ -62,6 +62,9 @@
                         <div class="input-field col s12 m6">
                             <select id="ticket_type" name="ticket_type" class="form-control validate">
                                 <option value="" disabled selected>Type</option>
+                                {% for type in ticket_type_dropdown %}
+                                    <option value="{{ type.id }}">{{ type }}</option>
+                                {% endfor%}
                             </select>
                             <label for="type">Ticket Type</label>
                         </div>
