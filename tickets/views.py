@@ -17,12 +17,20 @@ def view_all_tickets(request):
     ticket_type_dropdown = TicketType.objects.all()
     ticket_status_dropdown = TicketStatus.objects.all()
 
+    # Query parameters
     ticket_type = request.GET.get("ticket_type")
+    ticket_status = request.GET.get("ticket_status")
     
+    # Filter by query parameters
     if ticket_type:
         tickets = tickets.filter(ticket_type__id=ticket_type)
     else:
-        messages.error(request, f"Please choose at least one filter category!")
+        tickets
+    
+    if ticket_status:
+        tickets = tickets.filter(ticket_status__id=ticket_status)
+    else:
+        tickets
     
     args = {
         "tickets": tickets,
