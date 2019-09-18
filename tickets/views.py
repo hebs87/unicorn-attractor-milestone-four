@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from accounts.models import Profile
-from .models import Ticket, Comment, Upvote
+from .models import TicketType, TicketStatus, Ticket, Comment, Upvote
 from .forms import TicketForm, CommentForm, DonationForm
 
 # Create your views here.
@@ -14,11 +14,15 @@ def view_all_tickets(request):
     Allows users to filter tickets based on type or status
     '''
     tickets = Ticket.objects.all()
-    
+    ticket_type_dropdown = TicketType.objects.all()
+    ticket_status_dropdown = TicketStatus.objects.all()
+
     args = {
         "tickets": tickets,
+        "ticket_type_dropdown": ticket_type_dropdown,
+        "ticket_status_dropdown": ticket_status_dropdown,
     }
-    
+
     return render(request, "all_tickets.html", args)
 
 
