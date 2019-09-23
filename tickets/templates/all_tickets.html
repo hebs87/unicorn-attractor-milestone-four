@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load materializecss %}
 {% load staticfiles %}
+{% load my_tags %}
 
 {% block title %}Tickets{% endblock %}
 
@@ -161,13 +162,13 @@
             {% if tickets.has_previous %}
                 <!-- First page button -->
                 <li>
-                    <a href="?page=1">
+                    <a href="?{% param_replace page=1 %}">
                         <i class="fas fa-angle-double-left" aria-hidden="true"></i>
                     </a>
                 </li>
                 <!-- Previous page button -->
                 <li>
-                    <a href="?page={{ tickets.previous_page_number }}">
+                    <a href="?{% param_replace page=tickets.previous_page_number %}">
                         <i class="fas fa-angle-left" aria-hidden="true"></i>
                     </a>
                 </li>
@@ -185,7 +186,7 @@
                 <!-- Show the 4 surrounding (2 next and 2 previous) pages -->
                 {% elif num > tickets.number|add:'-3' and num < tickets.number|add:'3' %}
                     <li>
-                        <a href="?page={{ num }}">
+                        <a href="?{% param_replace page=num %}">
                             {{ num }}
                         </a>
                     </li>
@@ -196,13 +197,13 @@
             {% if tickets.has_next %}
                 <!-- Next page button -->
                 <li>
-                    <a href="?page={{ tickets.next_page_number }}">
+                    <a href="?{% param_replace page=tickets.next_page_number %}">
                         <i class="fas fa-angle-right" aria-hidden="true"></i>
                     </a>
                 </li>
                 <!-- Last page button -->
                 <li>
-                    <a href="?page={{ tickets.paginator.num_pages }}">
+                    <a href="?{% param_replace page=tickets.paginator.num_pages %}">
                         <i class="fas fa-angle-double-right" aria-hidden="true"></i>
                     </a>
                 </li>
