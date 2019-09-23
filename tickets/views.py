@@ -125,10 +125,10 @@ def new_feature_ticket(request):
                 # Update the ticket's status to In Progress if user donates
                 # the goal amount for the feature to be implemented
                 if donation_amount == int(100):
-                    feature_form.instance.ticket_status = 2
+                    feature_form.instance.ticket_status_id = 2
                 else:
                     # If goal amount not reached, update status to Open
-                    feature_form.instance.ticket_status = 1
+                    feature_form.instance.ticket_status_id = 1
                 new_feature = feature_form.save()
                 messages.success(request, f"Thanks for submitting a Feature Request!")
                 return redirect(view_all_tickets)
