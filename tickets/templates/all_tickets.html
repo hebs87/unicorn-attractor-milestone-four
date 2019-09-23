@@ -154,4 +154,26 @@
         {% endfor %}
     </div>
     
+    <!-- Pagination - only visible if there are multiple pages -->
+    {% if tickets.has_other_pages %}
+        <ul class="pagination center-align">
+            <!-- Previous/First button - only visible if previous page available -->
+            {% if tickets.has_previous %}
+                <!-- First page button -->
+                <li>
+                    <a href="?page=1">
+                        <i class="fas fa-angle-double-left" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <!-- Previous page button -->
+                <li>
+                    <a href="?page={{ tickets.previous_page_number }}">
+                        <i class="fas fa-angle-left" aria-hidden="true"></i>
+                    </a>
+                </li>
+            {% endif %}
+            
+        </ul>
+    {% endif %}
+
 {% endblock %}
