@@ -30,7 +30,7 @@ class DonationForm(forms.Form):
     This is only used when adding or upvoting feature tickets
     Offers users a list of donation amounts, in multiples of 5
     '''
-    DONATION_AMOUNT_CHOICES = [(i, i) for i in range(5, 100, 5)]
+    DONATION_AMOUNT_CHOICES = [(i, i) for i in range(5, 105, 5)]
 
     donation_amount = forms.ChoiceField(
         label="Donation Amount",
