@@ -103,49 +103,54 @@
     <!-- Ticket Cards -->
     <div class="row center-align">
         {% for ticket in tickets %}
-        <a href="" aria-label="Link to ticket details">
-            <div class="col s12 m6 recipe-preview-card">
-                <div class="card hoverable results-card z-depth-1">
-                    <!-- Ticket Title -->
-                    <div class="card-title center-align">
-                        <h3>{{ ticket.title }}</h3>
-                    </div>
-                    <!-- Ticket Details -->
-                    <div class="card-content center-align">
-                        <span>
-                            Type: {{ ticket.ticket_type }}
-                        </span>
-                        <span>
-                            Status: {{ ticket.ticket_status }}
-                        </span>
-                        <span>
-                            Created By: {{ ticket.user.username }}
-                        </span>
-                        <span>
-                            Description: {{ ticket.description }}
-                        </span>
-                    </div>
-                    <!-- Ticket Quick Stats -->
-                    <div class="card-action card-stats">
-                        <!-- Views -->
-                        <span>
-                            <i class="far fa-eye" aria-hidden="true"></i><br>
-                            {{ ticket.views }}
-                        </span>
-                        <span>
-                            <!-- Upvotes -->
-                            <i class="fas fa-thumbs-up" aria-hidden="true"></i><br>
-                            {{ ticket.upvotes }}
-                        </span>
-                        <span>
-                            <!-- Donations -->
-                            <i class="fas fa-pound-sign" aria-hidden="true"></i><br>
-                            {{ ticket.total_donations }}
-                        </span>
+            <a href="" aria-label="Link to ticket details">
+                <div class="col s12 m6 recipe-preview-card">
+                    <div class="card hoverable results-card z-depth-1">
+                        <!-- Ticket Title -->
+                        <div class="card-title center-align">
+                            <h3>{{ ticket.title }}</h3>
+                        </div>
+                        <!-- Ticket Details -->
+                        <div class="card-content center-align">
+                            <span>
+                                Type: {{ ticket.ticket_type }}
+                            </span>
+                            <span>
+                                Status: {{ ticket.ticket_status }}
+                            </span>
+                            <span>
+                                Created By: {{ ticket.user.username }}
+                            </span>
+                            <span>
+                                Description: {{ ticket.description }}
+                            </span>
+                        </div>
+                        <!-- Ticket Quick Stats -->
+                        <div class="card-action card-stats">
+                            <!-- Views -->
+                            <span>
+                                <i class="far fa-eye" aria-hidden="true"></i><br>
+                                {{ ticket.views }}
+                            </span>
+                            <span>
+                                <!-- Upvotes -->
+                                <i class="fas fa-thumbs-up" aria-hidden="true"></i><br>
+                                {{ ticket.upvotes }}
+                            </span>
+                            <span>
+                                <!-- Donations -->
+                                <i class="fas fa-pound-sign" aria-hidden="true"></i><br>
+                                {{ ticket.total_donations }}
+                            </span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </a>
+            </a>
+        {% empty %}
+            <h4 class="recipe-details-text">
+                <span class="recipe-count bold italic">No</span>
+                 tickets found!
+             </h4>
         {% endfor %}
     </div>
     
