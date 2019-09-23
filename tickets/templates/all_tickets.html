@@ -190,8 +190,23 @@
                         </a>
                     </li>
                 {% endif %}
-                
             {% endfor %}
+            
+            <!-- Next/Last button - only visible if previous page available -->
+            {% if tickets.has_next %}
+                <!-- Next page button -->
+                <li>
+                    <a href="?page={{ tickets.next_page_number }}">
+                        <i class="fas fa-angle-right" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <!-- Last page button -->
+                <li>
+                    <a href="?page={{ tickets.paginator.num_pages }}">
+                        <i class="fas fa-angle--double-right" aria-hidden="true"></i>
+                    </a>
+                </li>
+            {% endif %}
             
         </ul>
     {% endif %}
