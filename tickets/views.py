@@ -8,6 +8,7 @@ from django.utils import timezone
 from accounts.models import Profile
 from .models import TicketType, TicketStatus, Ticket, Comment, Upvote
 from .forms import TicketForm, CommentForm, DonationForm
+import stripe
 
 # Create your views here.
 def view_all_tickets(request):
@@ -85,6 +86,7 @@ def new_feature_ticket(request):
     '''
     Allows user to create a new bug ticket
     '''
+    
     feature_form = TicketForm()
     donation_form = DonationForm()
 
