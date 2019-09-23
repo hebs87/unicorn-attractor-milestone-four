@@ -35,10 +35,14 @@ def view_all_tickets(request):
         tickets
 
     # Pagination
-    pagination = Paginator(tickets, 1)
+    paginator = Paginator(tickets, 1)
     
-    tickets = pagination.page(1)
-        
+    try:
+        tickets = paginator.page(page)
+    except PageNotAnInteger:
+        tickets = paginator.page(1)
+    except:
+        tickets = paginator.page(paginator.num_pages)
 
     args = {
         "tickets": tickets,
