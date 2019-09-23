@@ -11,6 +11,9 @@ from .forms import TicketForm, CommentForm, DonationForm
 import stripe
 
 # Create your views here.
+# Import the Stripe Secret API key
+stripe.api_key = settings.STRIPE_SECRET
+
 def view_all_tickets(request):
     '''
     View all tickets
@@ -86,9 +89,30 @@ def new_feature_ticket(request):
     '''
     Allows user to create a new bug ticket
     '''
-    
-    feature_form = TicketForm()
-    donation_form = DonationForm()
+    if request.method=="POST":
+        feature_form = TicketForm(request.POST)
+        donation_form = DonationForm(request.POST)
+        if feature_form.is_valid() and donation_form.is_valid():
+            # Total Donation Amount
+            donation_amount = 0
+            donation_amount += int(request.POST.get("donation_amount"))
+            try:
+                # Use stripe's inbuilt API to create a customer and charge
+                customer = stripe.Charge.create(
+                    amount = int(donation_amount * 100),
+                    currency = "GBP",
+                    description = request.user.email,
+                    source = request.POST["stripeToken"]
+                )
+            except stripe.error.CardError:
+                # Display error message if card is declined
+                messages.error(request, "Your card was declined!")
+
+            
+
+    else:
+        feature_form = TicketForm()
+        donation_form = DonationForm()
 
     args = {
         "feature_form": feature_form,
