@@ -78,3 +78,19 @@ def new_bug_ticket(request):
     }
     
     return render(request, "new_bug.html", args)
+
+
+@login_required
+def new_feature_ticket(request):
+    '''
+    Allows user to create a new bug ticket
+    '''
+    feature_form = TicketForm()
+    donation_form = DonationForm()
+
+    args = {
+        "feature_form": feature_form,
+        "donation_form": donation_form
+    }
+
+    return render(request, "new_feature.html", args)
