@@ -44,7 +44,7 @@
                 {% endif %}
             </p>
         </div>
-        {% if user.is_authenticated and user.id == ticket.user.id and ticket.ticket_status != "Closed" %}
+        {% if user.is_authenticated and user.id == ticket.user.id and ticket.ticket_status.ticket_status != "Closed" %}
             <div class="col s12 center-align">
                 <div class="recipe-details-break"></div>
             </div>
@@ -67,7 +67,7 @@
     <!-- Upvote Section -->
     {% if user.is_authenticated %}
         <div class="row recipe-card card z-depth-1">
-            {% if ticket.ticket_type == "Feature" %}
+            {% if ticket.ticket_type.ticket_type == "Feature" %}
                 <!-- Upvote button brings up a payment modal for feature tickets -->
                 <div class="col s12 m6 ingredients">
                     <h3 class="card-title center-align">Want to donate for this cause?</h3>
