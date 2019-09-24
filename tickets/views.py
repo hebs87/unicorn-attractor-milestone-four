@@ -124,7 +124,7 @@ def new_feature_ticket(request):
                     total_donated=new_total_donated)
                 # Update the ticket's status to In Progress if user donates
                 # the goal amount for the feature to be implemented
-                if donation_amount == int(100):
+                if donation_amount >= int(100):
                     feature_form.instance.ticket_status_id = 2
                 else:
                     # If goal amount not reached, update status to Open
