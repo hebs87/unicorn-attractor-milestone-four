@@ -104,7 +104,7 @@
     <!-- Ticket Cards -->
     <div class="row center-align">
         {% for ticket in tickets %}
-            <a href="" aria-label="Link to ticket details">
+            <a href="{% url 'view_single_ticket' ticket.id %}" aria-label="Link to ticket details">
                 <div class="col s12 m6 recipe-preview-card">
                     <div class="card hoverable results-card z-depth-1">
                         <!-- Ticket Title -->
