@@ -160,6 +160,10 @@ def view_single_ticket(request, pk):
     '''
     # Get the ticket details
     ticket = get_object_or_404(Ticket, pk=pk)
+    
+    # Increment views by 1 when ticket is viewed
+    ticket.views += 1
+    ticket.save()
 
     args = {
         "ticket": ticket,
