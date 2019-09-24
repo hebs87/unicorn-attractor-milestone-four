@@ -8,105 +8,58 @@
 
 {% block content %}
     
-    <!--Recipe Image, Stats and Buttons Card-->
+    <!-- Full ticket details -->
     <div class="row recipe-card card z-depth-1 center-align">
-        <!--Recipe Image-->
+        <!-- Ticket Description -->
         <div class="col s12 m6 center-align recipe-img-wrapper">
-            <img class="recipe-img" alt="{{ recipe.name }}" src="{{ url_for('static', filename=recipe.img) }}">
+            <p>{{ ticket.description }}</p>
         </div>
-        <!--Recipe Stats-->
+        <!-- Ticket Stats -->
         <div class="col s12 m6 center-align recipe-details">
             <p class="stat">
-                <i class="fas fa-star" aria-hidden="true"></i> 
-                <strong class="stat-title">Rating: </strong>
-                {% set rating = [] %}
-                {% for r in recipe.rating_values %}
-                    {% if rating.append(r) %}
-                    {% endif %}
-                {% endfor %}
-                {{ (rating | sum / rating | count) | int }} 
-                out of 5
+                <i class="fas fa-user-circle" aria-hidden="true"></i> 
+                {{ ticket.user }}
             </p>
             <p class="stat">
-                <strong class="stat-title">Times Rated: </strong>
-                {{ rating | count }}
-            </p>
-            <!--The user will only be able to rate the recipe if they are logged in-->
-            {% if session.user %}
-                <a href="#rate_modal" class="waves-effect waves-light btn rate-btn standard-btn icon-left modal-trigger" aria-label="Rate it modal">
-                    <i class="far fa-star" aria-hidden="true"></i>Rate It
-                </a>
-            {% endif %}
-            <p class="stat">
-                <i class="far fa-clock" aria-hidden="true"></i>
-                <strong class="stat-title">Prep Time: </strong>
-                {{ recipe.prep_time }}
+                <i class="fas fa-tools" aria-hidden="true"></i>
+                {{ ticket.ticket_status }}
             </p>
             <p class="stat">
-                <i class="far fa-clock" aria-hidden="true"></i>
-                <strong class="stat-title">Cook Time: </strong>
-                {{ recipe.cook_time }}
+                <i class="fas fa-eye" aria-hidden="true"></i>
+                {{ ticket.views }}
             </p>
             <p class="stat">
-                <i class="fas fa-cookie-bite" aria-hidden="true"></i>
-                <strong class="stat-title">Serves: </strong>
-                {{ recipe.serves | capitalize }}
+                <i class="fas fa-thumbs-up" aria-hidden="true"></i>
+                {{ ticket.upvotes }}
             </p>
             <p class="stat">
-                <i class="far fa-user" aria-hidden="true"></i>
-                <strong class="stat-title">By: </strong>{{ recipe.author | title }}
-            </p>
-            <p class="stat">
-                {% if recipe.last_edited_date == "" %}
-                    <!--If the recipe hasn't been edited, the added date will be displayed-->
-                    <i class="far fa-calendar-plus" aria-hidden="true"></i>
-                    <strong class="stat-title">Added: </strong>
-                    {{ recipe.added_date }}
+                <!-- Show edited date if the ticket has been edited.
+                If not, show the created date-->
+                {% if ticket.edited_date %}
+                    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                    {{ ticket.edited_date }}
                 {% else %}
-                    <!--If the recipe has been updated, the edited date will be displayed instead-->
-                    <i class="fas fa-edit" aria-hidden="true"></i>
-                    <strong class="stat-title">Updated: </strong>
-                    {{ recipe.last_edited_date }}
+                    <i class="fas fa-calendar-plus" aria-hidden="true"></i>
+                    {{ ticket.created_date }}
                 {% endif %}
             </p>
         </div>
         <div class="col s12 center-align">
             <div class="recipe-details-break"></div>
         </div>
-        <!--Buttons - vary depending on whether user is in session-->
-        <div class="col s12 center-align options-buttons-wrapper">
-            <a id="print-btn" class="waves-effect waves-light btn sm-md-btn"  aria-label="Print recipe button">
-                <i class="fas fa-print icon-left" aria-hidden="true"></i>
-                <span class="hide-on-small-and-down">Print</span>
+        <!-- Buttons only available when user logged in,
+        if user has created the ticket,
+        and ticket status is not closed -->
+        {% if user.is_authenticated and user.id == ticket.user.id and ticket.ticket_status != "Closed" %}
+            <a href="" class="waves-effect waves-light btn sm-md-btn" aria-label="Edit ticket page">
+                <i class="fas fa-edit icon-left" aria-hidden="true"></i>
+                <span class="hide-on-small-and-down">Edit</span>
             </a>
-            <!--Extra options when user logged in-->
-            {% if session.user %}
-                <a href="{{ url_for('recipes.edit_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn sm-md-btn" aria-label="Edit recipe page">
-                    <i class="fas fa-edit icon-left" aria-hidden="true"></i>
-                    <span class="hide-on-small-and-down">Edit</span>
-                </a>
-                    {% if session.user | lower == added_by %}
-                        <a href="#delete_modal" class="waves-effect waves-light btn sm-md-btn modal-trigger"  aria-label="Delete recipe modal">
-                            <i class="fas fa-trash-alt icon-left" aria-hidden="true"></i>
-                            <span class="hide-on-small-and-down">Delete</span>
-                        </a>
-                    {% endif %}
-                    
-                    {% if recipe._id in liked_recipes %}
-                        <!--ONLY ON DISPLAY IF THE RECIPE ID IS IN THE USER'S LIKED LIST-->
-                        <a href="{{ url_for('recipes.unlike_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn sm-md-btn" aria-label="Unlike recipe button">
-                            <i class="fas fa-thumbs-up icon-left" aria-hidden="true"></i>
-                            <span class="hide-on-small-and-down">Liked</span>
-                        </a>
-                    {% else %}
-                        <!--ONLY ON DISPLAY IF THE RECIPE ID IS NOT IN THE USER'S LIKED LIST-->
-                        <a href="{{ url_for('recipes.like_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn sm-md-btn" aria-label="Like recipe button">
-                            <i class="far fa-thumbs-up icon-left" aria-hidden="true"></i>
-                            <span class="hide-on-small-and-down">Like</span>
-                        </a>
-                    {% endif %}
-            {% endif %}
-        </div>
+            <a href="#delete_modal" class="waves-effect waves-light btn sm-md-btn modal-trigger"  aria-label="Delete ticket modal">
+                <i class="fas fa-trash-alt icon-left" aria-hidden="true"></i>
+                <span class="hide-on-small-and-down">Delete</span>
+            </a>
+        {% endif %}
     </div>
     
     <!--Recipe Ingredients and Instructions-->
