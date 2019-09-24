@@ -152,7 +152,7 @@ def new_feature_ticket(request):
     return render(request, "new_feature.html", args)
 
 
-def veiw_single_ticket(request, pk):
+def view_single_ticket(request, pk):
     '''
     Allows user to view the full details of a single ticket
     Returns single ticket based on ticket ID (pk) and renders it to the
