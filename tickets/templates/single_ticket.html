@@ -64,8 +64,8 @@
         {% endif %}
     </div>
     
-    <!-- Upvote Section -->
-    {% if user.is_authenticated %}
+    <!-- Upvote Section - only available if user is logged in and ticket isn't closed-->
+    {% if user.is_authenticated and ticket.ticket_status.ticket_status != "Closed" %}
         <div class="row recipe-card card z-depth-1">
             {% if ticket.ticket_type.ticket_type == "Feature" %}
                 <!-- Upvote button brings up a payment modal for feature tickets -->
