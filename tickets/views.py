@@ -40,7 +40,7 @@ def view_all_tickets(request):
         tickets
 
     # Pagination
-    paginator = Paginator(tickets, 1)
+    paginator = Paginator(tickets, 8)
     
     try:
         tickets = paginator.page(page)
