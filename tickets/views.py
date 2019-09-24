@@ -164,9 +164,12 @@ def view_single_ticket(request, pk):
     # Increment views by 1 when ticket is viewed
     ticket.views += 1
     ticket.save()
+    
+    comment_form = CommentForm()
 
     args = {
         "ticket": ticket,
+        "comment_form": "comment_form"
     }
 
     return render(request, "single_ticket.html", args)
