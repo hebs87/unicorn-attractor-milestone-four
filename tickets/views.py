@@ -169,7 +169,7 @@ def view_single_ticket(request, pk):
 
     args = {
         "ticket": ticket,
-        "comment_form": "comment_form"
+        "comment_form": comment_form
     }
 
     return render(request, "single_ticket.html", args)

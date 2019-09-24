@@ -94,9 +94,15 @@
         
         <div class="row recipe-card card z-depth-1">
             <!-- Comments -->
-            <div class="col s12 m6 instructions">
+            <div class="col s12 instructions">
                 <h3 class="card-title center-align">Comments</h3>
-                
+            </div>
+            <div class="col s12">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ comment_form | materializecss }}
+                    <button type="submit" class="btn btn-primary">Add Comment</button>
+                </form>
             </div>
         </div>
     {% endif %}
