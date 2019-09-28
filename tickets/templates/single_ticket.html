@@ -52,7 +52,7 @@
             <!-- Buttons only available when user logged in,
             if user has created the ticket,
             and ticket status is not closed -->
-                <a href="" class="waves-effect waves-light btn sm-md-btn" aria-label="Edit ticket page">
+                <a href="{% url 'edit_ticket' ticket.pk %}" class="waves-effect waves-light btn sm-md-btn" aria-label="Edit ticket page">
                     <i class="fas fa-edit icon-left" aria-hidden="true"></i>
                     <span class="hide-on-small-and-down">Edit</span>
                 </a>
