@@ -174,6 +174,9 @@ def view_single_ticket(request, pk):
             comment_form.instance.user = request.user
             comment_form.instance.ticket = ticket
             comment_form.save()
+            # Decrement views by -2 to prevent incorrect incrementation
+            ticket.views -= 2
+            ticket.save()
             messages.success(request, f"Your comment has been added!")
             return redirect(view_single_ticket, ticket.pk)
     else:
