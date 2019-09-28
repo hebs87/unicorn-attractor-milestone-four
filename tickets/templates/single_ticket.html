@@ -97,6 +97,23 @@
             <div class="col s12 instructions">
                 <h3 class="card-title center-align">Comments</h3>
             </div>
+            {% if comments %}
+            <div class="col s12 instructions">
+                <ul>
+                    {% for comment in comments %}
+                        <li>
+                            <img src="comment.user.profile.img.url" alt="{{ comment.user }}" class="circle"></img>
+                            <span>
+                                {{ comment.user }}
+                            </span>
+                            <p>
+                                {{ comment.description }}
+                            </p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
             <div class="col s12">
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
