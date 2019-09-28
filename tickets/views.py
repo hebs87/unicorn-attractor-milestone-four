@@ -198,11 +198,11 @@ def edit_ticket(request, pk):
     '''
     ticket = get_object_or_404(Ticket, pk=pk)
     # Populate existing ticket data in the ticket_form
-    ticket_form = TicketForm(instance=ticket)
+    edit_form = TicketForm(instance=ticket)
 
     args = {
         "ticket": ticket,
-        "ticket_form": ticket_form
+        "edit_form": edit_form
     }
 
     return render(request, "edit_ticket.html", args)
