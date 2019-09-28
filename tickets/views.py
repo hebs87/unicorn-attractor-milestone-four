@@ -195,10 +195,23 @@ def view_single_ticket(request, pk):
 def edit_ticket(request, pk):
     '''
     Allows users to edit a ticket, only if they have added it
+    Inserts the current date in the edited_date field
     '''
     ticket = get_object_or_404(Ticket, pk=pk)
-    # Populate existing ticket data in the ticket_form
-    edit_form = TicketForm(instance=ticket)
+
+    if request.method == "POST":
+        edit_form = TicketForm(request.POST, instance=ticket)
+        # Save form and redirect user to the page for that ticket
+        if edit_form.is_valid():
+            # Insert current date in edited_date field
+            edit_form.instance.edited_date = timezone.now()
+            edit_form.save()
+            messages.success(request, f"Your ticket has successfully been \
+                             edited!")
+            return redirect(view_single_ticket, ticket.pk)
+    else:
+        # Populate existing ticket data in the ticket_form
+        edit_form = TicketForm(instance=ticket)
 
     args = {
         "ticket": ticket,
