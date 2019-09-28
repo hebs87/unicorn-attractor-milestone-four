@@ -189,3 +189,14 @@ def view_single_ticket(request, pk):
     }
 
     return render(request, "single_ticket.html", args)
+
+
+@login_required
+def delete_ticket(request, pk):
+    '''
+    Allows users to delete a ticket, only if they have added it
+    '''
+    ticket = get_object_or_404(Ticket, pk=pk)
+    ticket.delete()
+    messages.success(request, f"Your ticket has successfully been deleted!")
+    return redirect(view_all_tickets)
