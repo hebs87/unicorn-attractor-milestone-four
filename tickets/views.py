@@ -167,7 +167,17 @@ def view_single_ticket(request, pk):
     
     comments = Comment.objects.filter(ticket__pk=ticket.pk)
     
-    comment_form = CommentForm()
+    if request.method == "POST":
+        comment_form = CommentForm(request.POST)
+        # Save form and redirect user to the page for that ticket
+        if comment_form.is_valid():
+            comment_form.instance.user = request.user
+            comment_form.instance.ticket = ticket
+            comment_form.save()
+            messages.success(request, f"Your comment has been added!")
+            return redirect(view_single_ticket, ticket.pk)
+    else:
+        comment_form = CommentForm()
 
     args = {
         "ticket": ticket,
