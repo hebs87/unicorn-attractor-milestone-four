@@ -165,11 +165,14 @@ def view_single_ticket(request, pk):
     ticket.views += 1
     ticket.save()
     
+    comments = Comment.objects.filter(ticket__pk=ticket.pk)
+    
     comment_form = CommentForm()
 
     args = {
         "ticket": ticket,
-        "comment_form": comment_form
+        "comment_form": comment_form,
+        "comments": comments,
     }
 
     return render(request, "single_ticket.html", args)

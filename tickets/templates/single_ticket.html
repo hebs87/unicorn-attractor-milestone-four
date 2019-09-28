@@ -102,7 +102,7 @@
                 <ul>
                     {% for comment in comments %}
                         <li>
-                            <img src="comment.user.profile.img.url" alt="{{ comment.user }}" class="circle"></img>
+                            <img src="{{ comment.user.profile.image.url }}" alt="{{ comment.user }}" class="circle"></img>
                             <span>
                                 {{ comment.user }}
                             </span>
