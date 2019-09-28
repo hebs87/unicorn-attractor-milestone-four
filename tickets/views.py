@@ -206,6 +206,9 @@ def edit_ticket(request, pk):
             # Insert current date in edited_date field
             edit_form.instance.edited_date = timezone.now()
             edit_form.save()
+            # Decrement views by -1 to prevent incorrect incrementation
+            ticket.views -= 1
+            ticket.save()
             messages.success(request, f"Your ticket has successfully been \
                              edited!")
             return redirect(view_single_ticket, ticket.pk)
