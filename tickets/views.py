@@ -192,6 +192,23 @@ def view_single_ticket(request, pk):
 
 
 @login_required
+def edit_ticket(request, pk):
+    '''
+    Allows users to edit a ticket, only if they have added it
+    '''
+    ticket = get_object_or_404(Ticket, pk=pk)
+    # Populate existing ticket data in the ticket_form
+    ticket_form = TicketForm(instance=ticket)
+
+    args = {
+        "ticket": ticket,
+        "ticket_form": ticket_form
+    }
+
+    return render(request, "edit_ticket.html", args)
+
+
+@login_required
 def delete_ticket(request, pk):
     '''
     Allows users to delete a ticket, only if they have added it
