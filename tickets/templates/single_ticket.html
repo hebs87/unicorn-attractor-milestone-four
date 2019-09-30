@@ -73,7 +73,7 @@
                     <h3 class="card-title center-align">Want to donate for this cause?</h3>
                 </div>
                 <div class="col s12 m6 ingredients">
-                    <a href="#payment_modal" class="waves-effect waves-light btn sm-md-btn" aria-label="Edit ticket page">
+                    <a href="#payment_modal" class="waves-effect waves-light btn sm-md-btn modal-trigger" aria-label="Edit ticket page">
                         <i class="fas fa-edit icon-left" aria-hidden="true"></i>
                         <span class="hide-on-small-and-down">Donate &amp; Upvote</span>
                     </a>
@@ -124,7 +124,7 @@
         </div>
     {% endif %}
     
-    <!--Allows users to delete the relevant ticket-->
+    <!-- Delete Modal - Allows users to delete the relevant ticket -->
     <div id="delete_modal" class="modal">
         <div class="modal-content center-align">
             <h4 class="title">Are you sure you want to delete this ticket?</h4>
@@ -141,6 +141,40 @@
                     <span class="hide-on-small-and-down">No</span>
                 </a>
             </div>
+        </div>
+    </div>
+    
+    <!-- Payment Modal - Allows users to donate when upvoting a feature ticket -->
+    <div id="payment_modal" class="modal">
+        <div class="modal-content center-align">
+            <h4 class="title">Donate &amp; Upvote</h4>
+            <form method="POST" action="" id="payment-form" data-token="{{ publishable }}">
+                {% csrf_token %}
+                <div class="input-field col s12">
+                    {{ donation_form|materializecss }}
+                </div>
+                <div class="input-field col s12">
+                    <!-- Stripe Payment form -->
+                    <label for="card-element">
+                        Credit or Debit card
+                    </label>
+                    <div id="card-element">
+                        <!-- A Stripe Element will be inserted here. -->
+                    </div>
+                    <!-- Used to display form errors. -->
+                    <div id="card-errors" role="alert"></div>
+                </div>
+                <div class="input-field col s12 modal-btn-wrapper">
+                    <button class="btn waves-effect waves-light add-btn standard-btn icon-right" type="submit" aria-label="Upvote feature button">
+                        <i class="fas fa-check" aria-hidden="true"></i>
+                        <span class="hide-on-small-and-down">Upvote</span>
+                    </button>
+                    <a class="modal-close waves-effect waves-light btn delete-no-btn sm-md-btn" aria-label="Cancel upvote button">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                        <span class="hide-on-small-and-down">Cancel</span>
+                    </a>
+                </div>
+            </form>
         </div>
     </div>
     
