@@ -179,3 +179,10 @@
     </div>
     
 {% endblock %}
+
+{% block js %}
+    <!-- Stripe payment API tag -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <!-- stripe.js file tag -->
+    <script src="{% static 'js/stripe.js' %}"></script>
+{% endblock %}
