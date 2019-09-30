@@ -84,7 +84,7 @@
                     <h3 class="card-title center-align">Want to support this cause?</h3>
                 </div>
                 <div class="col s12 m6 ingredients">
-                    <a href="" class="waves-effect waves-light btn sm-md-btn" aria-label="Edit ticket page">
+                    <a href="{% url 'upvote' ticket.pk %}" class="waves-effect waves-light btn sm-md-btn" aria-label="Edit ticket page">
                         <i class="fas fa-edit icon-left" aria-hidden="true"></i>
                         <span class="hide-on-small-and-down">Upvote</span>
                     </a>
@@ -148,7 +148,7 @@
     <div id="payment_modal" class="modal">
         <div class="modal-content center-align">
             <h4 class="title">Donate &amp; Upvote</h4>
-            <form method="POST" action="" id="payment-form" data-token="{{ publishable }}">
+            <form method="POST" action="{% url 'upvote' ticket.pk %}" id="payment-form" data-token="{{ publishable }}">
                 {% csrf_token %}
                 <div class="input-field col s12">
                     {{ donation_form|materializecss }}
