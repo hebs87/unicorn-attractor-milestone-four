@@ -181,11 +181,14 @@ def view_single_ticket(request, pk):
             return redirect(view_single_ticket, ticket.pk)
     else:
         comment_form = CommentForm()
+        donation_form = DonationForm()
 
     args = {
         "ticket": ticket,
         "comment_form": comment_form,
         "comments": comments,
+        "donation_form": donation_form,
+        "publishable": settings.STRIPE_PUBLISHABLE
     }
 
     return render(request, "single_ticket.html", args)
