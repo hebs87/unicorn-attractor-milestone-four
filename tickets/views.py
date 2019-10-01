@@ -122,12 +122,12 @@ def new_feature_ticket(request):
                 # Push the new amount to the user's total_donated amount
                 Profile.objects.filter(user_id=request.user.id).update(
                     total_donated=new_total_donated)
-                # Update the ticket's status to In Progress if user donates
+                # Ticket's status will be In Progress if user donates
                 # the goal amount for the feature to be implemented
                 if donation_amount >= int(100):
                     feature_form.instance.ticket_status_id = 2
                 else:
-                    # If goal amount not reached, update status to Open
+                    # If goal amount not reached, ticket status will be Open
                     feature_form.instance.ticket_status_id = 1
                 new_feature = feature_form.save()
                 messages.success(request, f"Thanks for submitting a \
@@ -244,10 +244,61 @@ def upvote(request, pk):
     Users will be required to make a donation first to upvote a feature ticket
     '''
     ticket = get_object_or_404(Ticket, pk=pk)
-    # Increment the ticket's upvotes field by 1
-    ticket.upvotes += 1
-    ticket.save()
-    
-    messages.success(request, f"Thanks, your upvote has been registered!")
+
+    # If upvote is on a feature request, payment will be needed before
+    # upvote is registered
+    if request.method=="POST":
+        donation_form = DonationForm(request.POST)
+        if donation_form.is_valid():
+            # Total Donation Amount
+            donation_amount = 0
+            donation_amount += int(request.POST.get("donation_amount"))
+            try:
+                # Use stripe's inbuilt API to create a customer and charge
+                customer = stripe.Charge.create(
+                    amount = int(donation_amount * 100),
+                    currency = "GBP",
+                    description = request.user.email,
+                    source = request.POST["stripeToken"]
+                )
+            except stripe.error.CardError:
+                # Display error message if card is declined
+                messages.error(request, "Your card was declined!")
+
+            # If payment is successful
+            if customer.paid:
+                # Increment the ticket's upvotes by 1
+                ticket.upvotes += 1
+                ticket.save()
+                # Add the donation to the user's total_donated amount
+                # Get the user's current donations...
+                user_total_donated = Profile.objects.values_list(
+                    "total_donated", flat=True).get(user_id=request.user.id)
+                # Add it to the donation amount
+                new_total_donated = user_total_donated + donation_amount
+                # Push the new amount to the user's total_donated amount
+                Profile.objects.filter(user_id=request.user.id).update(
+                    total_donated=new_total_donated)
+                # Update the ticket's status to In Progress if user donates
+                # the goal amount for the feature to be implemented
+                if donation_amount >= int(100):
+                    Ticket.objects.filter(id=ticket.pk)\
+                                  .update(ticket_status_id=2)
+                messages.success(request, f"Thanks for donating and\
+                                 supporting this Feature!")
+                return redirect(view_single_ticket, ticket.pk)
+            else:
+                messages.error(request, "Unable to take payment")
+        # If feature_form or donation_form aren't valid
+        else:
+            messages.error(request, f"We were unable to take a payment with \
+                           that card. Please try again.")
+    else:
+        # If upvote is on a bug, increment the ticket's upvotes field by 1
+        # without requiring a payment
+        ticket.upvotes += 1
+        ticket.save()
+
+        messages.success(request, f"Thanks, your upvote has been registered!")
     
     return redirect(view_single_ticket, ticket.pk)
