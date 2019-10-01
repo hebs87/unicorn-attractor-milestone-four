@@ -325,3 +325,21 @@ def upvote(request, pk):
         messages.success(request, f"Thanks, your upvote has been registered!")
     
     return redirect(view_single_ticket, ticket.pk)
+
+
+def downvote(request, pk):
+    '''
+    Allows users to downvote a ticket (remove their upvote)
+    This option will only be available if the user has upvoted the ticket
+    '''
+    ticket = get_object_or_404(Ticket, pk=pk)
+    # Decrement upvote by 1
+    ticket.upvotes -= 1
+    ticket.save()
+
+    # Delete the Upvote object that was created when user upvoted the ticket
+    Upvote.objects.create(ticket_id=ticket.pk,
+                          user_id=request.user.id).delete()
+    messages.success(request, f"Your upvote has successfully been removed!")
+
+    return redirect(view_single_ticket, ticket.pk)
