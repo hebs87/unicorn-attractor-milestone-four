@@ -249,6 +249,10 @@ def upvote(request, pk):
     ticket.upvotes += 1
     ticket.save()
 
+    # Decrement views by -1 to prevent incorrect incrementation
+    ticket.views -= 1
+    ticket.save()
+
     # If upvote is on a feature request, payment will be needed before
     # upvote is registered
     if request.method=="POST":
