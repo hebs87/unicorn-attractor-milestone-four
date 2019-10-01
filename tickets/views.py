@@ -299,7 +299,7 @@ def upvote(request, pk):
 
                 # Update the ticket's status to In Progress if user donates
                 # the goal amount for the feature to be implemented
-                if donation_amount >= int(100):
+                if new_ticket_donations >= int(100):
                     Ticket.objects.filter(id=ticket.pk)\
                                   .update(ticket_status_id=2)
                 messages.success(request, f"Thanks, your payment has been\
