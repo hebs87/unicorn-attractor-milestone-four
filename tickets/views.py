@@ -245,6 +245,10 @@ def upvote(request, pk):
     '''
     ticket = get_object_or_404(Ticket, pk=pk)
 
+    # Increment the ticket's upvotes by 1
+    ticket.upvotes += 1
+    ticket.save()
+
     # If upvote is on a feature request, payment will be needed before
     # upvote is registered
     if request.method=="POST":
@@ -267,9 +271,11 @@ def upvote(request, pk):
 
             # If payment is successful
             if customer.paid:
-                # Increment the ticket's upvotes by 1
-                ticket.upvotes += 1
-                ticket.save()
+                # Create an object of the Upvote model to store the user's
+                # ID against the ticket - enables the user's upvote to
+                # be removed if the user downvotes the ticket
+                Upvote.objects.create(ticket_id=ticket.pk,
+                                      user_id=request.user.id)
 
                 # Add the donation to the user's total_donated amount
                 # Get the user's current donations...
@@ -296,8 +302,8 @@ def upvote(request, pk):
                 if donation_amount >= int(100):
                     Ticket.objects.filter(id=ticket.pk)\
                                   .update(ticket_status_id=2)
-                messages.success(request, f"Thanks for donating and\
-                                 supporting this Feature!")
+                messages.success(request, f"Thanks, your payment has been\
+                                 taken and your upvote has been registered!")
                 return redirect(view_single_ticket, ticket.pk)
             else:
                 messages.error(request, "Unable to take payment")
@@ -306,10 +312,11 @@ def upvote(request, pk):
             messages.error(request, f"We were unable to take a payment with \
                            that card. Please try again.")
     else:
-        # If upvote is on a bug, increment the ticket's upvotes field by 1
-        # without requiring a payment
-        ticket.upvotes += 1
-        ticket.save()
+        # Create an object of the Upvote model to store the user's
+        # ID against the ticket - enables the user's upvote to
+        # be removed if the user downvotes the ticket
+        Upvote.objects.create(ticket_id=ticket.pk,
+                              user_id=request.user.id)
 
         messages.success(request, f"Thanks, your upvote has been registered!")
     
