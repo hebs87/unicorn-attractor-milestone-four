@@ -338,7 +338,7 @@ def downvote(request, pk):
     ticket.save()
 
     # Delete the Upvote object that was created when user upvoted the ticket
-    Upvote.objects.create(ticket_id=ticket.pk,
+    Upvote.objects.filter(ticket_id=ticket.pk,
                           user_id=request.user.id).delete()
     messages.success(request, f"Your upvote has successfully been removed!")
 
