@@ -115,13 +115,13 @@ def new_feature_ticket(request):
                 feature_form.instance.total_donations = donation_amount
                 # Add the donation to the user's total_donated amount
                 # Get the user's current donations...
-                user_total_donated = Profile.objects.values_list(
+                current_user_donated = Profile.objects.values_list(
                     "total_donated", flat=True).get(user_id=request.user.id)
                 # Add it to the donation amount
-                new_total_donated = user_total_donated + donation_amount
+                new_user_donated = current_user_donated + donation_amount
                 # Push the new amount to the user's total_donated amount
                 Profile.objects.filter(user_id=request.user.id).update(
-                    total_donated=new_total_donated)
+                    total_donated=new_user_donated)
                 # Ticket's status will be In Progress if user donates
                 # the goal amount for the feature to be implemented
                 if donation_amount >= int(100):
@@ -270,15 +270,27 @@ def upvote(request, pk):
                 # Increment the ticket's upvotes by 1
                 ticket.upvotes += 1
                 ticket.save()
+
                 # Add the donation to the user's total_donated amount
                 # Get the user's current donations...
-                user_total_donated = Profile.objects.values_list(
+                current_user_donated = Profile.objects.values_list(
                     "total_donated", flat=True).get(user_id=request.user.id)
                 # Add it to the donation amount
-                new_total_donated = user_total_donated + donation_amount
+                new_user_donated = current_user_donated + donation_amount
                 # Push the new amount to the user's total_donated amount
                 Profile.objects.filter(user_id=request.user.id).update(
-                    total_donated=new_total_donated)
+                    total_donated=new_user_donated)
+
+                # Add the donation to the ticket's total_donations amount
+                # Get the ticket's current donations...
+                current_ticket_donations = Ticket.objects.values_list(
+                    "total_donations", flat=True).get(id=ticket.pk)
+                # Add it to the donation amount
+                new_ticket_donations = current_ticket_donations + donation_amount
+                # Push the new amount to the ticket's total_donated amount
+                Ticket.objects.filter(id=ticket.pk).update(
+                    total_donations=new_ticket_donations)
+
                 # Update the ticket's status to In Progress if user donates
                 # the goal amount for the feature to be implemented
                 if donation_amount >= int(100):
