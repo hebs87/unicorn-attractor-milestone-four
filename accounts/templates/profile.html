@@ -20,8 +20,10 @@
             <fieldset class="form-group">
                 <legend>Edit Your Details</legend>
                 {% csrf_token %}
-                {{  user_form.username|materializecss }}
-                {{  profile_form|materializecss }}
+                {{  user_form.email|materializecss:'icon=fas fa-at' }}
+                {{  user_form.first_name|materializecss:'icon=fas fa-signature' }}
+                {{  user_form.last_name|materializecss:'icon=fas fa-signature' }}
+                {{  profile_form.image|materializecss }}
                 <button type="submit" class="btn btn-primary">Update</button>
             </fieldset>
         </form>      
