@@ -28,6 +28,15 @@
                 Email: {{ user.email }}
             </p>
         </div>
+
+        <!-- Account Management Buttons -->
+        <div class="col s12 acc-management-wrapper">
+            <!--Change Password Modal Button-->
+            <a href="#edit_account_modal" class="waves-effect waves-light btn modal-trigger change-pwd-btn large-btn icon-left"  aria-label="Change password modal">
+                <i class="fas fa-edit" aria-hidden="true"></i>
+                Edit Account
+            </a>
+        </div>
     </div>
         <form method="POST" action="" class="userform" enctype="multipart/form-data">
             <fieldset class="form-group">
@@ -40,6 +49,5 @@
                 <button type="submit" class="btn btn-primary">Update</button>
             </fieldset>
         </form>      
-    </div>
 
 {% endblock %}
