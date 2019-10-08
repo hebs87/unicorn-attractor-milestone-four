@@ -37,10 +37,10 @@
                 If not, show the created date-->
                 {% if ticket.created_date.date != ticket.edited_date.date %}
                     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                    {{ ticket.edited_date }}
+                    {{ ticket.edited_date|date:"j M Y" }}
                 {% else %}
                     <i class="fas fa-calendar-plus" aria-hidden="true"></i>
-                    {{ ticket.created_date }}
+                    {{ ticket.created_date|date:"j M Y" }}
                 {% endif %}
             </p>
         </div>
