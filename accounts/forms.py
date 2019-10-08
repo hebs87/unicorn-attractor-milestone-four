@@ -121,6 +121,9 @@ class ProfileUpdateForm(forms.ModelForm):
     '''
     Form used to update the Profile model - for the profile image
     '''
+    image = forms.ImageField(
+        widget=forms.FileInput)
+    
     class Meta:
         model = Profile
         fields = ['image']
