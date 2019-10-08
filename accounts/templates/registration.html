@@ -19,7 +19,10 @@
             {{ registration_form.last_name|materializecss:'icon=fas fa-signature' }}
             {{ registration_form.password1|materializecss:'icon=fas fa-lock' }}
             {{ registration_form.password2|materializecss:'icon=fas fa-key' }}
-            <button type="submit" class="btn btn-primary">Create account</button>
+            <button type="submit" class="btn btn-primary">
+                Create account
+                <i class="fas fa-user-plus" aria-hidden="true"></i>
+            </button>
         </fieldset>
     </form>
 
