@@ -14,9 +14,10 @@
         <fieldset class="form-group">
             <legend>Login</legend>
             {% csrf_token %}
-            {{ login_form | materializecss }}
+            {{ login_form.username|materializecss:'icon=fas fa-user' }}
+            {{ login_form.password|materializecss:'icon=fas fa-lock' }}
             
-             <p><a href="{% url 'password_reset' %}">Forgot my password</a></p>
+            <p><a href="{% url 'password_reset' %}">Forgot my password</a></p>
              
             <button type="submit" class="btn btn-primary">Login</button>
         </fieldset>
