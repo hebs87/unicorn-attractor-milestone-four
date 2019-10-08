@@ -45,13 +45,13 @@ class UserRegistrationForm(UserCreationForm):
     password1 = forms.CharField(label="Password",
                                 min_length=6,
                                 max_length=25,
-                                widget=forms.PasswordInput,
+                                widget=forms.PasswordInput(),
                                 required=True)
     # Confirm password with a label
     password2 = forms.CharField(label="Repeat Password",
                                 min_length=6,
                                 max_length=25,
-                                widget=forms.PasswordInput,
+                                widget=forms.PasswordInput(),
                                 required=True)
 
     class Meta:
@@ -122,7 +122,7 @@ class ProfileUpdateForm(forms.ModelForm):
     Form used to update the Profile model - for the profile image
     '''
     image = forms.ImageField(
-        widget=forms.FileInput)
+        widget=forms.FileInput())
     
     class Meta:
         model = Profile
