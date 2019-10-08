@@ -20,7 +20,7 @@
             <fieldset class="form-group">
                 <legend>Edit Your Details</legend>
                 {% csrf_token %}
-                {{  user_form|materializecss }}
+                {{  user_form.username|materializecss }}
                 {{  profile_form|materializecss }}
                 <button type="submit" class="btn btn-primary">Update</button>
             </fieldset>

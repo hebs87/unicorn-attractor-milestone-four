@@ -13,7 +13,12 @@
             <legend>Create a new account</legend>
             <p>Already got an account? <a href="{% url 'login' %}">Sign In</a></p>
             {% csrf_token %}
-            {{  registration_form|materializecss }}
+            {{ registration_form.username|materializecss:'icon=fas fa-user' }}
+            {{ registration_form.email|materializecss:'icon=fas fa-at' }}
+            {{ registration_form.first_name|materializecss:'icon=fas fa-signature' }}
+            {{ registration_form.last_name|materializecss:'icon=fas fa-signature' }}
+            {{ registration_form.password1|materializecss:'icon=fas fa-lock' }}
+            {{ registration_form.password2|materializecss:'icon=fas fa-key' }}
             <button type="submit" class="btn btn-primary">Create account</button>
         </fieldset>
     </form>
