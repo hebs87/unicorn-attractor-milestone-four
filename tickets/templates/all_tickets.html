@@ -153,7 +153,13 @@
                             <span>
                                 <!-- Donations -->
                                 <i class="fas fa-pound-sign" aria-hidden="true"></i><br>
-                                {{ ticket.total_donations }}
+                                {% if ticket.ticket_type.ticket_type == "Feature" %}
+                                    <!-- Show total donations for Feature tickets -->
+                                    {{ ticket.total_donations }}
+                                {% else %}
+                                    <!-- Show 'Free!' for Bug tickets -->
+                                    Free!
+                                {% endif %}
                             </span>
                         </div>
                     </div>
