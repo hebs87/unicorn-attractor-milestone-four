@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from .models import Profile
+from django.utils.safestring import mark_safe
 
 # Create a new form object
 class UserLoginForm(forms.Form):
@@ -122,6 +123,7 @@ class ProfileUpdateForm(forms.ModelForm):
     Form used to update the Profile model - for the profile image
     '''
     image = forms.ImageField(
+        label=mark_safe('<i class="fas fa-image" aria-hidden="true"></i>'),
         widget=forms.FileInput())
     
     class Meta:
