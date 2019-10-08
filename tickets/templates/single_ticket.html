@@ -59,14 +59,13 @@
                 </p>
             {% endif %}
         </div>
+        
+        <!-- Buttons only available when user logged in, if user has created the ticket, and ticket status is not closed -->
         {% if user.is_authenticated and user.id == ticket.user.id and ticket.ticket_status.ticket_status != "Closed" %}
             <div class="col s12 center-align">
                 <div class="recipe-details-break"></div>
             </div>
             <div class="col s12 center-align">
-            <!-- Buttons only available when user logged in,
-            if user has created the ticket,
-            and ticket status is not closed -->
                 <a href="{% url 'edit_ticket' ticket.pk %}" class="waves-effect waves-light btn sm-md-btn" aria-label="Edit ticket page">
                     <i class="fas fa-edit icon-left" aria-hidden="true"></i>
                     <span class="hide-on-small-and-down">Edit</span>
@@ -82,7 +81,8 @@
     <!-- Upvote Section - only available if user is logged in and ticket isn't closed-->
     {% if user.is_authenticated and ticket.ticket_status.ticket_status != "Closed" %}
         <div class="row recipe-card card z-depth-1">
-            {% if ticket.ticket_type.ticket_type == "Feature" %}
+            <!-- If a Feature's donation goal hasn't been met, the user will need to donat to upvote -->
+            {% if ticket.ticket_type.ticket_type == "Feature" and ticket.total_donations < 100 %}
                 <!-- Upvote button brings up a payment modal for feature tickets -->
                 <div class="col s12 m6 ingredients">
                     <h3 class="card-title center-align">Want to donate for this cause?</h3>
@@ -93,6 +93,7 @@
                         <span class="hide-on-small-and-down">Donate &amp; Upvote</span>
                     </a>
                 </div>
+            <!-- If a Feature's donation goal has been met, or if it is a Bug, users can upvote for free -->
             {% else %}
                 <!-- Allows users to upvote for free for bug tickets -->
                 <div class="col s12 m6 ingredients">
