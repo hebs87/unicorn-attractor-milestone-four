@@ -342,6 +342,10 @@ def downvote(request, pk):
     ticket.upvotes -= 1
     ticket.save()
 
+    # Decrement views by -1 to prevent incorrect incrementation
+    ticket.views -= 1
+    ticket.save()
+
     # Delete the Upvote object that was created when user upvoted the ticket
     Upvote.objects.filter(ticket_id=ticket.pk,
                           user_id=request.user.id).delete()
