@@ -17,9 +17,9 @@
             </h3>
             <!--Edit Form-->
             <div class="input-field col s12">
-                {{ edit_form|materializecss }}
+                {{ edit_form.title|materializecss:'icon=fas fa-heading' }}
+                {{ edit_form.description|materializecss:'icon=fas fa-file-alt' }}
             </div>
-    
             <!--Add and Cancel buttons-->
             <div class="col s12">
                 <button class="btn waves-effect waves-light edit-btn standard-btn icon-right" type="submit" aria-label="Edit ticket button">
