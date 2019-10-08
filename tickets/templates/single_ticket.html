@@ -45,6 +45,19 @@
                     <small>({{ ticket.created_date|time:"P" }})</small>
                 {% endif %}
             </p>
+            <!-- Total Donations - only visible on Feature tickets -->
+            {% if ticket.ticket_type.ticket_type == "Feature" %}
+                <!-- If the goal donation amount has been reached -->
+                <p class="stat">
+                    {% if ticket.total_donations >= 100 %}
+                        <i class="fas fa-check" aria-hidden="true"></i>
+                        Donation Goal Reached!
+                    {% else %}
+                        <i class="fas fa-pound-sign" aria-hidden="true"></i>
+                        {{ ticket.total_donations }} / &pound;100
+                    {% endif %}
+                </p>
+            {% endif %}
         </div>
         {% if user.is_authenticated and user.id == ticket.user.id and ticket.ticket_status.ticket_status != "Closed" %}
             <div class="col s12 center-align">
