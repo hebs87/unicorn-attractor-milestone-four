@@ -90,8 +90,8 @@
                         <h3 class="card-title center-align">Want to donate for this cause?</h3>
                     </div>
                     <div class="col s12 m6 ingredients">
-                        <a href="#payment_modal" class="waves-effect waves-light btn sm-md-btn modal-trigger" aria-label="Edit ticket page">
-                            <i class="fas fa-edit icon-left" aria-hidden="true"></i>
+                        <a href="#payment_modal" class="waves-effect waves-light btn sm-md-btn modal-trigger" aria-label="Donate and Upvote modal">
+                            <i class="fas fa-thumbs-up icon-left" aria-hidden="true"></i>
                             <span class="hide-on-small-and-down">Donate &amp; Upvote</span>
                         </a>
                     </div>
@@ -101,8 +101,8 @@
                         <h3 class="card-title center-align">Want to support this cause?</h3>
                     </div>
                     <div class="col s12 m6 ingredients">
-                        <a href="{% url 'upvote' ticket.pk %}" class="waves-effect waves-light btn sm-md-btn" aria-label="Edit ticket page">
-                            <i class="fas fa-edit icon-left" aria-hidden="true"></i>
+                        <a href="{% url 'upvote' ticket.pk %}" class="waves-effect waves-light btn sm-md-btn" aria-label="Upvote button">
+                            <i class="fas fa-thumbs-up icon-left" aria-hidden="true"></i>
                             <span class="hide-on-small-and-down">Upvote</span>
                         </a>
                     </div>
@@ -112,8 +112,8 @@
                     <h3 class="card-title center-align">No longer want to support this?</h3>
                 </div>
                 <div class="col s12 m6 ingredients">
-                    <a href="{% url 'downvote' ticket.pk %}" class="waves-effect waves-light btn sm-md-btn" aria-label="Edit ticket page" {% if ticket.ticket_type.ticket_type == 'Feature' %}disabled{% endif %}>
-                        <i class="fas fa-edit icon-left" aria-hidden="true"></i>
+                    <a href="{% url 'downvote' ticket.pk %}" class="waves-effect waves-light btn sm-md-btn" aria-label="Downvote button" {% if ticket.ticket_type.ticket_type == 'Feature' %}disabled{% endif %}>
+                        <i class="fas fa-thumbs-down icon-left" aria-hidden="true"></i>
                         <span class="hide-on-small-and-down">Downvote</span>
                     </a>
                 </div>
@@ -121,7 +121,6 @@
         </div>
     {% endif %}
 
-        
     <!-- Comments -->
     <div class="row recipe-card card z-depth-1">
         <div class="col s12 instructions">
