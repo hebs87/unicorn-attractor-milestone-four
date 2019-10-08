@@ -165,7 +165,11 @@ def view_single_ticket(request, pk):
     ticket.views += 1
     ticket.save()
     
-    comments = Comment.objects.filter(ticket__pk=ticket.pk)
+    # Filter user's upvotes by their user_id
+    ticket_upvotes = Upvote.objects.filter(ticket_id=ticket.pk).values("user_id")
+    user_upvotes = [upvote["user_id"] for upvote in ticket_upvotes]
+
+    comments = Comment.objects.filter(ticket_id=ticket.pk)
     
     if request.method == "POST":
         comment_form = CommentForm(request.POST)
@@ -188,7 +192,8 @@ def view_single_ticket(request, pk):
         "comment_form": comment_form,
         "comments": comments,
         "donation_form": donation_form,
-        "publishable": settings.STRIPE_PUBLISHABLE
+        "publishable": settings.STRIPE_PUBLISHABLE,
+        "user_upvotes": user_upvotes
     }
 
     return render(request, "single_ticket.html", args)
