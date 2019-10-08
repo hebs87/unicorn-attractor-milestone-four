@@ -17,9 +17,13 @@
             </h3>
             <!--Feature Form-->
             <div class="input-field col s12">
-                {{ feature_form|materializecss }}
+                {{ feature_form.title|materializecss:'icon=fas fa-heading' }}
+                {{ feature_form.description|materializecss:'icon=fas fa-file-alt' }}
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s1">
+                <i class="fas fa-pound-sign prefix" aria-hidden="true"></i>
+            </div>
+            <div class="input-field col s11">
                 {{ donation_form|materializecss }}
             </div>
             <div class="input-field col s12">
@@ -27,6 +31,9 @@
                 <label for="card-element">
                     Credit or Debit card
                 </label>
+            </div>
+            <div class="input-field col s12">
+                <!-- Stripe Payment form -->
                 <div id="card-element">
                     <!-- A Stripe Element will be inserted here. -->
                 </div>
