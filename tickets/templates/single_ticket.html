@@ -81,7 +81,7 @@
     <!-- Upvote Section - only available if user is logged in and ticket isn't closed-->
     {% if user.is_authenticated and ticket.ticket_status.ticket_status != "Closed" %}
         <div class="row recipe-card card z-depth-1">
-            <!-- If a Feature's donation goal hasn't been met, the user will need to donat to upvote -->
+            <!-- If a Feature's donation goal hasn't been met, the user will need to donate to upvote -->
             {% if ticket.ticket_type.ticket_type == "Feature" and ticket.total_donations < 100 %}
                 <!-- Upvote button brings up a payment modal for feature tickets -->
                 <div class="col s12 m6 ingredients">
@@ -95,7 +95,6 @@
                 </div>
             <!-- If a Feature's donation goal has been met, or if it is a Bug, users can upvote for free -->
             {% else %}
-                <!-- Allows users to upvote for free for bug tickets -->
                 <div class="col s12 m6 ingredients">
                     <h3 class="card-title center-align">Want to support this cause?</h3>
                 </div>
@@ -107,14 +106,17 @@
                 </div>
             {% endif %}
         </div>
+    {% endif %}
+
         
-        <div class="row recipe-card card z-depth-1">
-            <!-- Comments -->
-            <div class="col s12 instructions">
-                <h3 class="card-title center-align">Comments</h3>
-            </div>
+    <!-- Comments -->
+    <div class="row recipe-card card z-depth-1">
+        <div class="col s12 instructions">
+            <h3 class="card-title center-align">Comments</h3>
+        </div>
+        <div class="col s12 instructions">
+            <!-- If there are comments on the ticket, they will be displayed -->
             {% if comments %}
-            <div class="col s12 instructions">
                 <ul>
                     {% for comment in comments %}
                         <li>
@@ -128,8 +130,11 @@
                         </li>
                     {% endfor %}
                 </ul>
-            </div>
+            {% else %}
+                <!-- If there are no comments on the ticket, some helper text will be displayed -->
+                <p class="center-align">Nobody has commented on this {{ ticket.ticket_type }} yet!</p>
             {% endif %}
+        </div>
             <div class="col s12">
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
@@ -138,7 +143,6 @@
                 </form>
             </div>
         </div>
-    {% endif %}
     
     <!-- Delete Modal - Allows users to delete the relevant ticket -->
     <div id="delete_modal" class="modal">
