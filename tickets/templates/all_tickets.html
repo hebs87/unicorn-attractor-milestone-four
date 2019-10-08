@@ -23,6 +23,7 @@
                     Bug Reports are FREE to open!
                 </p>
                 <a href="{% url 'new_bug_ticket' %}" class="btn waves-effect waves-light sm-md-btn">
+                    <i class="fas fa-bug icon-left" aria-hidden="true"></i>
                     New Bug
                 </a>
             </div>
@@ -37,6 +38,7 @@
                     Feature Requests require a small donation!
                 </p>
                 <a href="{% url 'new_feature_ticket' %}" class="btn waves-effect waves-light sm-md-btn">
+                    <i class="fas fa-cog icon-left" aria-hidden="true"></i>
                     New Feature
                 </a>
             </div>
@@ -44,7 +46,7 @@
     {% endif %}
     
     <!-- Filter Form -->
-    <form id="filter_form" method="GET" action="">
+    <form id="filter_form" method="GET">
         <ul class="collapsible filter-option">
             <li>
                 <div class="collapsible-header filter-header">
