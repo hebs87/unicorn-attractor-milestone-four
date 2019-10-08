@@ -132,17 +132,31 @@
                 </ul>
             {% else %}
                 <!-- If there are no comments on the ticket, some helper text will be displayed -->
-                <p class="center-align">Nobody has commented on this {{ ticket.ticket_type }} yet!</p>
+                <p class="center-align">Nobody has commented on this {{ ticket.ticket_type }}!</p>
             {% endif %}
         </div>
-            <div class="col s12">
-                <form method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ comment_form | materializecss }}
-                    <button type="submit" class="btn btn-primary">Add Comment</button>
-                </form>
+        <!-- Add Comment Section - only available if ticket isn't closed -->
+        {% if ticket.ticket_status.ticket_status != "Closed" %}
+            <div class="col s12 center-align">
+                {% if user.is_authenticated %}
+                    <!-- Comment Form - only available if user is logged in -->
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ comment_form | materializecss }}
+                        <button type="submit" class="btn btn-primary">Add Comment</button>
+                    </form>
+                {% else %}
+                    <!-- Links for user to login or register to add a comment if not logged in -->
+                    <p>
+                        <a href="{% url 'login' %}">Login</a>
+                         or 
+                        <a href="{% url 'registration' %}">Register</a>
+                         to add a comment!
+                    </p>
+                {% endif %}
             </div>
-        </div>
+        {% endif %}
+    </div>
     
     <!-- Delete Modal - Allows users to delete the relevant ticket -->
     <div id="delete_modal" class="modal">
