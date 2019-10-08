@@ -80,9 +80,9 @@
     
     <!-- Upvote Section - only available if user is logged in and ticket isn't closed-->
     {% if user.is_authenticated and ticket.ticket_status.ticket_status != "Closed" %}
-        <!-- Allow upvoting if user hasn't already upvoted -->
-        {% if user.id not in user_upvotes %}
-            <div class="row recipe-card card z-depth-1">
+        <div class="row recipe-card card z-depth-1">
+            <!-- Allow upvoting if user hasn't already upvoted -->
+            {% if user.id not in user_upvotes %}
                 <!-- If a Feature's donation goal hasn't been met, the user will need to donate to upvote -->
                 {% if ticket.ticket_type.ticket_type == "Feature" and ticket.total_donations < 100 %}
                     <!-- Upvote button brings up a payment modal for feature tickets -->
@@ -107,18 +107,18 @@
                         </a>
                     </div>
                 {% endif %}
-            </div>
-        {% else %}
-            <div class="col s12 m6 ingredients">
-                <h3 class="card-title center-align">No longer want to support this?</h3>
-            </div>
-            <div class="col s12 m6 ingredients">
-                <a href="{% url 'downvote' ticket.pk %}" class="waves-effect waves-light btn sm-md-btn" aria-label="Edit ticket page">
-                    <i class="fas fa-edit icon-left" aria-hidden="true"></i>
-                    <span class="hide-on-small-and-down">Downvote</span>
-                </a>
-            </div>
-        {% endif %}
+            {% else %}
+                <div class="col s12 m6 ingredients">
+                    <h3 class="card-title center-align">No longer want to support this?</h3>
+                </div>
+                <div class="col s12 m6 ingredients">
+                    <a href="{% url 'downvote' ticket.pk %}" class="waves-effect waves-light btn sm-md-btn" aria-label="Edit ticket page">
+                        <i class="fas fa-edit icon-left" aria-hidden="true"></i>
+                        <span class="hide-on-small-and-down">Downvote</span>
+                    </a>
+                </div>
+            {% endif %}
+        </div>
     {% endif %}
 
         
