@@ -38,7 +38,7 @@
                     Feature Requests require a small donation!
                 </p>
                 <a href="{% url 'new_feature_ticket' %}" class="btn waves-effect waves-light sm-md-btn">
-                    <i class="fas fa-cog icon-left" aria-hidden="true"></i>
+                    <i class="fas fa-cogs icon-left" aria-hidden="true"></i>
                     New Feature
                 </a>
             </div>
@@ -109,24 +109,34 @@
             <a href="{% url 'view_single_ticket' ticket.id %}" aria-label="Link to ticket details">
                 <div class="col s12 m6 recipe-preview-card">
                     <div class="card hoverable results-card z-depth-1">
+                        <!-- Ticket Type Icon -->
+                        {% if ticket.ticket_type.ticket_type == "Bug" %}
+                            <i class="fas fa-bug" aria-hidden="true"></i>
+                        {% elif ticket.ticket_type.ticket_type == "Feature" %}
+                            <i class="fas fa-cogs" aria-hidden="true"></i>
+                        {% endif %}
                         <!-- Ticket Title -->
                         <div class="card-title center-align">
-                            <h3>{{ ticket.title }}</h3>
+                            <h4>{{ ticket.title }}</h4>
                         </div>
                         <!-- Ticket Details -->
                         <div class="card-content center-align">
-                            <span>
-                                Type: {{ ticket.ticket_type }}
-                            </span>
-                            <span>
-                                Status: {{ ticket.ticket_status }}
-                            </span>
-                            <span>
-                                Created By: {{ ticket.user.username }}
-                            </span>
-                            <span>
-                                Description: {{ ticket.description }}
-                            </span>
+                            <p class="stat">
+                                <i class="fas fa-ticket-alt" aria-hidden="true"></i>
+                                {{ ticket.ticket_type }}
+                            </p>
+                            <p class="stat">
+                                <i class="fas fa-tools" aria-hidden="true"></i>
+                                {{ ticket.ticket_status }}
+                            </p>
+                            <p class="stat">
+                                <i class="fas fa-user-circle" aria-hidden="true"></i>
+                                {{ ticket.user.username }}
+                            </p>
+                            <p class="stat truncate">
+                                <i class="fas fa-file-alt" aria-hidden="true"></i>
+                                {{ ticket.description }}
+                            </p>
                         </div>
                         <!-- Ticket Quick Stats -->
                         <div class="card-action card-stats">
