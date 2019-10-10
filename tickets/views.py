@@ -372,7 +372,10 @@ def admin_update_status(request, pk):
     ticket_status = request.GET.get("ticket_status")
     # Update the ticket's status ID with the selected status
     # update the edited_date to current date and time
-    Ticket.objects.filter(id=ticket.pk).update(
-        ticket_status=ticket_status, edited_date=timezone.now())
+    if ticket_status != None:
+        Ticket.objects.filter(id=ticket.pk).update(
+            ticket_status=ticket_status, edited_date=timezone.now())
+    else:
+        messages.success(request, f"Please choose a ticket status")
 
     return redirect(view_single_ticket, ticket.pk)
