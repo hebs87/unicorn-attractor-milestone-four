@@ -162,7 +162,8 @@ def view_single_ticket(request, pk):
     ticket = get_object_or_404(Ticket, pk=pk)
     # Options for the ticket status dropdown
     ticket_status_dropdown = TicketStatus.objects.all()
-    
+    ticket_status = ticket.ticket_status_id
+
     # Increment views by 1 when ticket is viewed
     ticket.views += 1
     ticket.save()
@@ -191,6 +192,7 @@ def view_single_ticket(request, pk):
 
     args = {
         "ticket": ticket,
+        "ticket_status": ticket_status,
         "comment_form": comment_form,
         "comments": comments,
         "donation_form": donation_form,
@@ -371,6 +373,6 @@ def admin_update_status(request, pk):
     # Update the ticket's status ID with the selected status
     # update the edited_date to current date and time
     Ticket.objects.filter(id=ticket.pk).update(
-        ticket_status__id=ticket_status, edited_date=timezone.now())
-    
+        ticket_status=ticket_status, edited_date=timezone.now())
+
     return redirect(view_single_ticket, ticket.pk)
