@@ -13,6 +13,7 @@
         <!-- Ticket Description -->
         <div class="col s12 m6 center-align recipe-img-wrapper">
             <p>{{ ticket.description }}</p>
+            <img src="{{ ticket.user.profile.image.url }}" alt="{{ ticket.user }}" class="circle"></img>
         </div>
         <!-- Ticket Stats -->
         <div class="col s12 m6 center-align recipe-details">
