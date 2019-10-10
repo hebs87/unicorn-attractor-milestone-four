@@ -154,8 +154,15 @@
                                 <!-- Donations -->
                                 <i class="fas fa-pound-sign" aria-hidden="true"></i><br>
                                 {% if ticket.ticket_type.ticket_type == "Feature" %}
-                                    <!-- Show total donations for Feature tickets -->
-                                    {{ ticket.total_donations }}
+                                    {% if ticket.total_donations >= 100 %}
+                                        <!-- Show check icon for Feature tickets if
+                                        donation goal has been reached -->
+                                        <i class="fas fa-check" aria-hidden="true"></i>
+                                    {% else %}
+                                        <!-- Show total donations for Feature tickets if
+                                        donation goal hasn't been reached -->
+                                        {{ ticket.total_donations }}
+                                    {% endif %}
                                 {% else %}
                                     <!-- Show 'Free!' for Bug tickets -->
                                     Free!
