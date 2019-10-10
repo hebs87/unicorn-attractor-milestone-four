@@ -354,3 +354,26 @@ def downvote(request, pk):
     messages.success(request, f"Your upvote has successfully been removed!")
 
     return redirect(view_single_ticket, ticket.pk)
+
+
+@login_required
+def admin_update_status(request, pk):
+    '''
+    Allows the admin or superuser to edit the ticket status
+    Displays dropdown in the HTML page with status choices
+    '''
+    ticket = get_object_or_404(Ticket, pk=pk)
+    # Options for the ticket status dropdown
+    ticket_status_dropdown = TicketStatus.objects.all()
+    # Get the ticket status from the form
+    ticket_status = request.GET.get("ticket_status")
+    # Update the ticket's status with the selected status
+    # update the edited_date to current date and time
+    Ticket.objects.filter(id=ticket.pk).update(
+        ticket_status=ticket_status, edited_date=timezone.now())
+
+    args = {
+        "ticket_status_dropdown": ticket_status_dropdown
+    }
+    
+    return redirect(view_single_ticket, ticket.pk, args)
