@@ -243,6 +243,7 @@ def delete_ticket(request, pk):
     return redirect(view_all_tickets)
 
 
+@login_required
 def upvote(request, pk):
     '''
     Allows users to upvote a ticket
@@ -332,6 +333,7 @@ def upvote(request, pk):
     return redirect(view_single_ticket, ticket.pk)
 
 
+@login_required
 def downvote(request, pk):
     '''
     Allows users to downvote a ticket (remove their upvote)
