@@ -260,10 +260,6 @@ def upvote(request, pk):
     ticket.upvotes += 1
     ticket.save()
 
-    # Decrement views by -1 to prevent incorrect incrementation
-    ticket.views -= 1
-    ticket.save()
-
     # If upvote is on a feature request, payment will be needed before
     # upvote is registered
     if request.method=="POST":
@@ -368,10 +364,16 @@ def admin_update_status(request, pk):
     Displays dropdown in the HTML page with status choices
     '''
     ticket = get_object_or_404(Ticket, pk=pk)
+
+    # Decrement views by -1 to prevent incorrect incrementation
+    ticket.views -= 1
+    ticket.save()
+
     # Get the ticket status from the form
     ticket_status = request.GET.get("ticket_status")
     # Update the ticket's status ID with the selected status
     # update the edited_date to current date and time
+    # Only if an option is selected from the drop down
     if ticket_status != None:
         Ticket.objects.filter(id=ticket.pk).update(
             ticket_status=ticket_status, edited_date=timezone.now())
