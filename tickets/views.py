@@ -160,6 +160,8 @@ def view_single_ticket(request, pk):
     '''
     # Get the ticket details
     ticket = get_object_or_404(Ticket, pk=pk)
+    # Options for the ticket status dropdown
+    ticket_status_dropdown = TicketStatus.objects.all()
     
     # Increment views by 1 when ticket is viewed
     ticket.views += 1
@@ -193,7 +195,8 @@ def view_single_ticket(request, pk):
         "comments": comments,
         "donation_form": donation_form,
         "publishable": settings.STRIPE_PUBLISHABLE,
-        "user_upvotes": user_upvotes
+        "user_upvotes": user_upvotes,
+        "ticket_status_dropdown": ticket_status_dropdown,
     }
 
     return render(request, "single_ticket.html", args)
@@ -363,17 +366,11 @@ def admin_update_status(request, pk):
     Displays dropdown in the HTML page with status choices
     '''
     ticket = get_object_or_404(Ticket, pk=pk)
-    # Options for the ticket status dropdown
-    ticket_status_dropdown = TicketStatus.objects.all()
     # Get the ticket status from the form
     ticket_status = request.GET.get("ticket_status")
     # Update the ticket's status ID with the selected status
     # update the edited_date to current date and time
     Ticket.objects.filter(id=ticket.pk).update(
         ticket_status__id=ticket_status, edited_date=timezone.now())
-
-    args = {
-        "ticket_status_dropdown": ticket_status_dropdown
-    }
     
-    return redirect(view_single_ticket, ticket.pk, args)
+    return redirect(view_single_ticket, ticket.pk)

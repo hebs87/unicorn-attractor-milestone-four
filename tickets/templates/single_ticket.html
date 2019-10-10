@@ -28,13 +28,16 @@
                 <p>
                     <small>Edit Status</small>
                     <br/>
-                    <form id="change_status_form" method="POST" action="{% url 'admin_update_status' %}">
-                        <select id="ticket_status" name="ticket_status" class="form-control validate">
-                            <option value="" disabled selected>Status</option>
-                            {% for status in ticket_status_dropdown %}
-                                <option value="{{ status.id }}">{{ status }}</option>
-                            {% endfor%}
-                        </select>
+                    <form id="change_status_form" method="POST" action="{% url 'admin_update_status' ticket.id %}">
+                        <div class="input-field col s12 m6">
+                            <select id="ticket_status" name="ticket_status" class="form-control validate">
+                                <option value="" disabled selected>Status</option>
+                                {% for status in ticket_status_dropdown %}
+                                    <option value="{{ status.id }}">{{ status }}</option>
+                                {% endfor%}
+                            </select>
+                            <label for="occasion">Ticket Status</label>
+                        </div>
                         <button class="btn waves-effect waves-light sm-md-btn" type="submit" aria-label="Filter button">
                             <span class="hide-on-small-and-down">Update</span>
                             <i class="fas fa-edit icon-right" aria-hidden="true"></i>
