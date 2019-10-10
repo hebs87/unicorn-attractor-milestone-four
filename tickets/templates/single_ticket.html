@@ -24,6 +24,7 @@
                 <i class="fas fa-tools" aria-hidden="true"></i>
                 {{ ticket.ticket_status }}
             </p>
+            <!-- Only display the option to edit a ticket status for superusers -->
             {% if user.is_superuser %}
                 <p>
                     <small>Edit Status</small>
