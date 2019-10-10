@@ -24,6 +24,24 @@
                 <i class="fas fa-tools" aria-hidden="true"></i>
                 {{ ticket.ticket_status }}
             </p>
+            {% if user.is_superuser %}
+                <p>
+                    <small>Edit Status</small>
+                    <br/>
+                    <form id="change_status_form" method="POST" action="{% url 'admin_update_status' %}">
+                        <select id="ticket_status" name="ticket_status" class="form-control validate">
+                            <option value="" disabled selected>Status</option>
+                            {% for status in ticket_status_dropdown %}
+                                <option value="{{ status.id }}">{{ status }}</option>
+                            {% endfor%}
+                        </select>
+                        <button class="btn waves-effect waves-light sm-md-btn" type="submit" aria-label="Filter button">
+                            <span class="hide-on-small-and-down">Update</span>
+                            <i class="fas fa-edit icon-right" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </p>
+            {% endif %}
             <p class="stat">
                 <i class="fas fa-eye" aria-hidden="true"></i>
                 {{ ticket.views }}

@@ -367,10 +367,10 @@ def admin_update_status(request, pk):
     ticket_status_dropdown = TicketStatus.objects.all()
     # Get the ticket status from the form
     ticket_status = request.GET.get("ticket_status")
-    # Update the ticket's status with the selected status
+    # Update the ticket's status ID with the selected status
     # update the edited_date to current date and time
     Ticket.objects.filter(id=ticket.pk).update(
-        ticket_status=ticket_status, edited_date=timezone.now())
+        ticket_status__id=ticket_status, edited_date=timezone.now())
 
     args = {
         "ticket_status_dropdown": ticket_status_dropdown
