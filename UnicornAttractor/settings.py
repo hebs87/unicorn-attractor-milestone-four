@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'materializecssform',
     'accounts',
     'tickets',
+    'dashboard',
     'django_cleanup.apps.CleanupConfig',
 ]
 
