@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from tickets.models import Ticket
 
 
 # Create your views here.
