@@ -49,9 +49,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/" aria-label="Statistics page">
+                        <a href="{% url 'dashboard_stats' %}" aria-label="Dashboard page">
                             <i class="btn-icon fas fa-chart-bar" aria-hidden="true"></i>
-                            <span class="btn-text uppercase">Statistics</span>
+                            <span class="btn-text uppercase">Dashboard</span>
                         </a>
                     </li>
                     <!--Additional options if user is logged in-->
@@ -108,9 +108,9 @@
                 </a>
             </li>
             <li>
-                <a href="/" aria-label="Statistics page">
+                <a href="{% url 'dashboard_stats' %}" aria-label="Dashboard page">
                     <i class="btn-icon fas fa-chart-bar" aria-hidden="true"></i>
-                    <span class="btn-text uppercase">Statistics</span>
+                    <span class="btn-text uppercase">Dashboard</span>
                 </a>
             </li>
             <!--Additional options if user is logged in-->
