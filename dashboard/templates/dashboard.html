@@ -7,6 +7,49 @@
 
 {% block content %}
 
-    <h1>Hello World!</h1>
+    <div id="bar_chart"></div>
+
+{% endblock %}
+
+{% block js %}
+
+    <script>
+        
+        $(document).ready(function() {
+            
+            /* Chart values variables */
+            let total_open_bugs = {{ total_open_bugs|safe }};
+            let total_in_progress_bugs = {{ total_in_progress_bugs|safe }};
+            let total_closed_bugs = {{ total_closed_bugs|safe }};
+            let total_open_features = {{ total_open_features|safe }};
+            let total_in_progress_features = {{ total_in_progress_features|safe }};
+            let total_closed_features = {{ total_closed_features|safe }};
+            
+            var chart = c3.generate({
+                bindto: '#bar_chart',
+                data: {
+                    columns: [
+                        ['Open', total_open_bugs, total_open_features],
+                        ['In Progress', total_in_progress_bugs, total_in_progress_features],
+                        ['Closed', total_closed_bugs, total_closed_features],
+                    ],
+                    type: 'bar'
+                },
+                axis: {
+                    x: {
+                        type: 'category',
+                        categories: ['Bugs', 'Features']
+                    }
+                },
+                bar: {
+                    width: {
+                        ratio: 0.5
+                    }
+                }
+            });
+            
+        });
+        
+    </script>
 
 {% endblock %}
