@@ -52,9 +52,23 @@
         </div>
     </div>
 
-    <div id="bar_chart"></div>
-    
-    <div id="pie_chart"></div>
+    <div class="row recipe-card center-align">
+        <!-- Log New Bug-->
+        <div class="col s12 m6 card z-depth-1 ingredients">
+            <h3 class="card-title">Status</h3>
+            <p>
+                Hover over each section to see the number of tickets at a particular status.
+            </p>
+            <div id="bar_chart"></div>
+        </div>
+        <div class="col s12 m6 card z-depth-1 ingredients">
+            <h3 class="card-title center-align">Ticket Types</h3>
+            <p>
+                Hover over each section to see the percentage ratio of ticket types.
+            </p>
+            <div id="pie_chart"></div>
+        </div>
+    </div>
 
 {% endblock %}
 
