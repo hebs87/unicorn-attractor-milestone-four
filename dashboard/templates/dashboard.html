@@ -8,6 +8,8 @@
 {% block content %}
 
     <div id="bar_chart"></div>
+    
+    <div id="pie_chart"></div>
 
 {% endblock %}
 
@@ -17,7 +19,7 @@
         
         $(document).ready(function() {
             
-            /* Chart values variables */
+            /* Bar Chart values variables */
             let total_open_bugs = {{ total_open_bugs|safe }};
             let total_in_progress_bugs = {{ total_in_progress_bugs|safe }};
             let total_closed_bugs = {{ total_closed_bugs|safe }};
@@ -25,6 +27,7 @@
             let total_in_progress_features = {{ total_in_progress_features|safe }};
             let total_closed_features = {{ total_closed_features|safe }};
             
+            /* Bar Chart */
             var chart = c3.generate({
                 bindto: '#bar_chart',
                 data: {
@@ -45,6 +48,25 @@
                     width: {
                         ratio: 0.5
                     }
+                }
+            });
+            
+            /* Pie Chart values variables */
+            let total_bugs = {{ total_bugs|safe }};
+            let total_features = {{ total_features|safe }};
+
+            /* Pie Chart */
+            var chart = c3.generate({
+                bindto: '#pie_chart',
+                data: {
+                    columns: [
+                        ['Bugs', total_bugs],
+                        ['Features', total_features],
+                    ],
+                    type : 'pie',
+                    onclick: function (d, i) { console.log("onclick", d, i); },
+                    onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+                    onmouseout: function (d, i) { console.log("onmouseout", d, i); },
                 }
             });
             
