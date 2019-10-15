@@ -150,7 +150,7 @@
     </header>
 
     {% if messages %}
-        <div class="alert alert-success">
+        <div class="flash-message center-align" id="flash_message">
             <div class="messages">
                 {% for message in messages %}
                     {{ message }}
@@ -162,7 +162,7 @@
     <!--MAIN CONTENT-->
     <main class="container">
             <!--Page Heading-->
-            <h1 class="center-align">{% block page_heading %}{% endblock %}</h1>
+            <h1 class=" page-title center-align">{% block page_heading %}{% endblock %}</h1>
             {% block content %}
             {% endblock %}
     </main>
