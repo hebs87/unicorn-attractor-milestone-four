@@ -20,7 +20,7 @@
     
     <!-- Log Bug or Feature Section - Asks user to log in/register if not logged in -->
     <div class="row recipe-card center-align">
-        <!-- Log New Bug-->
+        <!-- BUG SECTION -->
         <div class="col s12 m6 card z-depth-1 ingredients">
             <h3 class="card-title">Bugs</h3>
             {% if user.is_authenticated %}
@@ -52,6 +52,7 @@
                 </p>
             {% endif %}
         </div>
+        <!-- FEATURE SECTION -->
         <div class="col s12 m6 card z-depth-1 ingredients">
             <h3 class="card-title center-align">Features</h3>
             {% if user.is_authenticated %}
@@ -82,6 +83,19 @@
                     to submit a Feature Request.
                 </p>
             {% endif %}
+        </div>
+    </div>
+    
+    <!-- Link to tickets screen -->
+    <div class="row recipe-card center-align">
+        <div class="col s12 card z-depth-1 ingredients">
+            <h3 class="card-title">
+                Go to
+                <a href="{% url 'view_all_tickets' %}">
+                    TICKETS
+                </a>
+                to see existing Bug Reports and Feature Requests.
+            </h3>
         </div>
     </div>
 
