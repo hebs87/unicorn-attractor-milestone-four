@@ -8,17 +8,15 @@
 {% block content %}
 
     <div class="row center-align">
-        
         <!--HOME PAGE IMAGE-->
         <div class="col s12">
             <img class="responsive-img index-img" src="{% static 'img/index-logo.png' %}" alt="Home Page Image">
         </div>
-    
     </div>
     
     <!-- About Section -->
-    <div class="row recipe-card center-align">
-        <div class="col s12 card z-depth-1 ingredients">
+    <div class="row recipe-card card z-depth-1 center-align">
+        <div class="col s12 ingredients">
             <h3>
                 <img class="responsive-img" src="{% static 'img/unicorn-icon.png' %}"></img>
                 About UnicornAttractor
@@ -47,6 +45,15 @@
                 When you’re not busy playing with your pals, complete mini puzzle challenges to earn more magic dust.
                 You can then use your magic dust to buy clothes and accessories for your companion, or to attract new friends to your world!
             </p>
+        </div>
+        <div class="col s12">
+            <h4 class="card-title">Download UnicornAttractor Now!</h4>
+            <a href="https://www.apple.com/ie/ios/app-store" target="_blank">
+                <img src="{% static 'img/app-store-icon.png' %}" class="hoverable" alt="Appple App Store">
+            </a>
+            <a href="https://play.google.com/store/apps" target="_blank">
+                <img src="{% static 'img/google-play-icon.png' %}" class="hoverable" alt="Google Play Store">
+            </a>
         </div>
     </div>
     
