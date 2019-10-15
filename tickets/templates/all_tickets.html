@@ -10,7 +10,7 @@
 {% block content %}
     
     {% if user.is_authenticated %}
-        <div class="row recipe-card center-align">
+        <div class="row ticket-card center-align">
             <!-- Log New Bug-->
             <div class="col s12 m6 card z-depth-1 ingredients">
                 <h3 class="card-title">Bugs</h3>
@@ -107,7 +107,7 @@
     <div class="row center-align">
         {% for ticket in tickets %}
             <a href="{% url 'view_single_ticket' ticket.id %}" aria-label="Link to ticket details">
-                <div class="col s12 m6 recipe-preview-card">
+                <div class="col s12 m6 ticket-preview-card">
                     <div class="card hoverable results-card z-depth-1">
                         <!-- Ticket Type Icon -->
                         {% if ticket.ticket_type.ticket_type == "Bug" %}
@@ -173,8 +173,8 @@
                 </div>
             </a>
         {% empty %}
-            <h4 class="recipe-details-text">
-                <span class="recipe-count bold italic">No</span>
+            <h4 class="ticket-details-text">
+                <span class="ticket-count bold italic">No</span>
                  tickets found!
              </h4>
         {% endfor %}

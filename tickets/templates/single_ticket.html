@@ -8,15 +8,15 @@
 
 {% block content %}
     
-    <!-- Full ticket details -->
-    <div class="row recipe-card card z-depth-1 center-align">
+    <!-- Full Ticket Details -->
+    <div class="row ticket-card card z-depth-1 center-align">
         <!-- Ticket Description -->
-        <div class="col s12 m6 center-align recipe-img-wrapper">
+        <div class="col s12 m6 center-align ticket-img-wrapper">
             <p>{{ ticket.description }}</p>
             <img src="{{ ticket.user.profile.image.url }}" alt="{{ ticket.user }}" class="circle"></img>
         </div>
         <!-- Ticket Stats -->
-        <div class="col s12 m6 center-align recipe-details">
+        <div class="col s12 m6 center-align ticket-details">
             <p class="stat">
                 <i class="fas fa-user-circle" aria-hidden="true"></i>
                 {{ ticket.user }}
@@ -84,7 +84,7 @@
         <!-- Buttons only available when user logged in, if user has created the ticket, and ticket status is not closed -->
         {% if user.is_authenticated and user.id == ticket.user.id and ticket.ticket_status.ticket_status != "Closed" %}
             <div class="col s12 center-align">
-                <div class="recipe-details-break"></div>
+                <div class="ticket-details-break"></div>
             </div>
             <div class="col s12 center-align">
                 <a href="{% url 'edit_ticket' ticket.pk %}" class="waves-effect waves-light btn sm-md-btn" aria-label="Edit ticket page">
@@ -101,7 +101,7 @@
     
     <!-- Upvote Section - only available if user is logged in and ticket isn't closed-->
     {% if user.is_authenticated and ticket.ticket_status.ticket_status != "Closed" %}
-        <div class="row recipe-card card z-depth-1">
+        <div class="row ticket-card card z-depth-1">
             <!-- Allow upvoting if user hasn't already upvoted -->
             {% if user.id not in user_upvotes %}
                 <!-- If a Feature's donation goal hasn't been met, the user will need to donate to upvote -->
@@ -143,7 +143,7 @@
     {% endif %}
 
     <!-- Comments -->
-    <div class="row recipe-card card z-depth-1">
+    <div class="row ticket-card card z-depth-1">
         <div class="col s12 instructions">
             <h3 class="card-title center-align">Comments</h3>
         </div>
