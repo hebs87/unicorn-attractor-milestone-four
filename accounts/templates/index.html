@@ -3,10 +3,17 @@
 
 {% block page_title %}Home Page | {% endblock %}
 
-{% block page_heading %}Welcome to my UnicornAttractor web application!{% endblock %}
+{% block page_heading %}Welcome {% if user.is_authenticated %}, {{ user.username }}{% endif %}!{% endblock %}
 
 {% block content %}
 
-    <p>I'm building an issue tracker for the UnicornAttractor application.</p>
+    <div class="row center-align">
+        
+        <!--HOME PAGE IMAGE-->
+        <div class="col s12">
+            <img class="responsive-img index-img" src="{% static 'img/index-logo.png' %}" alt="Home Page Image">
+        </div>
+    
+    </div>
 
 {% endblock %}
