@@ -7,20 +7,13 @@
 
 {% block content %}
 
-    <div class="row center-align">
-        <!--HOME PAGE IMAGE-->
-        <div class="col s12">
-            <img class="responsive-img index-img" src="{% static 'img/index-logo.png' %}" alt="Home Page Image">
-        </div>
-    </div>
-    
     <!-- About Section -->
     <div class="row ticket-card card z-depth-1 center-align">
-        <div class="col s12 ingredients">
-            <h3>
-                <img class="responsive-img" src="{% static 'img/unicorn-icon.png' %}"></img>
+        <div class="col s12">
+            <!-- HOME PAGE IMAGE -->
+            <img class="responsive-img index-img" src="{% static 'img/index-logo.png' %}" alt="Home Page Image">
+            <h3 class="card-title">
                 About UnicornAttractor
-                <img class="responsive-img" src="{% static 'img/unicorn-icon.png' %}"></img>
             </h3>
             <p>
                 A magical Unicorn collecting game – find these mythical creatures and enjoy their company each time you open the game! 
@@ -49,75 +42,76 @@
         <div class="col s12">
             <h4 class="card-title">Download UnicornAttractor Now!</h4>
             <a href="https://www.apple.com/ie/ios/app-store" target="_blank">
-                <img src="{% static 'img/app-store-icon.png' %}" class="hoverable" alt="Appple App Store">
+                <img src="{% static 'img/app-store-icon.png' %}" class="hoverable app-link" alt="Appple App Store">
             </a>
             <a href="https://play.google.com/store/apps" target="_blank">
-                <img src="{% static 'img/google-play-icon.png' %}" class="hoverable" alt="Google Play Store">
+                <img src="{% static 'img/google-play-icon.png' %}" class="hoverable app-link" alt="Google Play Store">
             </a>
         </div>
+        <img class="responsive-img" src="{% static 'img/unicorn-icon.png' %}"></img>
     </div>
     
     <!-- Log Bug or Feature Section - Asks user to log in/register if not logged in -->
-    <div class="row ticket-card center-align">
+    <div class="row center-align">
         <!-- BUG SECTION -->
-        <div class="col s12 m6 card z-depth-1 ingredients">
+        <div class="col s12 m6 ticket-card card z-depth-1 bug">
             <h3 class="card-title">Bugs</h3>
             {% if user.is_authenticated %}
-                <p>
+                <p class="bold">
                     Noticed an issue?
                     <br>
                     Submit a new Bug Report!
                 </p>
-                <p>
+                <p class="italic">
                     Bug Reports are FREE to open!
                 </p>
-                <a href="{% url 'new_bug_ticket' %}" class="btn waves-effect waves-light sm-md-btn">
+                <a href="{% url 'new_bug_ticket' %}" class="btn waves-effect waves-light standard-btn">
                     <i class="fas fa-bug icon-left" aria-hidden="true"></i>
                     New Bug
                 </a>
             {% else %}
-                <p>
+                <p class="bold">
                     Noticed an issue?
                 </p>
                 <p>
-                    <a href="{% url 'login' %}">
-                        LOGIN
+                    <a class="italic bold uppercase nav-link" href="{% url 'login' %}">
+                        Login
                     </a>
                     or
-                    <a href="{% url 'registration' %}">
-                        REGISTER
+                    <a class="italic bold uppercase nav-link" href="{% url 'registration' %}">
+                        Register
                     </a>
                     to submit a Bug Report.
                 </p>
             {% endif %}
         </div>
         <!-- FEATURE SECTION -->
-        <div class="col s12 m6 card z-depth-1 ingredients">
+        <div class="col s12 m6 ticket-card card z-depth-1 feature">
             <h3 class="card-title center-align">Features</h3>
             {% if user.is_authenticated %}
-                <p>
+                <p class="bold">
                     Want something new?
                     <br>
                     Submit a new Feature Request!
                 </p>
-                <p>
+                <p class="italic">
                     Feature Requests require a small donation!
                 </p>
-                <a href="{% url 'new_feature_ticket' %}" class="btn waves-effect waves-light sm-md-btn">
+                <a href="{% url 'new_feature_ticket' %}" class="btn waves-effect waves-light standard-btn">
                     <i class="fas fa-cogs icon-left" aria-hidden="true"></i>
                     New Feature
                 </a>
             {% else %}
-                <p>
+                <p class="bold">
                     Want something new?
                 </p>
                 <p>
-                    <a href="{% url 'login' %}">
-                        LOGIN
+                    <a class="italic bold uppercase nav-link" href="{% url 'login' %}">
+                        Login
                     </a>
                     or
-                    <a href="{% url 'registration' %}">
-                        REGISTER
+                    <a class="italic bold uppercase nav-link" href="{% url 'registration' %}">
+                        Register
                     </a>
                     to submit a Feature Request.
                 </p>
@@ -126,15 +120,15 @@
     </div>
     
     <!-- Link to tickets screen -->
-    <div class="row ticket-card center-align">
-        <div class="col s12 card z-depth-1 ingredients">
-            <h3 class="card-title">
+    <div class="row ticket-card card center-align">
+        <div class="col s12">
+            <p class="bold">
                 Go to
-                <a href="{% url 'view_all_tickets' %}">
-                    TICKETS
+                <a class="italic uppercase nav-link" href="{% url 'view_all_tickets' %}">
+                    Tickets
                 </a>
                 to see existing Bug Reports and Feature Requests.
-            </h3>
+            </p>
         </div>
     </div>
 
