@@ -4,29 +4,41 @@
 
 {% block page_title %}Registration Page | {% endblock %}
 
-{% block page_heading %}Register{% endblock %}
-
 {% block content %}
-    
-    <form method="post" action="{% url 'registration' %}" class="accountform">
-        <fieldset class="form-group">
-            <legend>Create a new account</legend>
-            <p>Already got an account? <a href="{% url 'login' %}">Sign In</a></p>
-            {% csrf_token %}
-            {{ registration_form.username|materializecss:'icon=fas fa-user' }}
-            {{ registration_form.email|materializecss:'icon=fas fa-at' }}
-            {{ registration_form.first_name|materializecss:'icon=fas fa-signature' }}
-            {{ registration_form.last_name|materializecss:'icon=fas fa-signature' }}
-            {{ registration_form.password1|materializecss:'icon=fas fa-lock' }}
-            {{ registration_form.password2|materializecss:'icon=fas fa-key' }}
-            <button type="submit" class="btn btn-primary">
-                Create account
-                <i class="fas fa-user-plus" aria-hidden="true"></i>
-            </button>
-        </fieldset>
-    </form>
+
+<div class="row white z-depth-2 login-register-wrapper">
+
+    <!--Register form-->
+    <div id="register" class="col s12">
+        <form class="col s12" method="POST" action="{% url 'registration' %}" class="accountform">
+            <div class="register-wrapper center-align">
+                
+                <h3 class="form-title">Register</h3>
+                
+                <div class="row">
+                    <div class="col s12">
+                        <p>
+                            Already got an account?
+                            <a class="bold italic uppercase nav-link" href="{% url 'login' %}">Sign In</a>
+                        </p>
+                        {% csrf_token %}
+                        {{ registration_form.username|materializecss:'icon=fas fa-user' }}
+                        {{ registration_form.email|materializecss:'icon=fas fa-at' }}
+                        {{ registration_form.first_name|materializecss:'icon=fas fa-signature' }}
+                        {{ registration_form.last_name|materializecss:'icon=fas fa-signature' }}
+                        {{ registration_form.password1|materializecss:'icon=fas fa-lock' }}
+                        {{ registration_form.password2|materializecss:'icon=fas fa-key' }}
+                        <button type="submit" class="btn btn-primary large-btn">
+                            Create account
+                            <i class="fas fa-user-plus icon-right" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>    
+        </form>
+    </div>
+
+</div>
 
 {% endblock %}
-
-</body>
-</html>
