@@ -10,10 +10,8 @@
     
     <div class="row ticket-card card z-depth-1 center-align">
         <!-- User Details -->
-        <div class="col s6 media ingredients">
-            <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
-        </div>
-        <div class="col s6 media ingredients">
+        <div class="col s12 media">
+            <img class="circle account-img" src="{{ user.profile.image.url }}">
             <p class="text-secondary">
                 <i class="fas fa-signature" aria-hidden="true"></i>
                 {{ user.first_name }} {{ user.last_name }}
@@ -31,8 +29,8 @@
         <!-- Account Management Buttons -->
         <div class="col s12 acc-management-wrapper">
             <!--Change Password Modal Button-->
-            <a href="#edit_profile_modal" class="waves-effect waves-light btn modal-trigger change-pwd-btn large-btn icon-left"  aria-label="Change password modal">
-                <i class="fas fa-edit" aria-hidden="true"></i>
+            <a href="#edit_profile_modal" class="waves-effect waves-light btn modal-trigger change-pwd-btn large-btn"  aria-label="Change password modal">
+                <i class="fas fa-edit icon-left" aria-hidden="true"></i>
                 Edit Profile
             </a>
         </div>
