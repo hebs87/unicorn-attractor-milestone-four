@@ -7,19 +7,19 @@
 
 {% block content %}
 
-    <div class="row recipe-card card z-depth-1">
+    <div class="row ticket-card card z-depth-1">
         <div class="col s12 center-align">
-            <h3>
+            <h3 class="card-title">
                 Top 5...
             </h3>
-            <p class="italic">
+            <p class="italic bold">
                 These are the Top 5 most voted for Bugs and Feature tickets.
                 <br>
                 Feel free to click on a ticket to view its full details!
             </p>
         </div>
-        <div class="col s12 m6 center-align">
-            <h4 class="card-title">
+        <div class="col s12 m6 tickets-wrapper">
+            <h4 class="card-title center-align">
                 <i class="fas fa-bug" aria-hidden="true"></i>
                 Bugs
             </h4>
@@ -27,14 +27,14 @@
                 {% for bug in top_five_bugs %}
                     <li class="collection-item avatar">
                         <a href="{% url 'view_single_ticket' bug.id %}" aria-label="View ticket details">
-                            <h5>{{ bug.title }}</h5>
-                            <p class="title truncate">{{ bug.description }}</p>
+                            <h4 class="title bold">{{ bug.title }}</h5>
+                            <p class="helper italic truncate">{{ bug.description }}</p>
                         </a>
                     </li>
                 {% endfor %}
             </ul>
         </div>
-        <div class="col s12 m6">
+        <div class="col s12 m6 tickets-wrapper">
             <h3 class="card-title center-align">
                 <i class="fas fa-cogs" aria-hidden="true"></i>
                 Features
@@ -43,8 +43,8 @@
                 {% for feature in top_five_features %}
                     <li class="collection-item avatar">
                         <a href="{% url 'view_single_ticket' feature.id %}" aria-label="View ticket details">
-                            <h5>{{ feature.title }}</h5>
-                                <p class="title truncate">{{ feature.description }}</p>
+                            <h4 class="title bold">{{ feature.title }}</h5>
+                                <p class="helper italic truncate">{{ feature.description }}</p>
                         </a>
                     </li>
                 {% endfor %}
@@ -52,7 +52,7 @@
         </div>
     </div>
 
-    <div class="row recipe-card center-align">
+    <div class="row ticket-card center-align">
         <!-- Log New Bug-->
         <div class="col s12 m6 card z-depth-1 ingredients">
             <h3 class="card-title">Status</h3>
