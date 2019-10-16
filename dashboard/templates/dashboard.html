@@ -15,7 +15,12 @@
             <p class="italic bold">
                 These are the Top 5 most voted for Bugs and Feature tickets.
                 <br>
-                Feel free to click on a ticket to view its full details!
+                Feel free to
+                <!-- Instructions for Desktops -->
+                <span class="hide-on-med-and-down">click </span>
+                <!-- Instructions for Tablets and Mobiles -->
+                <span class="hide-on-large-only">tap </span>
+                on a ticket to view its full details!
             </p>
         </div>
         <div class="col s12 m6 tickets-wrapper">
@@ -52,19 +57,27 @@
         </div>
     </div>
 
-    <div class="row ticket-card center-align">
+    <div class="row center-align">
         <!-- Log New Bug-->
-        <div class="col s12 m6 card z-depth-1 ingredients">
+        <div class="col s12 ticket-card card z-depth-1 chart">
             <h3 class="card-title">Status</h3>
-            <p>
-                Hover over each section to see the number of tickets at a particular status.
+            <p class="bold italic">
+                <!-- Instructions for Desktops -->
+                <span class="hide-on-med-and-down">Hover over </span>
+                <!-- Instructions for Tablets and Mobiles -->
+                <span class="hide-on-large-only">Tap on </span>
+                each section to see the number of tickets at a particular status.
             </p>
             <div id="bar_chart"></div>
         </div>
-        <div class="col s12 m6 card z-depth-1 ingredients">
+        <div class="col s12 ticket-card card z-depth-1 chart">
             <h3 class="card-title center-align">Ticket Types</h3>
-            <p>
-                Hover over each section to see the percentage ratio of ticket types.
+            <p class="bold italic">
+                <!-- Instructions for Desktops -->
+                <span class="hide-on-med-and-down">Hover over </span>
+                <!-- Instructions for Tablets and Mobiles -->
+                <span class="hide-on-large-only">Tap on </span>
+                each section to see the percentage ratio of ticket types.
             </p>
             <div id="pie_chart"></div>
         </div>
