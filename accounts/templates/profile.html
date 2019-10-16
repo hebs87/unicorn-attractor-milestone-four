@@ -39,7 +39,7 @@
     </div>
 
     <div class="row ticket-card card z-depth-1">
-        <div class="col s12 m6">
+        <div class="col s12 m6 profile-bugs">
             <h3 class="card-title center-align">
                 <i class="fas fa-bug" aria-hidden="true"></i>
                 My Bugs
@@ -50,8 +50,8 @@
                     {% if ticket.ticket_type.ticket_type == "Bug" %}
                         <li class="collection-item avatar">
                             <a href="{% url 'view_single_ticket' ticket.id %}" aria-label="View ticket details">
-                                <h5>{{ ticket.title }}</h5>
-                                <p class="title truncate">{{ ticket.description }}</p>
+                                <h5 class="title bold">{{ ticket.title }}</h5>
+                                <p class="helper italic truncate">{{ ticket.description }}</p>
                             </a>
                         </li>
                     {% endif %}
@@ -59,12 +59,12 @@
             </ul>
             <!-- Link to submit a new Bug report -->
             <p class="center-align">Submit a new 
-                <a href="{% url 'new_bug_ticket' %}" class="bold italic"  aria-label="New bug page">
+                <a href="{% url 'new_bug_ticket' %}" class="bold italic nav-link"  aria-label="New bug page">
                     Bug Report
                 </a>
             </p>
         </div>
-        <div class="col s12 m6">
+        <div class="col s12 m6 profile-features">
             <h3 class="card-title center-align">
                 <i class="fas fa-cogs" aria-hidden="true"></i>
                 My Features
@@ -75,8 +75,8 @@
                     {% if ticket.ticket_type.ticket_type == "Feature" %}
                         <li class="collection-item avatar">
                             <a href="{% url 'view_single_ticket' ticket.id %}" aria-label="View ticket details">
-                                <h5>{{ ticket.title }}</h5>
-                                <p class="title truncate">{{ ticket.description }}</p>
+                                <h5 class="title bold">{{ ticket.title }}</h5>
+                                <p class="helper italic truncate">{{ ticket.description }}</p>
                             </a>
                         </li>
                     {% endif %}
@@ -84,7 +84,7 @@
             </ul>
             <!-- Link to submit a new Feature request -->
             <p class="center-align">Submit a new 
-                <a href="{% url 'new_bug_ticket' %}" class="bold italic"  aria-label="New bug page">
+                <a href="{% url 'new_bug_ticket' %}" class="bold italic nav-link"  aria-label="New bug page">
                     Feature Request
                 </a>
             </p>
