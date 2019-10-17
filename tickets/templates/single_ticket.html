@@ -59,11 +59,11 @@
                 {% if ticket.created_date.date != ticket.edited_date.date %}
                     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
                     {{ ticket.edited_date|date:"j M Y" }}
-                    <small>({{ ticket.edited_date|time:"P" }})</small>
+                    <small class="italic">({{ ticket.edited_date|time:"P" }})</small>
                 {% else %}
                     <i class="fas fa-calendar-plus" aria-hidden="true"></i>
                     {{ ticket.created_date|date:"j M Y" }}
-                    <small>({{ ticket.created_date|time:"P" }})</small>
+                    <small class="italic">({{ ticket.created_date|time:"P" }})</small>
                 {% endif %}
             </p>
             <!-- Total Donations - only visible on Feature tickets -->
@@ -75,7 +75,7 @@
                         Donation Goal Reached!
                     {% else %}
                         <i class="fas fa-pound-sign" aria-hidden="true"></i>
-                        {{ ticket.total_donations }} / &pound;100
+                        {{ ticket.total_donations }} <span class="italic">/100</span>
                     {% endif %}
                 </p>
             {% endif %}
@@ -101,16 +101,16 @@
     
     <!-- Upvote Section - only available if user is logged in and ticket isn't closed-->
     {% if user.is_authenticated and ticket.ticket_status.ticket_status != "Closed" %}
-        <div class="row ticket-card card z-depth-1 center-align">
+        <div class="row ticket-card upvote-card card z-depth-1 center-align">
             <!-- Allow upvoting if user hasn't already upvoted -->
             {% if user.id not in user_upvotes %}
                 <!-- If a Feature's donation goal hasn't been met, the user will need to donate to upvote -->
                 {% if ticket.ticket_type.ticket_type == "Feature" and ticket.total_donations < 100 %}
                     <!-- Upvote button brings up a payment modal for feature tickets -->
-                    <div class="col s12 m6 ingredients">
+                    <div class="col s12">
                         <h3 class="card-title center-align">Want to donate for this cause?</h3>
                     </div>
-                    <div class="col s12 m6 ingredients">
+                    <div class="col s12">
                         <a href="#payment_modal" class="waves-effect waves-light btn sm-md-btn modal-trigger" aria-label="Donate and Upvote modal">
                             <i class="fas fa-thumbs-up icon-left" aria-hidden="true"></i>
                             <span class="hide-on-small-and-down">Donate &amp; Upvote</span>
@@ -118,10 +118,10 @@
                     </div>
                 <!-- If a Feature's donation goal has been met, or if it is a Bug, users can upvote for free -->
                 {% else %}
-                    <div class="col s12 m6 ingredients">
+                    <div class="col s12">
                         <h3 class="card-title center-align">Want to support this cause?</h3>
                     </div>
-                    <div class="col s12 m6 ingredients">
+                    <div class="col s12">
                         <a href="{% url 'upvote' ticket.pk %}" class="waves-effect waves-light btn sm-md-btn" aria-label="Upvote button">
                             <i class="fas fa-thumbs-up icon-left" aria-hidden="true"></i>
                             <span class="hide-on-small-and-down">Upvote</span>
@@ -129,10 +129,10 @@
                     </div>
                 {% endif %}
             {% else %}
-                <div class="col s12 m6 ingredients">
+                <div class="col s12">
                     <h3 class="card-title center-align">No longer want to support this?</h3>
                 </div>
-                <div class="col s12 m6 ingredients">
+                <div class="col s12">
                     <a href="{% url 'downvote' ticket.pk %}" class="waves-effect waves-light btn sm-md-btn" aria-label="Downvote button" {% if ticket.ticket_type.ticket_type == 'Feature' %}disabled{% endif %}>
                         <i class="fas fa-thumbs-down icon-left" aria-hidden="true"></i>
                         <span class="hide-on-small-and-down">Downvote</span>
