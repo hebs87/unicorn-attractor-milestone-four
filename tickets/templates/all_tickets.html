@@ -12,7 +12,7 @@
     <!-- Log Bug or Feature Section - Asks user to log in/register if not logged in -->
     <div class="row center-align">
         <!-- BUG SECTION -->
-        <div class="col s12 m6 ticket-card card z-depth-1 bug">
+        <div class="col s12 l6 ticket-card card z-depth-1 bug">
             <h3 class="card-title">Bugs</h3>
             {% if user.is_authenticated %}
                 <p class="bold">
@@ -44,7 +44,7 @@
             {% endif %}
         </div>
         <!-- FEATURE SECTION -->
-        <div class="col s12 m6 ticket-card card z-depth-1 feature">
+        <div class="col s12 l6 ticket-card card z-depth-1 feature">
             <h3 class="card-title center-align">Features</h3>
             {% if user.is_authenticated %}
                 <p class="bold">
