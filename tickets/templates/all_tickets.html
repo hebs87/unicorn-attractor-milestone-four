@@ -143,12 +143,14 @@
             <a href="{% url 'view_single_ticket' ticket.id %}" aria-label="Link to ticket details">
                 <div class="col s12 m6 ticket-preview-card">
                     <div class="card hoverable results-card z-depth-1">
-                        <!-- Ticket Type Icon -->
-                        {% if ticket.ticket_type.ticket_type == "Bug" %}
-                            <i class="fas fa-bug" aria-hidden="true"></i>
-                        {% elif ticket.ticket_type.ticket_type == "Feature" %}
-                            <i class="fas fa-cogs" aria-hidden="true"></i>
-                        {% endif %}
+                        <div class="ticket-type center-align">
+                            <!-- Ticket Type Icon -->
+                            {% if ticket.ticket_type.ticket_type == "Bug" %}
+                                <i class="fas fa-bug" aria-hidden="true"></i>
+                            {% elif ticket.ticket_type.ticket_type == "Feature" %}
+                                <i class="fas fa-cogs" aria-hidden="true"></i>
+                            {% endif %}
+                        </div>
                         <!-- Ticket Title -->
                         <div class="card-title center-align">
                             <h4>{{ ticket.title }}</h4>
@@ -191,7 +193,7 @@
                                     {% if ticket.total_donations >= 100 %}
                                         <!-- Show check icon for Feature tickets if
                                         donation goal has been reached -->
-                                        <i class="fas fa-check" aria-hidden="true"></i>
+                                        <i class="fas fa-check goal-reached" aria-hidden="true"></i>
                                     {% else %}
                                         <!-- Show total donations for Feature tickets if
                                         donation goal hasn't been reached -->
@@ -199,7 +201,7 @@
                                     {% endif %}
                                 {% else %}
                                     <!-- Show 'Free!' for Bug tickets -->
-                                    Free!
+                                    <span class="uppercase">Free!</span>
                                 {% endif %}
                             </span>
                         </div>
