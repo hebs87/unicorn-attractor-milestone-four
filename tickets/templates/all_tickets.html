@@ -77,63 +77,65 @@
         </div>
     </div>
     
-    <!-- Filter Form -->
-    <form id="filter_form" method="GET">
-        <ul class="collapsible filter-option">
-            <li>
-                <div class="collapsible-header filter-header">
-                    <h3 class="filter-form-title">
-                        <i class="fas fa-filter" aria-hidden="true"></i>
-                        Filter
-                    </h3>
-                </div>
-                <div class="collapsible-body collection collapsible-collection filter-body">
-                    <!--Helper Text/Instructions-->
-                    <div class="col s12">
-                        <h6 class="helper">Filter by one or multiple categories.</h6>
+    <div class="row center-align">
+        <!-- Filter Form -->
+        <form id="filter_form" method="GET">
+            <ul class="collapsible filter-option">
+                <li>
+                    <div class="collapsible-header filter-header">
+                        <h3 class="filter-form-title">
+                            <i class="fas fa-filter" aria-hidden="true"></i>
+                            Filter
+                        </h3>
                     </div>
-                    <div class="row filter-form-wrapper">
-                        <!--Ticket Type Category Drop Down-->
-                        <div class="input-field col s12 m6">
-                            <select id="ticket_type" name="ticket_type" class="form-control validate">
-                                <option value="" disabled selected>Type</option>
-                                {% for type in ticket_type_dropdown %}
-                                    <option value="{{ type.id }}">{{ type }}</option>
-                                {% endfor%}
-                            </select>
-                            <label for="type">Ticket Type</label>
+                    <div class="collapsible-body collection collapsible-collection filter-body">
+                        <!--Helper Text/Instructions-->
+                        <div class="col s12">
+                            <h6 class="helper bold italic">Filter by one or multiple categories.</h6>
                         </div>
-                        <!--Ticket Status Drop Down-->
-                        <div class="input-field col s12 m6">
-                            <select id="ticket_status" name="ticket_status" class="form-control validate">
-                                <option value="" disabled selected>Status</option>
-                                {% for status in ticket_status_dropdown %}
-                                    <option value="{{ status.id }}">{{ status }}</option>
-                                {% endfor%}
-                            </select>
-                            <label for="occasion">Ticket Status</label>
-                        </div>
-                        <!--Submit Button-->
-                        <div class="row submit-button-wrapper">
-                            <div class="col s6">
-                                <button class="btn waves-effect waves-light sm-md-btn" type="submit" aria-label="Filter button">
-                                    <span class="hide-on-small-and-down">Filter</span>
-                                    <i class="fas fa-filter icon-right" aria-hidden="true"></i>
-                                </button>
+                        <div class="row filter-form-wrapper">
+                            <!--Ticket Type Category Drop Down-->
+                            <div class="input-field col s12 m6">
+                                <select id="ticket_type" name="ticket_type" class="form-control validate">
+                                    <option value="" disabled selected>Type</option>
+                                    {% for type in ticket_type_dropdown %}
+                                        <option value="{{ type.id }}">{{ type }}</option>
+                                    {% endfor%}
+                                </select>
+                                <label for="type">Ticket Type</label>
                             </div>
-                            <!--Reset Button-->
-                            <div class="col s6">
-                                <a class="btn waves-effect waves-light sm-md-btn" href="{% url 'view_all_tickets' %}" aria-label="Reset page button">
-                                    <span class="hide-on-small-and-down">Reset</span>
-                                    <i class="fas fa-undo-alt icon-right" aria-hidden="true"></i>
-                                </a>
+                            <!--Ticket Status Drop Down-->
+                            <div class="input-field col s12 m6">
+                                <select id="ticket_status" name="ticket_status" class="form-control validate">
+                                    <option value="" disabled selected>Status</option>
+                                    {% for status in ticket_status_dropdown %}
+                                        <option value="{{ status.id }}">{{ status }}</option>
+                                    {% endfor%}
+                                </select>
+                                <label for="occasion">Ticket Status</label>
+                            </div>
+                            <!--Submit Button-->
+                            <div class="row submit-button-wrapper">
+                                <div class="col s6">
+                                    <button class="btn waves-effect waves-light sm-md-btn" type="submit" aria-label="Filter button">
+                                        <span class="hide-on-small-and-down">Filter</span>
+                                        <i class="fas fa-filter icon-right" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <!--Reset Button-->
+                                <div class="col s6">
+                                    <a class="btn waves-effect waves-light sm-md-btn" href="{% url 'view_all_tickets' %}" aria-label="Reset page button">
+                                        <span class="hide-on-small-and-down">Reset</span>
+                                        <i class="fas fa-undo-alt icon-right" aria-hidden="true"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </li>
-        </ul>
-    </form>
+                </li>
+            </ul>
+        </form>
+    </div>
     
     <!-- Ticket Cards -->
     <div class="row center-align">
