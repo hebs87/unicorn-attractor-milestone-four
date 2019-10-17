@@ -241,14 +241,14 @@
                 {% if tickets.number == num %}
                     <li class="disabled">
                         <a>
-                            {{ num }}
+                            <span class="page-num bold italic">{{ num }}</span>
                         </a>
                     </li>
                 <!-- Show the 4 surrounding (2 next and 2 previous) pages -->
                 {% elif num > tickets.number|add:'-3' and num < tickets.number|add:'3' %}
                     <li>
                         <a href="?{% param_replace page=num %}">
-                            {{ num }}
+                            <span class="page-num bold">{{ num }}</span>
                         </a>
                     </li>
                 {% endif %}
