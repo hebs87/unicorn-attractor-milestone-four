@@ -144,52 +144,50 @@
 
     <!-- Comments -->
     <div class="row ticket-card card z-depth-1">
-        <div class="col s12 instructions">
+        <div class="col s12">
             <h3 class="card-title center-align">
                 <i class="fas fa-comments icon-left" aria-hidden="true"></i>
                 Comments
             </h3>
         </div>
-        <div class="col s12 instructions">
+        <div class="col s12 comments">
             <!-- If there are comments on the ticket, they will be displayed -->
             {% if comments %}
-                <ul>
+                <ul class="collection collection-wrapper">
                     {% for comment in comments %}
-                        <li>
-                            <img src="{{ comment.user.profile.image.url }}" alt="{{ comment.user }}" class="circle"></img>
-                            <span>
-                                {{ comment.user }}
-                            </span>
-                            <p>
-                                {{ comment.description }}
-                            </p>
+                        <li class="collection-item avatar">
+                                <img src="{{ comment.user.profile.image.url }}" alt="{{ comment.user }}" class="circle"></img>
+                                <p class="italic">
+                                    <i class="fas fa-comment-dots icon-left" aria-hidden="true"></i>
+                                    {{ comment.description }}
+                                </p>
                         </li>
                     {% endfor %}
                 </ul>
             {% else %}
                 <!-- If there are no comments on the ticket, some helper text will be displayed -->
-                <p class="center-align">Nobody has commented on this {{ ticket.ticket_type }}!</p>
+                <p class="center-align italic bold">Nobody has commented on this {{ ticket.ticket_type }}!</p>
             {% endif %}
         </div>
         <!-- Add Comment Section - only available if ticket isn't closed -->
         {% if ticket.ticket_status.ticket_status != "Closed" %}
-            <div class="col s12 center-align">
+            <div class="col s12 center-align comment-wrapper">
                 {% if user.is_authenticated %}
                     <!-- Comment Form - only available if user is logged in -->
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        {{ comment_form | materializecss }}
-                        <button type="submit" class="btn btn-primary">
-                            Add Comment
+                        {{ comment_form | materializecss:'icon=fas fa-comment-dots' }}
+                        <button type="submit" class="btn btn-primary sm-md-btn">
+                            <span class="hide-on-small-and-down">Add Comment</span>
                             <i class="fas fa-comment icon-right" aria-hidden="true"></i>
                         </button>
                     </form>
                 {% else %}
                     <!-- Links for user to login or register to add a comment if not logged in -->
                     <p>
-                        <a href="{% url 'login' %}">Login</a>
+                        <a class="bold italic uppercase nav-link" href="{% url 'login' %}">Login</a>
                          or 
-                        <a href="{% url 'registration' %}">Register</a>
+                        <a class="bold italic uppercase nav-link" href="{% url 'registration' %}">Register</a>
                          to add a comment!
                     </p>
                 {% endif %}
@@ -198,11 +196,11 @@
     </div>
     
     <!-- Back button - only visible on tablet and below -->
-    <div class="row hide-on-large-only center-align">
+    <div class="row hide-on-large-only center-align back-btn-wrapper">
         <div class="col s12">
-            <a class="btn waves-effect waves-light standard-btn icon-right" type="reset" aria-label="Cancel button" onclick="history.back()">
-                Back to all tickets
-                <i class="fas fa-step-backward" aria-hidden="true"></i>
+            <a class="waves-effect waves-light btn standard-btn" aria-label="Cancel button" onclick="history.back()">
+                Back
+                <i class="fas fa-step-backward icon-right" aria-hidden="true"></i>
             </a>
         </div>
     </div>
