@@ -6,54 +6,47 @@
 
 {% block content %}
     
-    <form method="POST" action="" id="payment-form" data-token="{{ publishable }}">
-        
-        {% csrf_token %}
-        <div class="row ticket-card card z-depth-1 center-align">
-            <!--Card Title-->
-            <h3 class="card-title ticket-details-title">
-                New Feature
-            </h3>
-            <!--Feature Form-->
-            <div class="input-field col s12">
-                {{ feature_form.title|materializecss:'icon=fas fa-heading' }}
-                {{ feature_form.description|materializecss:'icon=fas fa-file-alt' }}
-            </div>
-            <div class="input-field col s1">
-                <i class="fas fa-pound-sign prefix" aria-hidden="true"></i>
-            </div>
-            <div class="input-field col s11">
-                {{ donation_form|materializecss }}
-            </div>
-            <div class="input-field col s12">
-                <!-- Stripe Payment form -->
-                <label for="card-element">
-                    Credit or Debit card
-                </label>
-            </div>
-            <div class="input-field col s12">
-                <!-- Stripe Payment form -->
-                <div id="card-element">
-                    <!-- A Stripe Element will be inserted here. -->
+    <div class="row white z-depth-2 add-feature-wrapper">
+    
+        <!--New Bug Form-->
+        <div id="new_feature" class="col s12">
+            <form class="col s12" method="POST" id="payment-form" data-token="{{ publishable }}">
+                <div class="new-feature-wrapper">
+                    <h3 class="form-title center-align">New Feature</h3>
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            {% csrf_token %}
+                            {{ feature_form.title|materializecss:'icon=fas fa-heading' }}
+                            {{ feature_form.description|materializecss:'icon=fas fa-file-alt' }}
+                            {{ donation_form|materializecss:'icon=fas fa-pound-sign' }}
+                        </div>
+                        <div class="col s12">
+                            <!-- Stripe Payment form -->
+                            <label for="card-element" class="payment-form-label">
+                                Credit or Debit Card
+                            </label>
+                            <div id="card-element" class="center-align">
+                                <!-- A Stripe Element will be inserted here. -->
+                            </div>
+                            <!-- Used to display form errors. -->
+                            <div id="card-errors" role="alert"></div>
+                        </div>
+                        <!--Add and Cancel buttons-->
+                        <div class="col s12 center-align">
+                            <button class="btn waves-effect waves-light add-btn sm-md-btn" type="submit" aria-label="Add bug button">
+                                <span class="hide-on-small-and-down">Pay &amp; Add</span>
+                                <i class="fas fa-plus-circle icon-right" aria-hidden="true"></i>
+                            </button>
+                            <a class="btn waves-effect waves-light sm-md-btn" aria-label="Cancel button" onclick="history.back()">
+                                <span class="hide-on-small-and-down">Cancel</span>
+                                <i class="fas fa-times-circle icon-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <!-- Used to display form errors. -->
-                <div id="card-errors" role="alert"></div>
-            </div>
-    
-            <!--Add and Cancel buttons-->
-            <div class="col s12">
-                <button class="btn waves-effect waves-light add-btn standard-btn icon-right" type="submit" aria-label="Add bug button">
-                    Pay &amp; Add
-                    <i class="fas fa-plus-circle" aria-hidden="true"></i>
-                </button>
-                <a class="btn waves-effect waves-light standard-btn icon-right" type="reset" aria-label="Cancel button" onclick="history.back()">
-                    Cancel
-                    <i class="fas fa-times-circle" aria-hidden="true"></i>
-                </a>
-            </div>
+            </form>
         </div>
-    
-    </form>
+    </div>
     
 {% endblock %}
 
