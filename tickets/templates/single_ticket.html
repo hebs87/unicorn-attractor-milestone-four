@@ -145,7 +145,10 @@
     <!-- Comments -->
     <div class="row ticket-card card z-depth-1">
         <div class="col s12 instructions">
-            <h3 class="card-title center-align">Comments</h3>
+            <h3 class="card-title center-align">
+                <i class="fas fa-comments icon-left" aria-hidden="true"></i>
+                Comments
+            </h3>
         </div>
         <div class="col s12 instructions">
             <!-- If there are comments on the ticket, they will be displayed -->
@@ -176,7 +179,10 @@
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ comment_form | materializecss }}
-                        <button type="submit" class="btn btn-primary">Add Comment</button>
+                        <button type="submit" class="btn btn-primary">
+                            Add Comment
+                            <i class="fas fa-comment icon-right" aria-hidden="true"></i>
+                        </button>
                     </form>
                 {% else %}
                     <!-- Links for user to login or register to add a comment if not logged in -->
