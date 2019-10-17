@@ -6,33 +6,34 @@
 
 {% block content %}
     
-    <form method="POST" action="">
-        
-        {% csrf_token %}
-        <div class="row ticket-card card z-depth-1 center-align">
-            <!--Card Title-->
-            <h3 class="card-title ticket-details-title">
-                New Bug
-            </h3>
-            <!--Bug Form-->
-            <div class="input-field col s12">
-                {{ bug_form.title|materializecss:'icon=fas fa-heading' }}
-                {{ bug_form.description|materializecss:'icon=fas fa-file-alt' }}
-            </div>
+    <div class="row white z-depth-2 add-bug-wrapper">
     
-            <!--Add and Cancel buttons-->
-            <div class="col s12">
-                <button class="btn waves-effect waves-light add-btn standard-btn icon-right" type="submit" aria-label="Add bug button">
-                    Add
-                    <i class="fas fa-plus-circle" aria-hidden="true"></i>
-                </button>
-                <a class="btn waves-effect waves-light standard-btn icon-right" type="reset" aria-label="Cancel button" onclick="history.back()">
-                    Cancel
-                    <i class="fas fa-times-circle" aria-hidden="true"></i>
-                </a>
-            </div>
+        <!--Login form-->
+        <div id="new_bug" class="col s12">
+            <form class="col s12" method="POST" action="">
+                <div class="new-bug-wrapper center-align">
+                    <h3 class="form-title">New Bug</h3>
+                    <div class="row">
+                        <div class="col s12">
+                            {% csrf_token %}
+                            {{ bug_form.title|materializecss:'icon=fas fa-heading' }}
+                            {{ bug_form.description|materializecss:'icon=fas fa-file-alt' }}
+                        </div>
+                        <!--Add and Cancel buttons-->
+                        <div class="col s12">
+                            <button class="btn waves-effect waves-light add-btn sm-md-btn" type="submit" aria-label="Add bug button">
+                                <span class="hide-on-small-and-down">Add</span>
+                                <i class="fas fa-plus-circle icon-right" aria-hidden="true"></i>
+                            </button>
+                            <a class="btn waves-effect waves-light sm-md-btn" aria-label="Cancel button" onclick="history.back()">
+                                <span class="hide-on-small-and-down">Cancel</span>
+                                <i class="fas fa-times-circle icon-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
-    
-    </form>
+    </div>
     
 {% endblock %}
