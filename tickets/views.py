@@ -258,6 +258,7 @@ def upvote(request, pk):
 
     # Increment the ticket's upvotes by 1
     ticket.upvotes += 1
+    ticket.views -= 1
     ticket.save()
 
     # If upvote is on a feature request, payment will be needed before
@@ -341,11 +342,8 @@ def downvote(request, pk):
     This option will only be available if the user has upvoted the ticket
     '''
     ticket = get_object_or_404(Ticket, pk=pk)
-    # Decrement upvote by 1
+    # Decrement upvote by 1 and views by 1 to prevent incorrect incrementation
     ticket.upvotes -= 1
-    ticket.save()
-
-    # Decrement views by -1 to prevent incorrect incrementation
     ticket.views -= 1
     ticket.save()
 
