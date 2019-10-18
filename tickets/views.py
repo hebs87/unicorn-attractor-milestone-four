@@ -256,7 +256,8 @@ def upvote(request, pk):
     '''
     ticket = get_object_or_404(Ticket, pk=pk)
 
-    # Increment the ticket's upvotes by 1
+    # Increment the ticket's upvotes by 1 and decrement views by 1
+    # to prevent incorrect views incrementation
     ticket.upvotes += 1
     ticket.views -= 1
     ticket.save()
