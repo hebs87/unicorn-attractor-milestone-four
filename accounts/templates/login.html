@@ -21,22 +21,24 @@
                             {{ login_form.username|materializecss:'icon=fas fa-user' }}
                             {{ login_form.password|materializecss:'icon=fas fa-lock' }}
                             <p>
-                                <a class="bold italic uppercase nav-link" href="{% url 'password_reset' %}">Forgot my password</a>
+                                <a class="bold italic uppercase nav-link" href="{% url 'password_reset' %}" aria-label="Request Password Reset">
+                                    Forgot my password
+                                </a>
                                 <br>
                                 Don't have an account?
-                                <a class="bold italic uppercase nav-link" href="{% url 'registration' %}">Register</a>
+                                <a class="bold italic uppercase nav-link" href="{% url 'registration' %}" aria-label="Registration Page">
+                                    Register
+                                </a>
                             </p>
-                            <button type="submit" class="btn btn-primary large-btn">
+                            <button type="submit" class="btn btn-primary large-btn" aria-label="Login button">
                                 Login
                                 <i class="fas fa-sign-in-alt icon-right" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
-    
                 </div>
             </form>
         </div>
-    
     </div>
 
 {% endblock %}
