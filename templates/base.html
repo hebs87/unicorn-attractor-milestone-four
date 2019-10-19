@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
     <!-- FontAwesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <!-- c3 CSS -->
+    <!-- C3 CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.11/c3.min.css" type="text/css" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
@@ -85,66 +85,64 @@
                     {% endif %}
                 </ul>
             </div>
-        </nav>
-        <!--End Main Nav-->
-        <!--Mobile Side Nav-->
-        <ul class="sidenav" id="mobile-demo">
-            <li>
-                <a href="{% url 'index' %}" class="brand-logo collection-item avatar"  aria-label="Brand logo and link to home page">
-                    <img class="circle" src="{% static 'img/favicon-logo.png' %}" alt="UnicornAttractor Logo">
-                    <span class="brand-logo-title">UnicornAttractor</span>
-                </a>
-            </li>
-            <li>
-                <a href="{% url 'index' %}" aria-label="Home page">
-                    <i class="btn-icon fas fa-home" aria-hidden="true"></i>
-                    <span class="btn-text uppercase">Home</span>
-                </a>
-            </li>
-            <li>
-                <a href="{% url 'view_all_tickets' %}" aria-label="Tickets page">
-                    <i class="btn-icon fas fa-ticket-alt" aria-hidden="true"></i>
-                    <span class="btn-text uppercase">Tickets</span>
-                </a>
-            </li>
-            <li>
-                <a href="{% url 'dashboard_stats' %}" aria-label="Dashboard page">
-                    <i class="btn-icon fas fa-chart-bar" aria-hidden="true"></i>
-                    <span class="btn-text uppercase">Dashboard</span>
-                </a>
-            </li>
-            <!--Additional options if user is logged in-->
-            {% if user.is_authenticated %}
+            <!--End Main Nav-->
+            <!--Mobile Side Nav-->
+            <ul class="sidenav" id="mobile-demo">
                 <li>
-                    <a href="{% url 'profile' %}" aria-label="Profile page">
-                        <i class="btn-icon fas fa-user" aria-hidden="true"></i>
-                        <span class="btn-text uppercase">Profile</span>
+                    <a href="{% url 'index' %}" class="brand-logo collection-item avatar"  aria-label="Brand logo and link to home page">
+                        <img class="circle" src="{% static 'img/favicon-logo.png' %}" alt="UnicornAttractor Logo">
+                        <span class="brand-logo-title">UnicornAttractor</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{% url 'logout' %}" aria-label="Logout">
-                        <i class="btn-icon fas fa-sign-out-alt" aria-hidden="true"></i>
-                        <span class="btn-text uppercase">Logout</span>
-                    </a>
-                </li>
-            <!--If there is no user in session-->
-            {% else %}
-                <li>
-                    <a href="{% url 'login' %}" aria-label="Login page">
-                        <i class="btn-icon fas fa-sign-in-alt" aria-hidden="true"></i>
-                        <span class="btn-text uppercase">Login</span>
+                    <a href="{% url 'index' %}" aria-label="Home page">
+                        <i class="btn-icon fas fa-home" aria-hidden="true"></i>
+                        <span class="btn-text uppercase">Home</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{% url 'registration' %}" aria-label="Registration page">
-                        <i class="btn-icon fas fa-user" aria-hidden="true"></i>
-                        <span class="btn-text uppercase">Register</span>
+                    <a href="{% url 'view_all_tickets' %}" aria-label="Tickets page">
+                        <i class="btn-icon fas fa-ticket-alt" aria-hidden="true"></i>
+                        <span class="btn-text uppercase">Tickets</span>
                     </a>
                 </li>
-            {% endif %}
-        </ul>
-        <!--End Mobile Side Nav-->
-        
+                <li>
+                    <a href="{% url 'dashboard_stats' %}" aria-label="Dashboard page">
+                        <i class="btn-icon fas fa-chart-bar" aria-hidden="true"></i>
+                        <span class="btn-text uppercase">Dashboard</span>
+                    </a>
+                </li>
+                <!--Additional options if user is logged in-->
+                {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'profile' %}" aria-label="Profile page">
+                            <i class="btn-icon fas fa-user" aria-hidden="true"></i>
+                            <span class="btn-text uppercase">Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'logout' %}" aria-label="Logout">
+                            <i class="btn-icon fas fa-sign-out-alt" aria-hidden="true"></i>
+                            <span class="btn-text uppercase">Logout</span>
+                        </a>
+                    </li>
+                <!--If there is no user in session-->
+                {% else %}
+                    <li>
+                        <a href="{% url 'login' %}" aria-label="Login page">
+                            <i class="btn-icon fas fa-sign-in-alt" aria-hidden="true"></i>
+                            <span class="btn-text uppercase">Login</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'registration' %}" aria-label="Registration page">
+                            <i class="btn-icon fas fa-user" aria-hidden="true"></i>
+                            <span class="btn-text uppercase">Register</span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+            <!--End Mobile Side Nav-->
         </nav>
         <!--END NAVBAR-->
     </header>
@@ -192,7 +190,9 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!-- Materialize script tag -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- D3 script tag -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.12.0/d3.min.js"></script>
+    <!-- C3 script tag -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.11/c3.min.js"></script>
     {% block js %}
     {% endblock %}
