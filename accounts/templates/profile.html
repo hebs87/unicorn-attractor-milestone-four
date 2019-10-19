@@ -94,15 +94,15 @@
         <div class="modal-content center-align">
             <h4 class="title">Edit Profile</h4>
             <form method="POST" action="" class="userform" enctype="multipart/form-data">
-                <fieldset class="form-group">
-                    <legend>Edit Your Details</legend>
-                    {% csrf_token %}
-                    {{  user_form.email|materializecss:'icon=fas fa-at' }}
-                    {{  user_form.first_name|materializecss:'icon=fas fa-signature' }}
-                    {{  user_form.last_name|materializecss:'icon=fas fa-signature' }}
-                    {{  profile_form.image|materializecss }}
-                    <button type="submit" class="btn btn-primary">Update</button>
-                </fieldset>
+                {% csrf_token %}
+                {{  user_form.email|materializecss:'icon=fas fa-at' }}
+                {{  user_form.first_name|materializecss:'icon=fas fa-signature' }}
+                {{  user_form.last_name|materializecss:'icon=fas fa-signature' }}
+                {{  profile_form.image|materializecss }}
+                <button type="submit" class="btn btn-primary large-btn">
+                    Update
+                    <i class="fas fa-edit icon-right" aria-hidden="true"></i>
+                </button>
             </form>
         </div>
     </div>
