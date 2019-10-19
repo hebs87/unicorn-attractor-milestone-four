@@ -29,7 +29,7 @@
         <!-- Account Management Buttons -->
         <div class="col s12 acc-management-wrapper">
             <!--Change Password Modal Button-->
-            <a href="#edit_profile_modal" class="waves-effect waves-light btn modal-trigger change-pwd-btn large-btn"  aria-label="Change password modal">
+            <a href="#edit_profile_modal" class="waves-effect waves-light btn modal-trigger change-pwd-btn large-btn"  aria-label="Edit Profile modal">
                 <i class="fas fa-edit icon-left" aria-hidden="true"></i>
                 Edit Profile
             </a>
@@ -47,7 +47,7 @@
                 {% for ticket in user_tickets %}
                     {% if ticket.ticket_type.ticket_type == "Bug" %}
                         <li class="collection-item avatar">
-                            <a href="{% url 'view_single_ticket' ticket.id %}" aria-label="View ticket details">
+                            <a href="{% url 'view_single_ticket' ticket.id %}" aria-label="View Bug Details">
                                 <h5 class="title bold">{{ ticket.title }}</h5>
                                 <p class="helper italic truncate">{{ ticket.description }}</p>
                             </a>
@@ -57,7 +57,7 @@
             </ul>
             <!-- Link to submit a new Bug report -->
             <p class="center-align">Submit a new 
-                <a href="{% url 'new_bug_ticket' %}" class="bold italic nav-link"  aria-label="New bug page">
+                <a href="{% url 'new_bug_ticket' %}" class="bold italic nav-link"  aria-label="New Bug Page">
                     Bug Report
                 </a>
             </p>
@@ -72,7 +72,7 @@
                 {% for ticket in user_tickets %}
                     {% if ticket.ticket_type.ticket_type == "Feature" %}
                         <li class="collection-item avatar">
-                            <a href="{% url 'view_single_ticket' ticket.id %}" aria-label="View ticket details">
+                            <a href="{% url 'view_single_ticket' ticket.id %}" aria-label="View Feature Details">
                                 <h5 class="title bold">{{ ticket.title }}</h5>
                                 <p class="helper italic truncate">{{ ticket.description }}</p>
                             </a>
@@ -82,7 +82,7 @@
             </ul>
             <!-- Link to submit a new Feature request -->
             <p class="center-align">Submit a new 
-                <a href="{% url 'new_feature_ticket' %}" class="bold italic nav-link"  aria-label="New bug page">
+                <a href="{% url 'new_feature_ticket' %}" class="bold italic nav-link"  aria-label="New Feature Page">
                     Feature Request
                 </a>
             </p>
@@ -99,7 +99,7 @@
                 {{  user_form.first_name|materializecss:'icon=fas fa-signature' }}
                 {{  user_form.last_name|materializecss:'icon=fas fa-signature' }}
                 {{  profile_form.image|materializecss }}
-                <button type="submit" class="btn btn-primary large-btn">
+                <button type="submit" class="btn btn-primary large-btn" aria-label="Update Profile Changes button">
                     Update
                     <i class="fas fa-edit icon-right" aria-hidden="true"></i>
                 </button>
