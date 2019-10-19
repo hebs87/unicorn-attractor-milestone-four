@@ -23,7 +23,7 @@
                 <p class="italic">
                     Bug Reports are FREE to open!
                 </p>
-                <a href="{% url 'new_bug_ticket' %}" class="btn waves-effect waves-light standard-btn">
+                <a href="{% url 'new_bug_ticket' %}" class="btn waves-effect waves-light standard-btn" aria-label="New Bug Page">
                     <i class="fas fa-bug icon-left" aria-hidden="true"></i>
                     New Bug
                 </a>
@@ -32,11 +32,11 @@
                     Noticed an issue?
                 </p>
                 <p>
-                    <a class="italic bold uppercase nav-link" href="{% url 'login' %}">
+                    <a class="italic bold uppercase nav-link" href="{% url 'login' %}" aria-label="Login Page">
                         Login
                     </a>
                     or
-                    <a class="italic bold uppercase nav-link" href="{% url 'registration' %}">
+                    <a class="italic bold uppercase nav-link" href="{% url 'registration' %}" aria-label="Registration Page">
                         Register
                     </a>
                     to submit a Bug Report.
@@ -55,7 +55,7 @@
                 <p class="italic">
                     Feature Requests require a small donation!
                 </p>
-                <a href="{% url 'new_feature_ticket' %}" class="btn waves-effect waves-light standard-btn">
+                <a href="{% url 'new_feature_ticket' %}" class="btn waves-effect waves-light standard-btn" aria-label="New Feature Page">
                     <i class="fas fa-cogs icon-left" aria-hidden="true"></i>
                     New Feature
                 </a>
@@ -64,11 +64,11 @@
                     Want something new?
                 </p>
                 <p>
-                    <a class="italic bold uppercase nav-link" href="{% url 'login' %}">
+                    <a class="italic bold uppercase nav-link" href="{% url 'login' %}" aria-label="Login Page">
                         Login
                     </a>
                     or
-                    <a class="italic bold uppercase nav-link" href="{% url 'registration' %}">
+                    <a class="italic bold uppercase nav-link" href="{% url 'registration' %}" aria-label="Registration Page">
                         Register
                     </a>
                     to submit a Feature Request.
@@ -122,7 +122,7 @@
                                         <i class="fas fa-filter icon-right" aria-hidden="true"></i>
                                     </button>
                                     <!--Reset Button-->
-                                    <a class="btn waves-effect waves-light sm-md-btn" href="{% url 'view_all_tickets' %}" aria-label="Reset page button">
+                                    <a class="btn waves-effect waves-light sm-md-btn" href="{% url 'view_all_tickets' %}" aria-label="Reset Results button">
                                         <span class="hide-on-small-and-down">Reset</span>
                                         <i class="fas fa-undo-alt icon-right" aria-hidden="true"></i>
                                     </a>
@@ -138,7 +138,7 @@
     <!-- Ticket Cards -->
     <div class="row center-align">
         {% for ticket in tickets %}
-            <a href="{% url 'view_single_ticket' ticket.id %}" aria-label="Link to ticket details">
+            <a href="{% url 'view_single_ticket' ticket.id %}" aria-label="View Ticket Details">
                 <div class="col s12 m6 ticket-preview-card">
                     <div class="card hoverable results-card z-depth-1">
                         <div class="ticket-type center-align">
@@ -221,13 +221,13 @@
             {% if tickets.has_previous %}
                 <!-- First page button -->
                 <li>
-                    <a href="?{% param_replace page=1 %}">
+                    <a href="?{% param_replace page=1 %}" aria-label="First Page button">
                         <i class="fas fa-angle-double-left" aria-hidden="true"></i>
                     </a>
                 </li>
                 <!-- Previous page button -->
                 <li>
-                    <a href="?{% param_replace page=tickets.previous_page_number %}">
+                    <a href="?{% param_replace page=tickets.previous_page_number %}" aria-label="Previous Page button">
                         <i class="fas fa-angle-left" aria-hidden="true"></i>
                     </a>
                 </li>
@@ -238,31 +238,31 @@
                 <!-- Show the current page number but disable it -->
                 {% if tickets.number == num %}
                     <li class="disabled">
-                        <a>
+                        <a  aria-label="Current Page Number">
                             <span class="page-num bold italic">{{ num }}</span>
                         </a>
                     </li>
                 <!-- Show the 4 surrounding (2 next and 2 previous) pages -->
                 {% elif num > tickets.number|add:'-3' and num < tickets.number|add:'3' %}
                     <li>
-                        <a href="?{% param_replace page=num %}">
+                        <a href="?{% param_replace page=num %}" aria-label="Select Page">
                             <span class="page-num bold">{{ num }}</span>
                         </a>
                     </li>
                 {% endif %}
             {% endfor %}
             
-            <!-- Next/Last button - only visible if previous page available -->
+            <!-- Next/Last button - only visible if next page available -->
             {% if tickets.has_next %}
                 <!-- Next page button -->
                 <li>
-                    <a href="?{% param_replace page=tickets.next_page_number %}">
+                    <a href="?{% param_replace page=tickets.next_page_number %}" aria-label="Next Page button">
                         <i class="fas fa-angle-right" aria-hidden="true"></i>
                     </a>
                 </li>
                 <!-- Last page button -->
                 <li>
-                    <a href="?{% param_replace page=tickets.paginator.num_pages %}">
+                    <a href="?{% param_replace page=tickets.paginator.num_pages %}" aria-label="Last Page button">
                         <i class="fas fa-angle-double-right" aria-hidden="true"></i>
                     </a>
                 </li>
