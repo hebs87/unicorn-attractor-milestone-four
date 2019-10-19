@@ -79,7 +79,7 @@ class Ticket(models.Model):
         default=0)
 
     class Meta:
-        ordering = ("upvotes", )
+        ordering = ("-upvotes", )
 
 
     def __str__(self):
