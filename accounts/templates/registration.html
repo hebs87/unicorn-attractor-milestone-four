@@ -7,19 +7,18 @@
 {% block content %}
 
 <div class="row white z-depth-2 login-register-wrapper">
-
     <!--Register form-->
     <div id="register" class="col s12">
         <form class="col s12" method="POST" action="{% url 'registration' %}" class="accountform">
             <div class="register-wrapper center-align">
-                
                 <h3 class="form-title">Register</h3>
-                
                 <div class="row">
                     <div class="col s12">
                         <p>
                             Already got an account?
-                            <a class="bold italic uppercase nav-link" href="{% url 'login' %}">Sign In</a>
+                            <a class="bold italic uppercase nav-link" href="{% url 'login' %}" aria-label="Login Page">
+                                Log In
+                            </a>
                         </p>
                         {% csrf_token %}
                         {{ registration_form.username|materializecss:'icon=fas fa-user' }}
@@ -28,17 +27,15 @@
                         {{ registration_form.last_name|materializecss:'icon=fas fa-signature' }}
                         {{ registration_form.password1|materializecss:'icon=fas fa-lock' }}
                         {{ registration_form.password2|materializecss:'icon=fas fa-key' }}
-                        <button type="submit" class="btn btn-primary large-btn">
+                        <button type="submit" class="btn btn-primary large-btn" aria-label="Create Account button">
                             Create account
                             <i class="fas fa-user-plus icon-right" aria-hidden="true"></i>
                         </button>
                     </div>
                 </div>
-
             </div>    
         </form>
     </div>
-
 </div>
 
 {% endblock %}
