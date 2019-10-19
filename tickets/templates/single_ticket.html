@@ -38,7 +38,7 @@
                                 <option value="{{ status.id }}">{{ status }}</option>
                             {% endfor%}
                         </select>
-                        <button class="btn waves-effect waves-light sm-md-btn" type="submit" aria-label="Filter button">
+                        <button class="btn waves-effect waves-light sm-md-btn" type="submit" aria-label="Update Ticket Status button">
                             <span class="hide-on-small-and-down">Update</span>
                             <i class="fas fa-edit icon-right" aria-hidden="true"></i>
                         </button>
@@ -87,11 +87,11 @@
                 <div class="ticket-details-break"></div>
             </div>
             <div class="col s12 center-align ticket-details-btns">
-                <a href="{% url 'edit_ticket' ticket.pk %}" class="waves-effect waves-light btn sm-md-btn" aria-label="Edit ticket page">
+                <a href="{% url 'edit_ticket' ticket.pk %}" class="waves-effect waves-light btn sm-md-btn" aria-label="Edit Ticket page">
                     <i class="fas fa-edit icon-left" aria-hidden="true"></i>
                     <span class="hide-on-small-and-down">Edit</span>
                 </a>
-                <a href="#delete_modal" class="waves-effect waves-light btn sm-md-btn modal-trigger"  aria-label="Delete ticket modal">
+                <a href="#delete_modal" class="waves-effect waves-light btn sm-md-btn modal-trigger"  aria-label="Delete Ticket modal">
                     <i class="fas fa-trash-alt icon-left" aria-hidden="true"></i>
                     <span class="hide-on-small-and-down">Delete</span>
                 </a>
@@ -132,6 +132,7 @@
                 <div class="col s12">
                     <h3 class="card-title center-align">No longer want to support this?</h3>
                 </div>
+                <!-- Downvote Button - disabled on features to prevent user being able to donate again -->
                 <div class="col s12">
                     <a href="{% url 'downvote' ticket.pk %}" class="waves-effect waves-light btn sm-md-btn" aria-label="Downvote button" {% if ticket.ticket_type.ticket_type == 'Feature' %}disabled{% endif %}>
                         <i class="fas fa-thumbs-down icon-left" aria-hidden="true"></i>
@@ -156,11 +157,11 @@
                 <ul class="collection collection-wrapper">
                     {% for comment in comments %}
                         <li class="collection-item avatar">
-                                <img src="{{ comment.user.profile.image.url }}" alt="{{ comment.user }}" class="circle"></img>
-                                <p class="italic">
-                                    <i class="fas fa-comment-dots icon-left" aria-hidden="true"></i>
-                                    {{ comment.description }}
-                                </p>
+                            <img src="{{ comment.user.profile.image.url }}" alt="{{ comment.user }}" class="circle"></img>
+                            <p class="italic">
+                                <i class="fas fa-comment-dots icon-left" aria-hidden="true"></i>
+                                {{ comment.description }}
+                            </p>
                         </li>
                     {% endfor %}
                 </ul>
@@ -177,7 +178,7 @@
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ comment_form | materializecss:'icon=fas fa-comment-dots' }}
-                        <button type="submit" class="btn btn-primary sm-md-btn">
+                        <button type="submit" class="btn btn-primary sm-md-btn" aria-label="Add Comment button">
                             <span class="hide-on-small-and-down">Add Comment</span>
                             <i class="fas fa-comment icon-right" aria-hidden="true"></i>
                         </button>
@@ -185,10 +186,14 @@
                 {% else %}
                     <!-- Links for user to login or register to add a comment if not logged in -->
                     <p>
-                        <a class="bold italic uppercase nav-link" href="{% url 'login' %}">Login</a>
-                         or 
-                        <a class="bold italic uppercase nav-link" href="{% url 'registration' %}">Register</a>
-                         to add a comment!
+                        <a class="bold italic uppercase nav-link" href="{% url 'login' %}" aria-label="Login Page">
+                            Login
+                        </a>
+                        or 
+                        <a class="bold italic uppercase nav-link" href="{% url 'registration' %}" aria-label="Registration Page">
+                            Register
+                        </a>
+                        to add a comment!
                     </p>
                 {% endif %}
             </div>
@@ -198,7 +203,7 @@
     <!-- Back button - only visible on tablet and below -->
     <div class="row hide-on-large-only center-align back-btn-wrapper">
         <div class="col s12">
-            <a class="waves-effect waves-light btn standard-btn" aria-label="Cancel button" onclick="history.back()">
+            <a class="waves-effect waves-light btn standard-btn" aria-label="Back button" onclick="history.back()">
                 Back
                 <i class="fas fa-step-backward icon-right" aria-hidden="true"></i>
             </a>
@@ -213,11 +218,11 @@
                 This {{ ticket.ticket_type }} will be permanently deleted if you go ahead!
             </p>
             <div class="input-field col s12 modal-btn-wrapper">
-                <a class="waves-effect waves-light btn delete-yes-btn sm-md-btn" href="{% url 'delete_ticket' ticket.id %}" aria-label="Confirm delete ticket button">
+                <a class="waves-effect waves-light btn delete-yes-btn sm-md-btn" href="{% url 'delete_ticket' ticket.id %}" aria-label="Confirm Ticket Deletion button">
                     <i class="fas fa-check" aria-hidden="true"></i>
                     <span class="hide-on-small-and-down">Yes</span>
                 </a>
-                <a class="modal-close waves-effect waves-light btn delete-no-btn sm-md-btn" aria-label="Do not delete ticket button">
+                <a class="modal-close waves-effect waves-light btn delete-no-btn sm-md-btn" aria-label="Cancel Ticket Deletion button">
                     <i class="fas fa-times" aria-hidden="true"></i>
                     <span class="hide-on-small-and-down">No</span>
                 </a>
@@ -246,11 +251,11 @@
                     <div id="card-errors" role="alert"></div>
                 </div>
                 <div class="input-field col s12 modal-btn-wrapper">
-                    <button class="btn waves-effect waves-light sm-md-btn" type="submit" aria-label="Upvote feature button">
+                    <button class="btn waves-effect waves-light sm-md-btn" type="submit" aria-label="Upvote Feature button">
                         <span class="hide-on-small-and-down">Upvote</span>
                         <i class="fas fa-check icon-right" aria-hidden="true"></i>
                     </button>
-                    <a class="modal-close waves-effect waves-light btn sm-md-btn" aria-label="Cancel upvote button">
+                    <a class="modal-close waves-effect waves-light btn sm-md-btn" aria-label="Cancel Upvote button">
                         <span class="hide-on-small-and-down">Cancel</span>
                         <i class="fas fa-times icon-right" aria-hidden="true"></i>
                     </a>
