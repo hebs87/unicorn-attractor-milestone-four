@@ -230,29 +230,29 @@
         <div class="modal-content center-align">
             <h4 class="title">Donate &amp; Upvote</h4>
             <form method="POST" action="{% url 'upvote' ticket.pk %}" id="payment-form" data-token="{{ publishable }}">
-                {% csrf_token %}
-                <div class="input-field col s12">
-                    {{ donation_form|materializecss }}
+                <div class="col s12 center-align">
+                    {% csrf_token %}
+                    {{ donation_form|materializecss:'icon=fas fa-pound-sign' }}
                 </div>
-                <div class="input-field col s12">
+                <div class="col s12">
                     <!-- Stripe Payment form -->
-                    <label for="card-element">
-                        Credit or Debit card
+                    <label for="card-element" class="payment-form-label">
+                        Credit or Debit Card
                     </label>
-                    <div id="card-element">
+                    <div id="card-element" class="center-align">
                         <!-- A Stripe Element will be inserted here. -->
                     </div>
                     <!-- Used to display form errors. -->
                     <div id="card-errors" role="alert"></div>
                 </div>
                 <div class="input-field col s12 modal-btn-wrapper">
-                    <button class="btn waves-effect waves-light add-btn standard-btn icon-right" type="submit" aria-label="Upvote feature button">
-                        <i class="fas fa-check" aria-hidden="true"></i>
+                    <button class="btn waves-effect waves-light sm-md-btn" type="submit" aria-label="Upvote feature button">
                         <span class="hide-on-small-and-down">Upvote</span>
+                        <i class="fas fa-check icon-right" aria-hidden="true"></i>
                     </button>
-                    <a class="modal-close waves-effect waves-light btn delete-no-btn sm-md-btn" aria-label="Cancel upvote button">
-                        <i class="fas fa-times" aria-hidden="true"></i>
+                    <a class="modal-close waves-effect waves-light btn sm-md-btn" aria-label="Cancel upvote button">
                         <span class="hide-on-small-and-down">Cancel</span>
+                        <i class="fas fa-times icon-right" aria-hidden="true"></i>
                     </a>
                 </div>
             </form>
