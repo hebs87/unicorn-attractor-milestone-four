@@ -56,7 +56,7 @@
             <p class="stat">
                 <!-- Show edited date if the ticket has been edited.
                 If not, show the created date-->
-                {% if ticket.created_date.date != ticket.edited_date.date %}
+                {% if ticket.created_date.date != ticket.edited_date.date or ticket.created_date.time.hour != ticket.edited_date.time.hour or ticket.created_date.time.minute != ticket.edited_date.time.minute %}
                     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
                     {{ ticket.edited_date|date:"j M Y" }}
                     <small class="italic">({{ ticket.edited_date|time:"P" }})</small>
