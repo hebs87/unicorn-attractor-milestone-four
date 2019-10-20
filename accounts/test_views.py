@@ -37,3 +37,13 @@ class TestViews(TestCase):
         page = self.client.get("/accounts/register/")
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "registration.html")
+
+
+    def test_profile_view(self):
+        '''
+        Tests that the profile view redirects to the profile template
+        when user logs in
+        '''
+        page = self.client.get("/accounts/profile/")
+        self.assertEqual(page.status_code, 302)
+        self.client.post(reverse('profile'))
