@@ -28,3 +28,12 @@ class TestViews(TestCase):
         page = self.client.get("/accounts/logout/")
         self.assertEqual(page.status_code, 302)
         self.client.post(reverse('index'))
+
+
+    def test_get_registration_page(self):
+        '''
+        Tests that the registration view renders the registration template
+        '''
+        page = self.client.get("/accounts/register/")
+        self.assertEqual(page.status_code, 200)
+        self.assertTemplateUsed(page, "registration.html")
