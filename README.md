@@ -1,5 +1,7 @@
 # [UnicornAttractor]() - Milestone Project Four
 
+[![Build Status](https://travis-ci.org/hebs87/unicorn-attractor-milestone-four.svg?branch=master)](https://travis-ci.org/hebs87/unicorn-attractor-milestone-four)
+
 ## Table of Contents
 
 - [**About**](#About)
