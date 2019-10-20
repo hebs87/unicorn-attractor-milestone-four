@@ -1,4 +1,6 @@
 from django.test import TestCase
+from django.core.files.uploadedfile import SimpleUploadedFile
+from django.shortcuts import reverse
 from .forms import UserLoginForm, UserRegistrationForm, UserUpdateForm, ProfileUpdateForm
 
 
@@ -74,3 +76,16 @@ class TestUserUpdatForm(TestCase):
         })
         form.save()
         self.assertTrue(form.is_valid())
+
+
+class TestProfileUpdateForm(TestCase):
+    def test_user_can_upload_profile_image(self):
+        '''
+        Tests that the user can upload an image file using the
+        ProfileUpdateForm
+        '''
+        image = ProfileUpdateForm
+        image.image = SimpleUploadedFile("image.jpg",
+            b"file_content", content_type="image/jpg")
+        self.client.post(reverse('profile'), {"image": image})
+        self.assertIsNotNone(ProfileUpdateForm)
