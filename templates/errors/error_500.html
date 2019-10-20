@@ -21,7 +21,11 @@
                 Click the image below to go back home!
             </p>
             <!-- HOME PAGE IMAGE -->
-            <img class="responsive-img index-img" src="{% static 'img/index-logo.png' %}" alt="Home Page Image">
+            <div class="col s12">
+                <a href="{% url 'index' %}" aria-label="Home page">
+                    <img class="responsive-img index-img" src="{% static 'img/index-logo.png' %}" alt="Home Page Image">
+                </a>
+            </div>
         </div>
     </div>
 
