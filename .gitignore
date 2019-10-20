@@ -6,3 +6,6 @@ __pycache__
 env.py
 static/
 media/
+htmlcov/
+.coverage
+.coveragerc
