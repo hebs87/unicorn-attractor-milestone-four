@@ -24,3 +24,12 @@ class TestTicketForm(TestCase):
         self.assertFalse(form.is_valid())
         self.assertEqual(form.errors["title"],
                          [u"This field is required."])
+
+
+class TestDonationForm(TestCase):
+    def test_user_can_donate(self):
+        '''
+        Tests that the user can donate by selecting a donation amount
+        '''
+        form = DonationForm({"donation_amount": 5})
+        self.assertTrue(form.is_valid())
