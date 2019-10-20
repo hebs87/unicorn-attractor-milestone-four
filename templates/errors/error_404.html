@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block page_title %}Error 404 | {% endblock %}
+
+{% block page_heading %}404{% endblock %}
+
+{% block content %}
+
+    <!-- ERROR MESSAGE -->
+    <div class="row ticket-card card z-depth-1 center-align">
+        <div class="col s12">
+            <h3 class="card-title">
+                <i class="far fa-frown" aria-hidden="true"></i>
+                Oops...
+            </h3>
+            <p class="bold italic">
+                Something went wrong...
+            </p>
+            <p class="bold italic">
+                Click the image below to go back home!
+            </p>
+            <!-- HOME PAGE IMAGE -->
+            <img class="responsive-img index-img" src="{% static 'img/index-logo.png' %}" alt="Home Page Image">
+        </div>
+    </div>
+
+{% endblock %}
