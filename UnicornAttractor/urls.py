@@ -21,6 +21,7 @@ from accounts.views import index
 from accounts import urls as accounts_urls
 from tickets import urls as tickets_urls
 from dashboard import urls as dashboard_urls
+from UnicornAttractor.views import customhandler404, customhandler500
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -30,6 +31,8 @@ urlpatterns = [
     url(r'^dashboard/', include(dashboard_urls)),
 ]
 
+handler404 = customhandler404
+handler500 = customhandler500
 
 if settings.DEBUG:
     urlpatterns += static(
