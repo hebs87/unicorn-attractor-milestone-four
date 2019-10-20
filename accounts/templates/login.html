@@ -10,7 +10,7 @@
     
         <!--Login form-->
         <div id="login" class="col s12">
-            <form class="col s12" method="POST" action="{% url 'login' %}?next={{ next }}" class="accountform">
+            <form id="login_form" class="col s12 accountform" method="POST" action="{% url 'login' %}?next={{ next }}">
                 <div class="login-wrapper center-align">
                     
                     <h3 class="form-title">Login</h3>

@@ -93,7 +93,7 @@
     <div id="edit_profile_modal" class="modal">
         <div class="modal-content center-align">
             <h4 class="title">Edit Profile</h4>
-            <form method="POST" action="" class="userform" enctype="multipart/form-data">
+            <form id="edit_profile_form" method="POST" class="userform" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{  user_form.email|materializecss:'icon=fas fa-at' }}
                 {{  user_form.first_name|materializecss:'icon=fas fa-signature' }}

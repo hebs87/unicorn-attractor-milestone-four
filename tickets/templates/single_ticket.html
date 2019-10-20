@@ -175,7 +175,7 @@
             <div class="col s12 center-align comment-wrapper">
                 {% if user.is_authenticated %}
                     <!-- Comment Form - only available if user is logged in -->
-                    <form method="POST" enctype="multipart/form-data">
+                    <form id="comment_form" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ comment_form | materializecss:'icon=fas fa-comment-dots' }}
                         <button type="submit" class="btn btn-primary sm-md-btn" aria-label="Add Comment button">
