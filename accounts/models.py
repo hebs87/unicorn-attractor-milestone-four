@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.signals import post_save
+from django.core.files.storage import default_storage as storage
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 from PIL import Image
@@ -29,12 +30,16 @@ class Profile(models.Model):
         '''
         super(Profile, self).save(*args, **kwargs)
 
-        img = Image.open(self.image.path)
+        if self.image:
+            image = Image.open(self.image)
+            size = (300, 300)
+            format = "png"
 
-        if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.image.path)
+            if image.height > 300 or image.width > 300:
+                image.thumbnail(size, Image.ANTIALIAS) 
+                img = storage.open(self.image.name, "w")
+                image.save(img, format)
+                img.close()
 
 
 @receiver(post_save, sender=User)
