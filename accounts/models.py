@@ -12,7 +12,7 @@ class Profile(models.Model):
     Uses CASCADE to ensure the profile is deleted if the user is deleted
     '''
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default='profile_pics/default.png',
+    image = models.ImageField(default='profile_pics/default.jpg',
                               upload_to='profile_pics',
                               blank=True,
                               null=True)
