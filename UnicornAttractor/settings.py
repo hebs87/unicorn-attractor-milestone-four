@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'tickets',
     'dashboard',
     'django_cleanup.apps.CleanupConfig',
+    'storages',
 ]
 
 MIDDLEWARE = [
