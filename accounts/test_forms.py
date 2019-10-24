@@ -61,7 +61,14 @@ class TestUserRegistrationForm(TestCase):
                          [u"Passwords must match"])
 
 
-# class TestUserUpdatForm(TestCase):
+'''
+Currently deactivated below tests to make it compatible with Travis
+Need to set environment variable in Travis
+Done this based on advice from CI Tutor support and advised to leave this
+way for project submission
+'''
+
+# class TestUserUpdateForm(TestCase):
 #     def test_user_details_updated(self):
 #         '''
 #         Tests that the user's details are updated when the UserUpdateForm
