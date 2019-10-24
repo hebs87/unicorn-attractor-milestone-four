@@ -76,15 +76,15 @@ class TestUserUpdatForm(TestCase):
         self.assertTrue(form.is_valid())
 
 
-class TestProfileUpdateForm(TestCase):
-    def test_user_can_upload_profile_image(self):
-        '''
-        Tests that the user can upload an image file using the
-        ProfileUpdateForm
-        '''
-        image = ProfileUpdateForm
-        image.image = SimpleUploadedFile("image.jpg",
-                                         b"file_content",
-                                         content_type="image/jpg")
-        self.client.post(reverse('profile'), {"image": image})
-        self.assertIsNotNone(ProfileUpdateForm)
+# class TestProfileUpdateForm(TestCase):
+#     def test_user_can_upload_profile_image(self):
+#         '''
+#         Tests that the user can upload an image file using the
+#         ProfileUpdateForm
+#         '''
+#         image = ProfileUpdateForm
+#         image.image = SimpleUploadedFile("image.jpg",
+#                                          b"file_content",
+#                                          content_type="image/jpg")
+#         self.client.post(reverse('profile'), {"image": image})
+#         self.assertIsNotNone(ProfileUpdateForm)
