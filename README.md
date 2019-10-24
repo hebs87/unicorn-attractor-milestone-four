@@ -162,17 +162,17 @@ With more time and knowledge, I would like to implement some additional features
 
 I used my user stories and documented each of the steps that each user would need to complete to accomplish what they have stated. Below is the link to the document that contains this information:
 
-- [Testing User Stories]()
+- [Testing User Stories](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/testing/testing-user-stories.pdf)
 
 ### Responsive and Functional Testing
 
 I used Google Chrome's Development tools to constantly test each change that I made to my project and to ensure that it appeared in the desired way on different screen sizes. I also tested my app on different screen sizes (mobile, tablet and desktop) to ensure it appeared in the desired way on different devices.
 
-I created my own account and several fake user accounts to test the functionality and validation worked as expected.
+I created my own account and some fake user accounts to test the functionality and validation worked as expected.
 
 To test my whole app, I went through each feature and documented the results on a spreadsheet. The spreadsheet also documents any responsive features and confirms that they work and appear as intended on different screen sizes. The link to the spreadsheet it below:
 
-- [Testing Checklist]()
+- [Testing Checklist](https://github.com/hebs87/unicorn-attractor-milestone-four/blob/master/testing/testing-checklist.pdf)
 
 ### Additional Testing
 
