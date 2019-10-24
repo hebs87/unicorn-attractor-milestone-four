@@ -176,16 +176,16 @@ With more time and knowledge, I would like to implement some additional features
     - The project uses **jQuery** as the primary JavaScript functionality. This is both the standard jQuery that is built with Materialize components, and my custom jQuery used in my script.js file.
 - [**Python**](https://www.python.org/)
     - The project uses **Python** as the back-end programming language for my app.
-- [**PyMongo**](https://api.mongodb.com/python/current/)
-    - The project uses **PyMongo** as the Python API for MongoDB. This API enables linking the data from the back-end database to the front-end app.
-- [**Flask**](https://flask.palletsprojects.com/en/1.0.x/)
-    - The project uses **Flask**, which is a Python microframework.
-- [**Flask Blueprint**](https://flask.palletsprojects.com/en/1.0.x/blueprints/)
-    - The project user **Flask Blueprint** to compartmentalise my Python code and make it more modular and easier to navigate.
+- [**Django**](https://www.djangoproject.com/)
+    - The project uses **Django** as the Python web framework.
 - [**Jinja**](https://jinja.palletsprojects.com/en/2.10.x/)
-    - The project uses **Jinja** for templating with Flask in the HTML code. I used **Jinja** to simplify my HTML code, avoid repetition, and allow simpler linking of the back-end to the front-end.
-- [**MongoDB**](https://cloud.mongodb.com/)
-    - The project uses **MongoDB** to store the database in the cloud. The information displayed in the front-end app is pulled from the database store.
+    - The project uses **Jinja** for templating with Python and Django in the HTML code. I used **Jinja** to simplify my HTML code, avoid repetition, and allow simpler linking of the back-end to the front-end.
+- [**Stripe API**](https://stripe.com/gb)
+    - The project uses **Stripe** to make secure payments for logging and upvoting Feature Requests. The project uses Stripe's test payment functionality.
+- [**C3.js**](https://c3js.org/)
+    - The project uses **C3.js** to render interactive charts and graphs for the dashboard.
+- [**PostgreSQL**](https://www.postgresql.org/)
+    - The project uses Heroku's **PostgreSQL** relational database to hold the backend information for the various models used in the project.
 - [**Google Fonts**](https://fonts.google.com/)
     - The project uses **Google Fonts** to style the text and suit my chosen theme. The brand logo uses the *_Dancing Script_* font and the rest of the site uses the *_Roboto_* font.
 - [**Font Awesome**](https://fontawesome.com/)
@@ -201,6 +201,7 @@ With more time and knowledge, I would like to implement some additional features
     - I've used **GitHub** as a remote repository to push and store the committed changes to my project from Git.
 
 ### Hosting
+
 - [**Heroku**](https://www.heroku.com/)
     - I've used **Heroku** as the hosting platform to deploy my app.
 
