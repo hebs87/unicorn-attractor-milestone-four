@@ -71,7 +71,7 @@ def new_bug_ticket(request):
             bug_form.instance.user = request.user
             bug_form.instance.ticket_type_id = 1
             bug_form.instance.ticket_status_id = 1
-            new_bug = bug_form.save()
+            bug_form.save()
             messages.success(request, f"Thanks for submitting a Bug Report!")
             return redirect(view_all_tickets)
 
@@ -130,7 +130,7 @@ def new_feature_ticket(request):
                 else:
                     # If goal amount not reached, ticket status will be Open
                     feature_form.instance.ticket_status_id = 1
-                new_feature = feature_form.save()
+                feature_form.save()
                 messages.success(request, f"Thanks for submitting a \
                                  Feature Request!")
                 return redirect(view_all_tickets)
