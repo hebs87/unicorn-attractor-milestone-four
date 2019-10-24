@@ -49,7 +49,19 @@ The front-end display and functionality uses HTML, CSS and JavaScript. The back-
 
 ### User Stories
 
-
+As a user, I want to be able to:
+- View all bug and feature tickets logged by other users, as a guest - Done
+- Register for my own account - Done
+- Reset my account password if I forget it - Done
+- Log bug tickets for free - Done
+- Log feature request tickets by paying a small fee - Done
+- Edit bug and feature tickets that I’ve created - Done
+- Delete bug and feature tickets that I’ve created - Done
+- Filter and search for tickets using various categories - Partially done (search functionality not built)
+- Comment on any tickets that have been logged by me or other users - Done
+- Upvote existing bug tickets for free - Done
+- Upvote existing feature tickets by paying a small fee - Done
+- View a dashboard containing various ticket statistics - Done
 
 ### Style Rationale
 
