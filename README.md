@@ -237,7 +237,9 @@ In addition to my own testing, I also asked family members, friends and the Slac
 
 ### Automated Testing
 
+I wrote various tests to automate certain forms and views used in my project using Django's `unittest` library. All tests pass.
 
+The tests provide an overall coverage of 34%. However, given more time and knowledge around Django testing, I would like to improve the coverage to the approved minimum requirement of 75%.
 
 ### Travis Continuous Integration (CI)
 
