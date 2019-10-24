@@ -11,7 +11,6 @@ class TestViews(TestCase):
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "index.html")
 
-
     def test_get_login_page(self):
         '''
         Tests that the login view renders the login template
@@ -19,7 +18,6 @@ class TestViews(TestCase):
         page = self.client.get("/accounts/login/")
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "login.html")
-
 
     def test_logout_view(self):
         '''
@@ -29,7 +27,6 @@ class TestViews(TestCase):
         self.assertEqual(page.status_code, 302)
         self.client.post(reverse('index'))
 
-
     def test_get_registration_page(self):
         '''
         Tests that the registration view renders the registration template
@@ -37,7 +34,6 @@ class TestViews(TestCase):
         page = self.client.get("/accounts/register/")
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "registration.html")
-
 
     def test_profile_view(self):
         '''

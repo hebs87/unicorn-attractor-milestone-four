@@ -1,7 +1,8 @@
 from django.test import TestCase
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.shortcuts import reverse
-from .forms import UserLoginForm, UserRegistrationForm, UserUpdateForm, ProfileUpdateForm
+from .forms import (UserLoginForm, UserRegistrationForm,
+                    UserUpdateForm, ProfileUpdateForm)
 
 
 class TestUserLoginForm(TestCase):
@@ -11,7 +12,6 @@ class TestUserLoginForm(TestCase):
         '''
         form = UserLoginForm({"username": "TestUser", "password": "Password"})
         self.assertTrue(form.is_valid())
-
 
     def test_blank_field_error_message(self):
         '''
@@ -38,7 +38,6 @@ class TestUserRegistrationForm(TestCase):
         })
         self.assertTrue(form.is_valid())
 
-
     def test_blank_field_error_message(self):
         '''
         Tests that the fields are required for the form to be valid
@@ -48,7 +47,6 @@ class TestUserRegistrationForm(TestCase):
         self.assertEqual(form.errors["username"],
                          [u"This field is required."])
 
-    
     def test_passwords_must_match_error(self):
         '''
         Tests that the correct error is displayed when the passwords
@@ -86,6 +84,7 @@ class TestProfileUpdateForm(TestCase):
         '''
         image = ProfileUpdateForm
         image.image = SimpleUploadedFile("image.jpg",
-            b"file_content", content_type="image/jpg")
+                                         b"file_content",
+                                         content_type="image/jpg")
         self.client.post(reverse('profile'), {"image": image})
         self.assertIsNotNone(ProfileUpdateForm)

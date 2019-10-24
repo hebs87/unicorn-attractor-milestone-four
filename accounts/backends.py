@@ -19,7 +19,6 @@ class EmailAuth:
         except User.DoesNotExist:
             return None
 
-    
     def get_user(self, user_id):
         '''
         Used by Django authentication system to retrieve user instance

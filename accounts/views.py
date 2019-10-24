@@ -3,8 +3,10 @@ from django.contrib import auth, messages
 from django.core.urlresolvers import reverse
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
-from .forms import UserLoginForm, UserRegistrationForm, UserUpdateForm, ProfileUpdateForm
+from .forms import (UserLoginForm, UserRegistrationForm, UserUpdateForm,
+                    ProfileUpdateForm)
 from tickets.models import Ticket
+
 
 # Create your views here.
 def index(request):
@@ -20,22 +22,22 @@ def login(request):
     '''
     if request.user.is_authenticated():
         return redirect(reverse('index'))
-    
+
     if request.method == "POST":
         login_form = UserLoginForm(request.POST)
-        
+
         if login_form.is_valid():
             # If form is valid, we get both entered username and password
             user = auth.authenticate(username=request.POST['username'],
                                      password=request.POST['password'])
-            
+
             if user:
                 # If details are valid, log user in and display message
                 auth.login(request=request, user=user)
-                messages.success(request,
-                    "Welcome back, you're now logged in!")
+                messages.success(request, "Welcome back, you're \
+                                 now logged in!")
                 # Redirect user to home page once logged in
-                if request.GET and request.GET['next'] !='':
+                if request.GET and request.GET['next'] != '':
                     next = request.GET['next']
                     return HttpResponseRedirect(next)
                 else:
@@ -48,7 +50,7 @@ def login(request):
     else:
         # Else, we want to return a blank form
         login_form = UserLoginForm()
-    
+
     args = {'login_form': login_form, 'next': request.GET.get('next', '')}
 
     return render(request, "login.html", args)
@@ -82,7 +84,7 @@ def registration(request):
             # Authenicate user, save details against relevant field
             user = auth.authenticate(username=request.POST['username'],
                                      password=request.POST['password1'])
-            
+
             # Log user in and redirect to profile if all checks pass
             if user:
                 auth.login(request=request, user=user)
@@ -123,15 +125,15 @@ def user_profile(request):
             messages.success(request, "Your account has been successfully \
                              updated!")
             return redirect(reverse('profile'))
-            
+
     else:
         user_form = UserUpdateForm(instance=request.user)
         profile_form = ProfileUpdateForm(instance=request.user.profile)
 
     args = {
         'user_form': user_form,
-        'profile_form':profile_form,
+        'profile_form': profile_form,
         'user_tickets': user_tickets
     }
-    
+
     return render(request, 'profile.html', args)

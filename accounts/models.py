@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.dispatch import receiver
 from PIL import Image
 
+
 # Create your models here.
 class Profile(models.Model):
     '''
@@ -19,10 +20,8 @@ class Profile(models.Model):
                               null=True)
     total_donated = models.IntegerField(default=0)
 
-
     def __str__(self):
         return f"{self.user.username}'s Profile"
-    
 
     def save(self, *args, **kwargs):
         '''
@@ -36,7 +35,7 @@ class Profile(models.Model):
             format = "png"
 
             if image.height > 300 or image.width > 300:
-                image.thumbnail(size, Image.ANTIALIAS) 
+                image.thumbnail(size, Image.ANTIALIAS)
                 img = storage.open(self.image.name, "w")
                 image.save(img, format)
                 img.close()

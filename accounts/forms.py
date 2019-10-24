@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 from .models import Profile
 from django.utils.safestring import mark_safe
 
+
 # Create a new form object
 class UserLoginForm(forms.Form):
     '''
@@ -60,10 +61,9 @@ class UserRegistrationForm(UserCreationForm):
         fields = ['username', 'email', 'first_name',
                   'last_name', 'password1', 'password2']
 
-
     def clean_email(self):
         '''
-        Validates email field and returns clean data which we can verify        
+        Validates email field and returns clean data which we can verify
         '''
         email = self.cleaned_data.get('email')
         username = self.cleaned_data.get('username')
@@ -73,10 +73,10 @@ class UserRegistrationForm(UserCreationForm):
                 u'That email address has already been registered.')
 
         return email
-    
+
     def clean_password2(self):
         '''
-        Validates password field and returns clean data which we can verify        
+        Validates password field and returns clean data which we can verify
         '''
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
@@ -88,6 +88,7 @@ class UserRegistrationForm(UserCreationForm):
             raise forms.ValidationError(u'Passwords must match')
 
         return password2
+
 
 class UserUpdateForm(forms.ModelForm):
     '''
@@ -125,7 +126,7 @@ class ProfileUpdateForm(forms.ModelForm):
     image = forms.ImageField(
         label=mark_safe('<i class="fas fa-image" aria-hidden="true"></i>'),
         widget=forms.FileInput())
-    
+
     class Meta:
         model = Profile
         fields = ['image']
