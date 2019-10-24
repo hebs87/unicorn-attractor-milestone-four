@@ -32,7 +32,7 @@
                 {% for bug in top_five_bugs %}
                     <li class="collection-item avatar">
                         <a href="{% url 'view_single_ticket' bug.id %}" aria-label="View ticket details">
-                            <h4 class="title bold">{{ bug.title }}</h5>
+                            <h4 class="title bold">{{ bug.title }}</h4>
                             <p class="helper italic truncate">{{ bug.description }}</p>
                         </a>
                     </li>
@@ -48,7 +48,7 @@
                 {% for feature in top_five_features %}
                     <li class="collection-item avatar">
                         <a href="{% url 'view_single_ticket' feature.id %}" aria-label="View ticket details">
-                            <h4 class="title bold">{{ feature.title }}</h5>
+                            <h4 class="title bold">{{ feature.title }}</h4>
                                 <p class="helper italic truncate">{{ feature.description }}</p>
                         </a>
                     </li>
