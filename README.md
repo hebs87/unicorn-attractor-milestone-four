@@ -41,7 +41,7 @@ This application (app) is ...
 
 ### Why This Project?
 
-I created this app for the Full Stack Frameworks project of [**_Code Institute's_**](https://codeinstitute.net/) Full Stack Software Development course. The project scope was to ...
+I created this app for the Full Stack Frameworks project of [**_Code Institute's_**](https://codeinstitute.net/) Full Stack Software Development course. The project scope was to create an issue tracking web application, which allows users to submit bug tickets for free, or requests for additional features for a small fee. Users should also have the ability to upvote and comment on tickets, to guide prioritisation.
 
 The front-end display and functionality uses HTML, CSS and JavaScript. The back-end functionality uses Python, Django, SQLite3 and PostgreSQL.
 
@@ -65,7 +65,7 @@ As a user, I want to be able to:
 
 ### Style Rationale
 
-I received inspiration for the style of my app ...
+The style and colour scheme used in my app was inspired by the picture that I used for the logo. I wanted the site to be bright and have a 'magical' feel to it, given that Unicorns are mythical creatures.
 
 ### Wireframes
 
