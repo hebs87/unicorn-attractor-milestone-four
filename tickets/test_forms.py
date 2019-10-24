@@ -15,7 +15,6 @@ class TestTicketForm(TestCase):
         })
         self.assertTrue(form.is_valid())
 
-
     def test_blank_field_error_message(self):
         '''
         Tests that the fields are required for the form to be valid
@@ -44,7 +43,6 @@ class TestCommentForm(TestCase):
         form = CommentForm({"description": "Test comment"})
         self.assertTrue(form.is_valid())
 
-
     def test_user_cannot_create_comment_under_five_characters(self):
         '''
         Tests that the user cannot create a comment by filling the
@@ -52,7 +50,6 @@ class TestCommentForm(TestCase):
         '''
         form = CommentForm({"description": "Test"})
         self.assertFalse(form.is_valid())
-
 
     def test_blank_field_error_message(self):
         '''

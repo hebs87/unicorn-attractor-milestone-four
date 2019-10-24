@@ -2,6 +2,7 @@ from django import forms
 from datetime import datetime
 from .models import Ticket, Comment
 
+
 class TicketForm(forms.ModelForm):
     '''
     Form that allows users to create new tickets (bugs or features)

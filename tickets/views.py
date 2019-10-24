@@ -14,6 +14,7 @@ import stripe
 # Import the Stripe Secret API key
 stripe.api_key = settings.STRIPE_SECRET
 
+
 def view_all_tickets(request):
     '''
     View all tickets
@@ -33,7 +34,7 @@ def view_all_tickets(request):
         tickets = tickets.filter(ticket_type__id=ticket_type)
     else:
         tickets
-    
+
     if ticket_status:
         tickets = tickets.filter(ticket_status__id=ticket_status)
     else:
@@ -41,7 +42,7 @@ def view_all_tickets(request):
 
     # Pagination
     paginator = Paginator(tickets, 6)
-    
+
     try:
         tickets = paginator.page(page)
     except PageNotAnInteger:
@@ -76,11 +77,11 @@ def new_bug_ticket(request):
 
     else:
         bug_form = TicketForm()
-    
+
     args = {
         "bug_form": bug_form
     }
-    
+
     return render(request, "new_bug.html", args)
 
 
@@ -89,7 +90,7 @@ def new_feature_ticket(request):
     '''
     Allows user to create a new bug ticket
     '''
-    if request.method=="POST":
+    if request.method == "POST":
         feature_form = TicketForm(request.POST)
         donation_form = DonationForm(request.POST)
         if feature_form.is_valid() and donation_form.is_valid():
@@ -99,10 +100,10 @@ def new_feature_ticket(request):
             try:
                 # Use stripe's inbuilt API to create a customer and charge
                 customer = stripe.Charge.create(
-                    amount = int(donation_amount * 100),
-                    currency = "GBP",
-                    description = request.user.email,
-                    source = request.POST["stripeToken"]
+                    amount=int(donation_amount * 100),
+                    currency="GBP",
+                    description=request.user.email,
+                    source=request.POST["stripeToken"]
                 )
             except stripe.error.CardError:
                 # Display error message if card is declined
@@ -167,13 +168,14 @@ def view_single_ticket(request, pk):
     # Increment views by 1 when ticket is viewed
     ticket.views += 1
     ticket.save()
-    
+
     # Filter user's upvotes by their user_id
-    ticket_upvotes = Upvote.objects.filter(ticket_id=ticket.pk).values("user_id")
+    ticket_upvotes = Upvote.objects.filter(ticket_id=ticket.pk)\
+        .values("user_id")
     user_upvotes = [upvote["user_id"] for upvote in ticket_upvotes]
 
     comments = Comment.objects.filter(ticket_id=ticket.pk)
-    
+
     if request.method == "POST":
         comment_form = CommentForm(request.POST)
         # Save form and redirect user to the page for that ticket
@@ -264,7 +266,7 @@ def upvote(request, pk):
 
     # If upvote is on a feature request, payment will be needed before
     # upvote is registered
-    if request.method=="POST":
+    if request.method == "POST":
         donation_form = DonationForm(request.POST)
         if donation_form.is_valid():
             # Total Donation Amount
@@ -273,10 +275,10 @@ def upvote(request, pk):
             try:
                 # Use stripe's inbuilt API to create a customer and charge
                 customer = stripe.Charge.create(
-                    amount = int(donation_amount * 100),
-                    currency = "GBP",
-                    description = request.user.email,
-                    source = request.POST["stripeToken"]
+                    amount=int(donation_amount * 100),
+                    currency="GBP",
+                    description=request.user.email,
+                    source=request.POST["stripeToken"]
                 )
             except stripe.error.CardError:
                 # Display error message if card is declined
@@ -305,7 +307,8 @@ def upvote(request, pk):
                 current_ticket_donations = Ticket.objects.values_list(
                     "total_donations", flat=True).get(id=ticket.pk)
                 # Add it to the donation amount
-                new_ticket_donations = current_ticket_donations + donation_amount
+                new_ticket_donations = current_ticket_donations\
+                    + donation_amount
                 # Push the new amount to the ticket's total_donated amount
                 Ticket.objects.filter(id=ticket.pk).update(
                     total_donations=new_ticket_donations)
@@ -332,7 +335,7 @@ def upvote(request, pk):
                               user_id=request.user.id)
 
         messages.success(request, f"Thanks, your upvote has been registered!")
-    
+
     return redirect(view_single_ticket, ticket.pk)
 
 
@@ -373,7 +376,7 @@ def admin_update_status(request, pk):
     # Update the ticket's status ID with the selected status
     # update the edited_date to current date and time
     # Only if an option is selected from the drop down
-    if ticket_status != None:
+    if ticket_status is not None:
         Ticket.objects.filter(id=ticket.pk).update(
             ticket_status=ticket_status, edited_date=timezone.now())
     else:

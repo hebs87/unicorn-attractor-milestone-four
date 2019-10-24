@@ -9,6 +9,7 @@ def handler404(request, exception, template_name="errors/error_404.html"):
     response.status_code = 404
     return response
 
+
 def handler500(request, template_name="errors/error_500.html"):
     '''
     500 Error Handler
