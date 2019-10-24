@@ -174,6 +174,9 @@ def view_single_ticket(request, pk):
         .values("user_id")
     user_upvotes = [upvote["user_id"] for upvote in ticket_upvotes]
 
+    # Allows injection of donation form into Upvote & donate modal
+    donation_form = DonationForm()
+
     comments = Comment.objects.filter(ticket_id=ticket.pk)
 
     if request.method == "POST":
@@ -190,7 +193,6 @@ def view_single_ticket(request, pk):
             return redirect(view_single_ticket, ticket.pk)
     else:
         comment_form = CommentForm()
-        donation_form = DonationForm()
 
     args = {
         "ticket": ticket,
