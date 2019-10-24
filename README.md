@@ -186,7 +186,19 @@ In addition to my own testing, I also asked family members, friends and the Slac
 - I used the [Esprima Syntax Validator tool](http://esprima.org/demo/validate.html) to validate my JavaScript syntax.
 - I used the [Pep8 Online tool](http://pep8online.com/) to validate my Python syntax.
 
+### Automated Testing
+
+
+
+### Travis Continuous Integration (CI)
+
+In addition to the automated testing files, I used [Travis CI](https://travis-ci.org/) for CI testing of my code.
+
+I had an issue with two of my automated tests for the `UserUpdateForm` and `ProfileUpdateForm` in the `test_forms.py` file in the `accounts` app. Travis was throwing an error when running these tests, as there were no environment variables set in the Travis environment. I got some advise from the Code Institute Tutor team and was advised to comment out the two tests and include an explanation for the reason in both the relevant file, and also my README.md file.
+
 ### Interesting Bugs Or Problems
+
+
 
 #### Resolved Bugs
 
