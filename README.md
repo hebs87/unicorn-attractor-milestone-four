@@ -391,15 +391,31 @@ Once the migrations are completed and the super user has been created successful
 ### Content
 
 - All of the code for my project was written by me.
+- I researched how to link Django forms to Materialize by reading the [Django MaterializeCSS Form](https://pypi.org/project/django-materializecss-form/) documentation.
+- I used the [Django Secret Key Generator](https://www.miniwebtool.com/django-secret-key-generator/) to generate the secret key for my project.
+- I used a lot of the code from the [User Profile And Picture](https://www.youtube.com/watch?v=FdVuKt_iuSI) and [Update User Profile](https://www.youtube.com/watch?v=CQ90L5jfldw&t=546s) videos to create the functionality for creating a User Profile upon registration, and to allow the user to update their profile picture and details.
+- I reasearched how to delete old images when the user uploads a new Profile image by reading the [django_cleanup](https://stackoverflow.com/questions/2878490/how-to-delete-old-image-when-update-imagefield) article.
+- I found out how to add the current date to a model field by reading the [Automatic Creation Date](https://stackoverflow.com/questions/3429878/automatic-creation-date-for-django-model-form-objects) article on StackOverflow.
+- I researched how to filter based on choice form options by watching [Filter Video 1](https://www.youtube.com/watch?v=V-xXdsi91wc) and [Filter Video 2](https://www.youtube.com/watch?v=GtwK0Hj6jU8&t=180s). These videos also inspired my database schema and the models that I used in the `tickets` app.
+- I researched how to implement pagination, and how to make it work with the filtered results by reading the [Pagination](https://docs.djangoproject.com/en/2.2/topics/pagination/) and [How To Paginate With Django](https://simpleisbetterthancomplex.com/tutorial/2016/08/03/how-to-paginate-with-django.html) articles, and watching the [Pagination](https://www.youtube.com/watch?v=acOktTcTVEQ) video.
+- I reasearched how to create and delete an upvote object when the user upvotes or downvotes a ticket by reading the [Queries](https://docs.djangoproject.com/en/2.2/topics/db/queries/) article.
+- I researched how to format dates in Jinja by reading the [Templates - Date](https://docs.djangoproject.com/en/2.2/ref/templates/builtins/#date) article.
+- I researched how to change Django form labels to icons by reading the [How To Have A Link In Label Of A Form Field](https://stackoverflow.com/questions/386042/how-to-have-a-link-in-label-of-a-form-field). This helped me to change the image file upload field label to an icon instead.
+- I read the [C3.js](https://c3js.org/) documentation to learn how to render the graphs used in my dashboard in a HTML template.
+- I researched how to filter and sort the top 5 most voted for tickets by reading the [Query For Top X Elements In Django](https://stackoverflow.com/questions/6436937/query-for-top-x-elements-in-django) article.
+- I learnt how to create custom error handlers by reading the [Creating Custom Error Pages](https://stackoverflow.com/questions/17662928/django-creating-a-custom-500-404-error-page/24725091) article in StackOverflow. I also read the [Return 404 Page Intentionally](https://stackoverflow.com/questions/49465281/how-to-return-404-page-intentionally-in-django) article to test my `404` error handler.
+- I researched how to write a unittest for a file upload by reading the [Unit Test File Upload](https://stackoverflow.com/questions/11170425/how-to-unit-test-file-upload-in-django) article. This test is commented out as it caused Travis compatibility issues.
 
 ### Media
 
 - I found the Favicon image on Google, and I used the [Favicon Converter](https://favicon.io/favicon-converter/) to convert the image to a Favicon.
+- I found the site's logo on Google.
+- The images for the User Profile images were my own pictures.
 
 ### Acknowledgements
 
-- I received inspiration for the style of my project from []().
-- Thanks to the Slack community for their feedback, and for .
+- Thanks to the Code Institute Tutors who helped me to troubleshoot some issues with AWS Cloud9.
+- Thanks to the Slack community for their helfpul feedback.
 - A special mention to my mentor, Dick Vlaanderen, for his feedback on my project's scope, design and functionality.
 
 ### Disclaimer
