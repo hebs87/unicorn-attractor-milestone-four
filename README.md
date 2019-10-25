@@ -23,9 +23,9 @@
   - [Responsive and Functional Testing](#Responsive-and-Functional-Testing)
   - [Additional Testing](#Additional-Testing)
   - [Code Validation](#Code-Validation)
+  - [Automated Testing](#Automated-Testing)
+  - [Travis Continuous Integration (CI)](#Travis-Continuous-Integration-(CI))
   - [Interesting Bugs Or Problems](#Interesting-Bugs-Or-Problems)
-    - [Resolved Bugs](#Resolved-Bugs)
-    - [Partially Resolved or Unresolved Bugs](#Partially-Resolved-or-Unresolved-Bugs)
 - [**Deployment**](#Deployment)
   - [Live App Link](#Live-App-Link)
   - [Repository Link](#Repository-Link)
@@ -249,15 +249,12 @@ I had an issue with two of my automated tests for the `UserUpdateForm` and `Prof
 
 ### Interesting Bugs Or Problems
 
-
-
-#### Resolved Bugs
-
-
-
-#### Partially Resolved or Unresolved Bugs
-
-
+- **Profile Creation When Registering User** - I followed a video tutorial to create a profile when registering a user, and to allow them to update their profile picture. The feature worked fine initially, but then I kept getting an error when registering a new user. I resolved this by insterting additional arguments in the `save` function in the Profile model, as advised by a [Django TypeError](https://stackoverflow.com/questions/52351756/django-typeerror-save-got-an-unexpected-keyword-argument-force-insert/52351829) article on StackOverflow. The feature now works as intended.
+- **Unable To Migrate Databases** - After making a few changes to my models, I kept getting an error when I tried to run the `python3 manage.py makemigrations` and `python3 manage.py makemigrations` to migrate my database. I resolved this by deleting the `__pycache__` and `migrations` folders in all apps that contained models, as advised by a [Django No Such Table Exception](https://stackoverflow.com/questions/34548768/django-no-such-table-exception) article on StackOverflow.
+- **Pagination Not Working On Filtered Results** - When loading the next page or a particular page of the filtered result, this brought up the relevant page of the default values (all tickets) instead of that of the filtered results. I resolved this by creating a template tag within the `tickets` app and injecting it into the relevant HTML file to allow the page parameters to be remembered, as advised by a [Django Filtering And Pagination](https://www.caktusgroup.com/blog/2018/10/18/filtering-and-pagination-django/) article.
+- **Allowed Users To Pay Again When Feature Downvoted** - If the user paid to upvote a feature and they then downvoted it, the 'Donate & Upvote' button would be displayed again if the donation goal hadn't been met. This would then allow the same user to make another donation and upvote the ticket again. I only wanted a particular user to be able to make a donation to upvote a ticket once, and not multiple times. To resolve this issue, I disabled the 'Downvote' button on Feature Requests.
+- **Reset Password** - Despite allowing less secure apps within my Google Account settings, as instructed by Code Institute's LMS videos, I was still getting an `SMTPAuthenticationError` when entering the password on the 'Password Reset' screen. This meant that the site was failing to send the password reset email to the user. I resolved this issue by activating the 2-Step Authentication in my Google Account, creating an app password and storing it within my environment variables instead of my standard GMail password, as instructed by the [Django SMTPAuthenticationError](https://stackoverflow.com/questions/26697565/django-smtpauthenticationerror) article.
+- **Image Not Saving To Direct Path In PostgreSQL** - After linking deploying my site in the live environment and linking it to Heroku's PostgreSQL add-on and my AWS S3 Bucket, I kept getting an error when tying to register a new user, or upload the image of an existing user, stating that PostgreSQL could not save the file to an absolute file path. I resolved the issue by amending some settings in the `save` function in the Profile model, as advised by the [Django Storage NotImplementedError](http://blog.hardlycode.com/solving-django-storage-notimplementederror-2011-01/) and [Getting PIL Image Save Method To Work With Amazon S3boto Storage](https://stackoverflow.com/questions/14680323/django-getting-pil-image-save-method-to-work-with-amazon-s3boto-storage/14681113#14681113) articles.
 
 ## Deployment
 
