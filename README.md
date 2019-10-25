@@ -32,6 +32,7 @@
   - [Running Code Locally](#Running-Code-Locally)
 - [**Credits**](#Credits)
   - [Content](#Content)
+  - [Media](#Media)
   - [Acknowledgements](#Acknowledgements)
   - [Disclaimer](#Disclaimer)
 
