@@ -166,6 +166,8 @@ With more time and knowledge, I would like to implement some additional features
 
 - [**Balsamiq**](https://balsamiq.com/)
     - I've used **Balsamiq** to create wireframes of my website/app before building it.
+- [**Visual Paradigm**](https://www.visual-paradigm.com/)
+    - I've used **Visual Paradigm** to create the ER diagram for my Database Schema before building my project.
 - [**HTML**](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
     - The project uses **HTML** to create the basic elements and content of my app.
 - [**CSS**](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3)
