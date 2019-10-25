@@ -3,7 +3,7 @@
 
 {% block page_title %}Home Page | {% endblock %}
 
-{% block page_heading %}Welcome {% if user.is_authenticated %}, {{ user.username }}{% endif %}!{% endblock %}
+{% block page_heading %}Welcome{% if user.is_authenticated %}, {{ user.username }}{% endif %}!{% endblock %}
 
 {% block content %}
 
