@@ -24,7 +24,7 @@
   - [Additional Testing](#Additional-Testing)
   - [Code Validation](#Code-Validation)
   - [Automated Testing](#Automated-Testing)
-  - [Travis Continuous Integration (CI)](#Travis-Continuous-Integration-(CI))
+  - [Travis Continuous Integration](#Travis-Continuous-Integration)
   - [Interesting Bugs Or Problems](#Interesting-Bugs-Or-Problems)
 - [**Deployment**](#Deployment)
   - [Live App Link](#Live-App-Link)
@@ -241,9 +241,9 @@ I wrote various tests to automate certain forms and views used in my project usi
 
 The tests provide an overall coverage of 34%. However, given more time and knowledge around Django testing, I would like to improve the coverage to the approved minimum requirement of 75%.
 
-### Travis Continuous Integration (CI)
+### Travis Continuous Integration
 
-In addition to the automated testing files, I used [Travis CI](https://travis-ci.org/) for CI testing of my code.
+In addition to the automated testing files, I used [Travis CI](https://travis-ci.org/) for Continuous Integration testing of my code.
 
 I had an issue with two of my automated tests for the `UserUpdateForm` and `ProfileUpdateForm` in the `test_forms.py` file in the `accounts` app. Travis was throwing an error when running these tests, as there were no environment variables set in the Travis environment. I got some advice from the Code Institute Tutor team and was advised to comment out the two tests and include an explanation for the reason in both the relevant file, and also my README.md file.
 
