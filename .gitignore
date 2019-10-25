@@ -4,8 +4,9 @@
 .~c9
 __pycache__
 env.py
-static/
-media/
+# Static and media folders commented out purely for project assessment
+# static/
+# media/
 htmlcov/
 .coverage
 .coveragerc
