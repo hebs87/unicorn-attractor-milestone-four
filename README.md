@@ -38,7 +38,7 @@
 
 ## About
 
-This application (app) is ...
+This application (app) is an issue tracker for a game called UnicornAttractor. UnicornAttractor isn't a real game, but the site allows users to log Bug Reports or Feature Requests relating to the make-believe game, and they can also upvote, downvote and comment on existing tickets by creating their own account and profile.
 
 ### Why This Project?
 
