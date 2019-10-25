@@ -363,6 +363,28 @@ To run my code locally, users can download a local copy of my code to their desk
     ```git clone https://github.com/USERNAME/REPOSITORY```
 
 7. Press `Enter` to complete the process and create your local clone.
+8. Complete one of the two below steps in your local workspace to set your own credentials for the environment variables:
+    - Enter and save your own credentials in the `.baschrc` file; or
+    - Create a `.env,py` file with your own credentials and import this into the `settings.py` file
+9. Install the `requirements.txt` file by running the below command in your CLI Terminal:
+
+    ```sudo pip3 install -r requirements.txt```
+
+10. Run one of the following commands in your Terminal to launch the Django project, depending on which the default version of Python is in your workspace:
+
+    - ```python3 manage.py runserver``` if the default version is Python2
+    - ```python3 manage.py runserver``` if the default version is Python3
+
+11. Click the `http://` link that loads, and the project should load. If it doesn't load when you click the link, copy and paste it into a new browser tab instead.
+12. Run the following commands to migrate the database models and create a super user:
+
+    ```
+    python3 manage.py makemigrations
+    python3 manage.py migrate
+    python3 manage.py createsuperuser
+    ```
+
+Once the migrations are completed and the super user has been created successfully, the site should be running locally. To deploy the site remotely, follow the instructions in the [Deployment](#Deployment) section.
 
 ## Credits
 
