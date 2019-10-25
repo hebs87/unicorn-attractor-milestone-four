@@ -30,6 +30,7 @@
   - [Live App Link](#Live-App-Link)
   - [Repository Link](#Repository-Link)
   - [Running Code Locally](#Running-Code-Locally)
+  - [Media And Static Folders](#Media-And-Static-Folders)
 - [**Credits**](#Credits)
   - [Content](#Content)
   - [Media](#Media)
@@ -383,6 +384,12 @@ To run my code locally, users can download a local copy of my code to their desk
     ```
 
 Once the migrations are completed and the super user has been created successfully, the site should be running locally. To deploy the site remotely, follow the instructions in the [Deployment](#Deployment) section.
+
+### Media And Static Folders
+
+During development, my `static` and `media` folders weren't pushed to GitHub at any stage, as instructed in the Code Institute LMS lessons. These folders were added to my `.gitignore` file, as they are hosted in my S3 bucket for the live version of the site.
+
+I pushed these folders to GitHub and commented them out of the `.gitignore` file just before submitting my project, purely for the purpose of assessment.
 
 ## Credits
 
