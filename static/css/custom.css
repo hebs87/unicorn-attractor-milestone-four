@@ -736,6 +736,13 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
   background-color: #fefde5 !important;
 }
 
+/* CHARTS */
+tspan,
+.c3-legend-item {
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
 /* MEDIA QUERIES */
 @media (min-width: 601px) {
   nav .brand-logo-title {
