@@ -186,8 +186,10 @@ With more time and knowledge, I would like to implement some additional features
     - The project uses **Stripe** to make secure payments for logging and upvoting Feature Requests. The project uses Stripe's test payment functionality.
 - [**C3.js**](https://c3js.org/)
     - The project uses **C3.js** to render interactive charts and graphs for the dashboard.
+- [**SQLite**](https://www.sqlite.org/index.html)
+    - The project uses **SQLite** as the relational database to hold the backend information for the varions models used, when running locally.
 - [**PostgreSQL**](https://www.postgresql.org/)
-    - The project uses Heroku's **PostgreSQL** relational database to hold the backend information for the various models used in the project.
+    - The project uses Heroku's **PostgreSQL** relational database to hold the backend information for the various models used, when deployed remotely.
 - [**Google Fonts**](https://fonts.google.com/)
     - The project uses **Google Fonts** to style the text and suit my chosen theme. The brand logo uses the *_Open Sans_* font and the rest of the site uses the *_Roboto_* font.
 - [**Font Awesome**](https://fontawesome.com/)
